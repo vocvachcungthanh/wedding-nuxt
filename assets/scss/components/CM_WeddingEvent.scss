@@ -1,0 +1,124 @@
+.wedding__event {
+  padding: 12rem 0;
+
+  .wedding__event--header {
+    text-align: center;
+    color: #000;
+
+    .wedding__event--title {
+      font-size: 5rem;
+      font-weight: bold;
+    }
+
+    .wedding__event--info {
+      font-size: 1.5rem;
+    }
+  }
+
+  .wedding__event--content {
+    padding-top: 12rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    text-align: center;
+
+    .wedding__event--product {
+      border-radius: 1rem;
+      overflow: hidden;
+      width: calc(25% - 2rem);
+      padding: 2rem;
+      transition: 0.5s all;
+      background: url('~/assets/images/bg.png');
+
+      .wedding__event-title {
+        text-transform: uppercase;
+        text-align: center;
+        color: #202a41;
+        font-size: 2rem;
+
+        position: relative;
+
+        margin: 0 0 1.4em;
+        padding: 0 0 0.8em;
+
+        &::before {
+          content: '';
+          height: 0.3rem;
+          width: 40%;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 0;
+          background-color: #f88dbd;
+          border-radius: 999px;
+        }
+      }
+
+      &:hover {
+        .wedding__event--avatar {
+          img {
+            transition: 0.5s all;
+            transform: scale(1.5) rotate(35deg);
+          }
+        }
+      }
+
+      .wedding__event--avatar {
+        border-radius: 1.5rem;
+        width: 100%;
+        position: relative;
+        padding-top: 100%;
+        transition: border-radius ease 0.3s;
+        overflow: hidden;
+        margin-bottom: 2rem;
+
+        img {
+          transition: 0.3s all;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .wedding__event--time {
+        font-weight: 700;
+        color: #444;
+        margin-bottom: 1rem;
+      }
+
+      .wedding__event--desc {
+        color: #444;
+
+        font-family: 300;
+        font-size: 1.9rem;
+      }
+
+      .link__map {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 1rem 2.1rem 0.8rem;
+        border: 0.2rem solid #f88dbd;
+        color: #818492;
+        border-radius: 6rem;
+
+        margin-top: 1rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s all;
+
+        &:hover {
+          background-color: #f88dbd;
+          color: #fff;
+          transition: 0.3s all;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.section__login {
+  background: url('~/static/bg_1.jpg.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .login-form {
+    max-width: 500px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: rgb(255 255 255 / 82%);
+    box-shadow: 0.1rem 0.1rem 1.4rem 0.6rem rgba(239, 239, 239, 0.5803921569);
+
+    .login__title {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #007bff;
+    }
+  }
+}
+
+#components-form-demo-normal-login {
+  .login-form {
+    max-width: 300px;
+  }
+
+  .login-form {
+    max-width: 300px;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+  .a__icon {
+    color: rgba(0, 0, 0, 0.25);
+  }
+}

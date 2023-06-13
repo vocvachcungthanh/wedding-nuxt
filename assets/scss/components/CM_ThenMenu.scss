@@ -1,0 +1,26 @@
+.menu {
+  border-top: 0.1rem solid #efefef;
+  margin-top: 3.6rem;
+
+  .menu-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .menu__list {
+      .menu__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #202a41;
+        padding: 2.1rem 2rem 1.9rem;
+        font-size: 1.7em;
+
+        &:hover {
+          color: #d77270;
+        }
+      }
+    }
+  }
+}

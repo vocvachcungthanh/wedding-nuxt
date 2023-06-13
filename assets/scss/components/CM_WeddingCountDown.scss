@@ -1,0 +1,124 @@
+.wedding-getting {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 12rem 0;
+  position: relative;
+
+  .title {
+    margin-bottom: 7.2rem;
+    font-size: 4rem;
+    color: #202a41;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: url('~/assets/images/bg_name_c.png') no-repeat;
+      background-size: contain;
+      background-position: center;
+      width: calc(100% + 15.5rem);
+      height: calc(100% + 10rem);
+    }
+  }
+
+  .page-w {
+    text-align: center;
+    margin-bottom: 5rem;
+
+    h3 {
+      font-weight: 700;
+      letter-spacing: 0.1rem;
+      color: #333;
+
+      font-size: 4rem;
+    }
+
+    .info {
+      font-size: 2.5rem;
+      color: #000;
+    }
+  }
+}
+
+.count-down {
+  margin-top: 7rem;
+
+  .vuejs-countdown {
+    li {
+      width: 18rem;
+      color: #f88dbd;
+      margin: 0;
+
+      animation: count-heart 3s infinite;
+      animation-direction: alternate-reverse;
+
+      .text {
+        color: #fff;
+        position: relative;
+
+        &::before {
+          position: absolute;
+          color: #f88dbd;
+          font-size: 1.7rem;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &:nth-child(1) {
+        .text {
+          &::before {
+            content: 'Ngày';
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .text {
+          &::before {
+            content: 'Giờ';
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .text {
+          &::before {
+            content: 'Phút';
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .text {
+          &::before {
+            content: 'Giây';
+          }
+        }
+      }
+
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% + 8rem);
+        height: calc(100% + 8rem);
+        background: url('~/assets/images/love.png') no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+}

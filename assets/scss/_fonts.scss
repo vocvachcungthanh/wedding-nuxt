@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: comfortaaregular, sans-serif;
+  background-color: rgb(255, 255, 255);
+  font-size: 1.4rem;
+  color: rgb(121, 121, 121);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.font__dancing {
+  font-family: 'Dancing Script', cursive;
+}
