@@ -9,6 +9,7 @@
           @submit="handleSubmit"
         >
           <h1 class="login__title">Đăng nhập trang quản trị</h1>
+          <a-alert v-if="message" :message="message" type="error" show-icon />
           <a-form-item>
             <a-input
               v-decorator="[
@@ -68,8 +69,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 import { requiredMessage } from '~/constant/index.js'
 
 import '~/assets/scss/pages/PG_Login.scss'
@@ -83,6 +82,7 @@ export default {
     return {
       username: '',
       password: '',
+      message: false,
     }
   },
 
@@ -95,10 +95,17 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line no-console
-          console.log('Received values of form: ', values)
+          this.$nuxt.$loading.start()
+          this.$store
+            .dispatch('ACT_AUTH_LOGIN', values)
+            .then((res) => {})
+            .catch((error) => {
+              // eslint-disable-next-line no-console
+              console.log(error)
+              this.message = error
+            })
 
-          this.actLogin(values)
+          this.$nuxt.$loading.finish()
         }
       })
     },
@@ -106,10 +113,6 @@ export default {
     requiredLogin(name) {
       return requiredMessage(name)
     },
-
-    ...mapActions({
-      actLogin: 'ACT_LOGIN',
-    }),
   },
 }
 </script>

@@ -1,9 +1,9 @@
 import Vuex from 'vuex'
 
-import state from './state'
-import getters from './getters'
-import mutations from './mutations'
-import actions from './actions'
+import mutations from '~/store/mutations'
+import actions from '~/store/actions'
+import getters from '~/store/getters'
+import state from '~/store/state'
 
 import { menuStore } from '~/store/modules/menus'
 import { slidersStore } from '~/store/modules/sliders'
@@ -11,7 +11,7 @@ import { albumStore } from '~/store/modules/albums'
 import { weddingsStore } from '~/store/modules/weddings'
 import { couplesStore } from '~/store/modules/couples'
 import { settingsStore } from '~/store/modules/settings'
-import { loginStore } from '~/store/modules/logins'
+import { authStore } from '~/store/modules/auth'
 
 const store = () =>
   // eslint-disable-next-line import/no-named-as-default-member
@@ -27,7 +27,7 @@ const store = () =>
       storeWeddings: weddingsStore,
       storeCouples: couplesStore,
       storeSettings: settingsStore,
-      storeLogins: loginStore,
+      storeAuth: authStore,
     },
   })
 

@@ -1,15 +1,13 @@
 <template>
   <section v-if="sliders.length > 0" class="sidebar-banner">
     <VueSlickCarousel :autoplay="true" :arrows="false" :dots="true">
-      <div
-        v-for="slider in sliders"
-        :key="slider.slider_id"
-        class="slide__item"
-      >
-        <div class="ration">
-          <img class="ration__link" :src="slider.slider_img" alt="" />
+      <template v-for="slider in sliders">
+        <div :key="slider.slider_id" class="slide__item">
+          <div class="ration">
+            <img class="ration__link" :src="slider.slider_img" alt="" />
+          </div>
         </div>
-      </div>
+      </template>
     </VueSlickCarousel>
 
     <div class="slide__content">
@@ -69,7 +67,7 @@ export default {
       return this.TimeWedding.replaceAll(',', '/')
     },
     ...mapGetters({
-      sliders: 'GET_LIST_SLIDERS',
+      sliders: 'GET_SLIDER_PUBLIC',
     }),
   },
 

@@ -17,6 +17,12 @@ export default {
     ThenHeader,
     ThenFooter,
   },
+
+  data() {
+    return {
+      loading: false,
+    }
+  },
 }
 </script>
 

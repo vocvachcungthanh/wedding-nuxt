@@ -39,9 +39,17 @@ export default {
     },
 
     {
-      src: '~/plugins/axios',
+      src: '~/plugins/axios.js',
+      mode: 'client',
+    },
+
+    {
+      src: '~/plugins/InfiniteLoading.js',
+      mode: 'client',
     },
   ],
+
+  loading: '~/components/LoadingBar.vue',
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: false,

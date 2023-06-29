@@ -2,15 +2,15 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import state from './state'
-import getters from './getters'
 import mutations from './mutations'
+import getters from './getters'
 import actions from './actions'
 
 Vue.use(Vuex)
 
-export const loginStore = {
+export const authStore = {
   state,
-  getters,
   mutations,
+  getters,
   actions,
 }
