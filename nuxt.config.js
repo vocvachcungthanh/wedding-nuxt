@@ -78,7 +78,7 @@ export default {
   build: {},
 
   env: {
-    baseURL: process.env.BASE_RUL || 'http://localhost:3000',
-    baseApiUrl: process.env.BASE_API_URL || 'http://127.0.0.1:8000/api/',
+    baseURL: process.env.BASE_RUL || 'http://huuthanh-thuytien.com',
+    baseApiUrl: process.env.BASE_API_URL || 'http://huuthanh-thuytien.com/api/',
   },
 }

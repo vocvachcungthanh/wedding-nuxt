@@ -106,12 +106,10 @@ export default {
         {
           limit: _params.limit,
         },
-        configs.headers
+        configs.headers()
       )
 
       if (response.status === 200) {
-        // eslint-disable-next-line no-console
-        console.log(response.data)
         const sliders = []
 
         response.data.data.forEach((item) => [

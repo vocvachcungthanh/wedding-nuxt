@@ -1,6 +1,9 @@
 import { MwAuth } from '@/libraries/auth/index'
 import { MESS_WELCOME_ADMIN } from '~/libraries/constant'
 import { MwCookie, MwHandle } from '~/libraries/helpers'
+// import { MwHeaders } from '~/libraries/core/refuse'
+
+// const configs = new MwHeaders()
 
 const auth = new MwAuth()
 
@@ -50,7 +53,7 @@ export default {
     }
   },
 
-  async ACT_AUTH_LOGOUT(context) {
+  async ACT_AUTH_LOGOUT(_context) {
     try {
       const configs = {
         headers: {
@@ -59,9 +62,6 @@ export default {
       }
 
       const response = await this.$axios.delete('auth/logout', configs)
-
-      // eslint-disable-next-line no-console
-      console.log(response)
 
       if (response.status === 200) {
         auth.logout()

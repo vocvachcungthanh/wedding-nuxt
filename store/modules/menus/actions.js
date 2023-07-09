@@ -10,6 +10,7 @@ export const coverMenus = (data) => {
       menu_id: item.id,
       menu_name: item.name,
       menu_link: item.link,
+      menu_status: item.status,
     })
   })
 
@@ -57,6 +58,24 @@ export default {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)
+    }
+  },
+
+  async ACT_MENU_UPDATE(context, params) {
+    try {
+      const response = await this.$axios.post(
+        `menus/update/${params.menu_id}`,
+        params,
+        configs.headers()
+      )
+
+      if (response.status === 200) {
+        context.commit('SET_MENUS_UPDATE', params)
+
+        return Promise.resolve(response.message)
+      }
+    } catch (error) {
+      return Promise.reject(error.message)
     }
   },
 }

@@ -12,4 +12,15 @@ export default {
       menu_icon: dataItem.icon,
     })
   },
+
+  SET_MENUS_UPDATE(state, dataItem) {
+    // eslint-disable-next-line array-callback-return
+    state.menus.map((item) => {
+      if (item.menu_id === dataItem.menu_id) {
+        item = dataItem
+      }
+    })
+
+    return state.menus
+  },
 }
