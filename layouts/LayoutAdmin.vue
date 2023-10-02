@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
   <a-layout id="components-layout-demo-side" :style="{ minHeight: '100vh' }">
-    <a-layout-sider v-model="collapsed" collapsible>
+    <a-layout-sider v-model="collapsed">
       <AdminLogo />
       <AdminMenu />
     </a-layout-sider>
     <a-layout>
-      <AdminHeader />
+      <AdminHeader :collapsed="collapsed" @collapsed="handleCollapsed" />
       <a-layout-content class="admin-content">
         <Nuxt />
       </a-layout-content>
@@ -38,6 +38,13 @@ export default {
     return {
       collapsed: false,
     }
+  },
+
+  methods: {
+    handleCollapsed(e) {
+      console.log(e)
+      this.collapsed = !e
+    },
   },
 }
 </script>

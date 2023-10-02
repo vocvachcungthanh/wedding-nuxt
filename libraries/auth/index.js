@@ -16,15 +16,59 @@ export class MwAuth {
   setAccessToken(accessToken) {
     if (this.isServer()) return
     if (MwString.checkExists(accessToken)) {
-      MwCookie.set('access_token', accessToken, '1M')
+      MwCookie.set('access_token', accessToken)
     } else MwCookie.delete('access_token')
+  }
+
+  setRefreshToken(refreshToken) {
+    if (this.isServer()) return
+
+    if (MwString.checkExists(refreshToken)) {
+      MwCookie.set('refresh_token', refreshToken)
+    } else {
+      MwCookie.delete('refresh_token')
+    }
+  }
+
+  setRefreshTokenExpired(refreshTokenExpired) {
+    if (this.isServer()) return
+
+    if (MwString.checkExists(refreshTokenExpired)) {
+      MwCookie.set('refresh_token_expired', refreshTokenExpired)
+    } else {
+      MwCookie.delete('refresh_token_expired')
+    }
+  }
+
+  setTokenExpired(tokenExpired) {
+    if (this.isServer()) return
+
+    if (MwString.checkExists(tokenExpired)) {
+      MwCookie.set('token_expired', tokenExpired)
+    } else {
+      MwCookie.delete('token_expired')
+    }
+  }
+
+  setUser(userId) {
+    if (this.isServer()) return
+
+    if (MwString.checkExists(userId)) {
+      MwCookie.set('user_id', userId)
+    } else {
+      MwCookie.delete('user_id')
+    }
   }
 
   setUserInfo(userInfo) {
     if (this.isServer()) return
     if (MwString.isObject(userInfo)) {
-      MwCookie.set('user_info', JSON.stringify(userInfo), '1M')
+      MwCookie.set('user_info', JSON.stringify(userInfo))
     } else MwCookie.delete('user_info')
+  }
+
+  getAccessToken() {
+    MwCookie.get('access_token')
   }
 
   /**

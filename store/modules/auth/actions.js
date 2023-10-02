@@ -1,39 +1,47 @@
 import { MwAuth } from '@/libraries/auth/index'
 import { MESS_WELCOME_ADMIN } from '~/libraries/constant'
 import { MwCookie, MwHandle } from '~/libraries/helpers'
-// import { MwHeaders } from '~/libraries/core/refuse'
+import { Refuse } from '@/libraries/core/refuse'
 
-// const configs = new MwHeaders()
+const axios = new Refuse()
 
 const auth = new MwAuth()
 
 export default {
   async ACT_AUTH_LOGIN(context, params) {
     try {
-      const response = await this.$axios.post('auth/login', { ...params })
+      const response = await axios.post('login', { ...params })
 
       if (response.status === 200) {
+        auth.setAccessToken(response.data.token)
+        auth.setRefreshToken(response.data.refresh_token)
+        auth.setTokenExpired(response.data.token_expired)
+        auth.setRefreshTokenExpired(response.data.refresh_token_expired)
+        auth.setUser(response.data.user_id)
         context.commit('SET_AUTH_LOGIN', response.data)
-        context.dispatch('ACT_AUTH_INFO')
+        context.dispatch('ACT_AUTH_INFO', {
+          id: response.data.user_id,
+          token: response.data.token,
+        })
       }
 
       return Promise.resolve({
         success: true,
       })
     } catch (error) {
-      return Promise.reject(error.message)
+      return Promise.reject(error.errors)
     }
   },
 
-  async ACT_AUTH_INFO(context) {
+  async ACT_AUTH_INFO(context, params) {
     try {
       const configs = {
         headers: {
-          access_token: MwCookie.get('access_token'),
+          'X-Requested-With': 'XMLHttpsRequest',
+          access_token: params.token,
         },
       }
-
-      const response = await this.$axios.get('auth/info', configs)
+      const response = await axios.get(`admin/auth/${params.id}`, configs)
 
       if (response.status === 200) {
         context.commit('SET_AUTH_INFO', response.data)
@@ -45,23 +53,21 @@ export default {
         MwHandle.handleSuccess({
           context: MESS_WELCOME_ADMIN,
         })
+
+        window.location.href = '/admin'
       }
     } catch (error) {
       MwHandle.handleError({
-        context: error.data.message,
+        context: error.errors.message,
       })
     }
   },
 
   async ACT_AUTH_LOGOUT(_context) {
     try {
-      const configs = {
-        headers: {
-          access_token: MwCookie.get('access_token'),
-        },
-      }
-
-      const response = await this.$axios.delete('auth/logout', configs)
+      const response = await axios.delete(
+        `/admin/auth/${MwCookie.get('user_id')}`
+      )
 
       if (response.status === 200) {
         auth.logout()

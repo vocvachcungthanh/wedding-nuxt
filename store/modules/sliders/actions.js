@@ -1,25 +1,15 @@
-import { MwHeaders } from '~/libraries/core/refuse'
+import { Refuse } from '@/libraries/core/refuse'
 
-const configs = new MwHeaders()
+const axios = new Refuse()
 
 export default {
+  // public
   async ACT_GET_SLIDERS(context) {
     try {
-      const response = await this.$axios.get('sliders')
+      const response = await axios.get('sliders')
 
       if (response.status === 200) {
-        const sliders = []
-
-        response.data.forEach((item) => [
-          sliders.push({
-            slider_id: item.id,
-            slider_link: item.link,
-            slider_img: item.link_img,
-            slider_status: item.status,
-          }),
-        ])
-
-        context.commit('SET_SLIDERS', sliders)
+        context.commit('SET_SLIDERS', response.data)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -27,33 +17,30 @@ export default {
     }
   },
 
-  async ACT_CREATE_SLIDERS(context, params) {
+  // private
+
+  async ACT_CREATE_SLIDERS(_context, params) {
     try {
-      const response = await this.$axios.post(
-        'sliders',
-        { ...params },
-        configs.headers()
-      )
+      const response = await axios.post('/admin/slider-create', params)
 
       if (response.status === 200) {
-        context.commit('SET_SLIDERS_CREATE', response.data)
-
+        _context.commit('SET_SLIDERS_CREATE', response.data)
         return Promise.resolve(response.message)
       }
     } catch (error) {
-      return Promise.reject(error.message)
+      if (error.status === 500) {
+        return Promise.reject(error.errors)
+      } else {
+        return Promise.reject(error)
+      }
     }
   },
 
   async ACT_UPDATE_SLIDER(context, params) {
     try {
-      const response = await this.$axios.put(
-        `sliders/${params.id}`,
-        {
-          status: params.status,
-        },
-        configs.headers()
-      )
+      const response = await axios.put(`sliders/${params.id}`, {
+        status: params.status,
+      })
 
       if (response.status === 200) {
         context.commit('SET_UPDATE_STATUS', params)
@@ -66,71 +53,77 @@ export default {
     }
   },
 
-  async ACT_DELETE_SLIDER(context, id) {
+  async ACT_UPDATE_ALL(context, params) {
     try {
-      const response = await this.$axios.delete(`sliders/${id}`)
+      const response = await axios.put(`admin/sliders/${params.id}`, params)
 
       if (response.status === 200) {
-        context.commit('SET_DELETE_SLIDERS', id)
-        return Promise.resolve({
-          status: 'ok',
-        })
+        context.commit('SET_UPLOAD_SLIDERS', params)
+        return Promise.resolve(response.message)
       }
     } catch (error) {
-      return Promise.reject(error.message)
+      return Promise.reject(error.errors.message)
     }
   },
 
-  async ACT_EDIT_SLIDER(context, params) {
+  async ACT_DELETE_SLIDER(context, params) {
     try {
-      const response = await this.$axios.post(
-        'sliders/edit',
-        params,
-        configs.headers()
-      )
+      const response = await axios.post('admin/slider-delete', params)
 
       if (response.status === 200) {
-        context.commit('SET_EDIT_SLIDER', params)
+        context.commit('SET_DELETE_SLIDERS', params.id)
+        return Promise.resolve(response.message)
+      }
+    } catch (error) {
+      return Promise.reject(error.errors.message)
+    }
+  },
+
+  async ACT_SLIDER_STATUS(context, params) {
+    try {
+      const response = await axios.post('admin/slider-status', params)
+
+      if (response.status === 200) {
+        context.commit('SET_SLIDER_STATUS', params)
 
         return Promise.resolve(response.message)
       }
     } catch (error) {
-      return Promise.reject(error.message)
+      return Promise.reject(error.errors.message)
     }
   },
 
   async ACT_GET_LIST_SLIDER(_context, _params) {
     try {
-      const response = await this.$axios.post(
-        `sliders/list?page=${_params.page}`,
-        {
-          limit: _params.limit,
-        },
-        configs.headers()
-      )
+      const response = await axios.get(`admin/sliders/${_params.page}`)
 
       if (response.status === 200) {
-        const sliders = []
-
-        response.data.data.forEach((item) => [
-          sliders.push({
-            slider_id: item.id,
-            slider_link: item.link,
-            slider_img: item.link_img,
-            slider_status: item.status,
-          }),
-        ])
-
-        _context.commit('SET_LIST_SLIDERS', sliders)
-
+        _context.commit('SET_LIST_SLIDERS', response.data.data)
         return Promise.resolve({
-          to: response.data.to,
-          total: response.data.total,
+          current_page: response.data.current_page,
+          last_page: response.data.last_page,
         })
       }
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)
+    }
+  },
+
+  async ACT_UPLOAD_IMAGE(_context, params) {
+    try {
+      const response = await axios.post('admin/sliders', params, {
+        'Content-Type': 'multipart/form-data',
+      })
+
+      if (response.status === 200) {
+        // eslint-disable-next-line no-console
+        return Promise.resolve(response.data)
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+      return Promise.reject(error.errors.file[0])
     }
   },
 }

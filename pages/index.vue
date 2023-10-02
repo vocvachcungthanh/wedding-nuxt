@@ -1,73 +1,41 @@
 <template>
   <section class="page">
-    <SliderBanner
-      :name-brides="nameBrides"
-      :name-grooms="nameGrooms"
-      :time-wedding="TimeWedding"
-    />
-    <WeddingCountDown :time-wedding="TimeWedding" />
+    <SliderBanner />
+    <WeddingCountDown />
     <Couple />
     <WeddingEvent />
     <Album />
     <Guestbook />
-    <Mp3 />
+    <Music />
   </section>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-
-import SliderBanner from '~/components/SliderBanner.vue'
-import WeddingCountDown from '~/components/WeddingCountDown.vue'
-import Couple from '~/components/couples/Couple.vue'
-import WeddingEvent from '~/components/WeddingEvent.vue'
-import Album from '~/components/Album.vue'
-import Guestbook from '~/components/Guestbook.vue'
-import Mp3 from '~/components/Mp3.vue'
+import {
+  SliderBanner,
+  Album,
+  WeddingCountDown,
+  Couple,
+  WeddingEvent,
+  Guestbook,
+  Music,
+} from '~/components'
 
 export default {
-  name: 'IndexPage',
+  name: 'HomePage',
 
   components: {
     SliderBanner,
     WeddingCountDown,
     Couple,
     WeddingEvent,
-    Album,
     Guestbook,
-    Mp3,
+    Album,
+    Music,
   },
 
   layout(context) {
     return context.isMobile ? 'LayoutMobile' : 'default'
-  },
-
-  computed: {
-    TimeWedding() {
-      return this.getListSettings.time_wedding
-    },
-
-    nameGrooms() {
-      return this.getListSettings.grooms_name
-    },
-
-    nameBrides() {
-      return this.getListSettings.brides_name
-    },
-
-    ...mapGetters({
-      getListSettings: 'GET_LIST_SETTINGS',
-    }),
-  },
-
-  created() {
-    this.actGetSettings()
-  },
-
-  methods: {
-    ...mapActions({
-      actGetSettings: 'ACT_GET_SETTINGS',
-    }),
   },
 }
 </script>

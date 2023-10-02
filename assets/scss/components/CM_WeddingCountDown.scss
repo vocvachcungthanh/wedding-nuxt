@@ -3,26 +3,30 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 12rem 0;
+  margin: 7rem 0 9rem;
   position: relative;
 
-  .title {
-    margin-bottom: 7.2rem;
-    font-size: 4rem;
-    color: #202a41;
-    position: relative;
+  .header-count-down {
+    margin-bottom: 10rem;
+    .title {
+      margin-bottom: 7.2rem;
+      font-size: 4rem;
+      color: #202a41;
+      position: relative;
+      text-align: center;
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: url('~/assets/images/bg_name_c.png') no-repeat;
-      background-size: contain;
-      background-position: center;
-      width: calc(100% + 15.5rem);
-      height: calc(100% + 10rem);
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: url('~/assets/images/bg_name_c.png') no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: calc(100% + 4rem);
+        height: calc(100% + 3rem);
+      }
     }
   }
 
@@ -46,9 +50,10 @@
 }
 
 .count-down {
-  margin-top: 7rem;
-
   .vuejs-countdown {
+    display: flex;
+    justify-content: center;
+
     li {
       width: 18rem;
       color: #f88dbd;

@@ -1,29 +1,13 @@
-import { MwHeaders } from '~/libraries/core/refuse'
+import { Refuse } from '@/libraries/core/refuse'
 
-const configs = new MwHeaders()
-
-export const coverMenus = (data) => {
-  const menus = []
-
-  data.forEach((item) => {
-    menus.push({
-      menu_id: item.id,
-      menu_name: item.name,
-      menu_link: item.link,
-      menu_status: item.status,
-    })
-  })
-
-  return menus
-}
-
+const axios = new Refuse()
 export default {
   async ACT_GET_MENUS(context) {
     try {
-      const response = await this.$axios.get('menus')
+      const response = await axios.get('menus')
 
       if (response.status === 200) {
-        context.commit('SET_MENUS', coverMenus(response.data))
+        context.commit('SET_MENUS', response.data)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -33,11 +17,7 @@ export default {
 
   async ACT_MENUS_CREATE(context, params) {
     try {
-      const response = await this.$axios.post(
-        'admin/menus',
-        { ...params },
-        configs.headers()
-      )
+      const response = await axios.post('admin/menus', { ...params })
 
       if (response.status === 200) {
         context.commit('SET_MENUS_CREATE', response.data)
@@ -50,10 +30,10 @@ export default {
 
   async ACT_GET_MENU_LIST(context) {
     try {
-      const response = await this.$axios.post('menus/list', configs.headers())
+      const response = await axios.post('menus/list')
 
       if (response.status === 200) {
-        context.commit('SET_MENUS', coverMenus(response.data))
+        context.commit('SET_MENUS', response.data)
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -63,10 +43,9 @@ export default {
 
   async ACT_MENU_UPDATE(context, params) {
     try {
-      const response = await this.$axios.post(
+      const response = await axios.post(
         `menus/update/${params.menu_id}`,
-        params,
-        configs.headers()
+        params
       )
 
       if (response.status === 200) {

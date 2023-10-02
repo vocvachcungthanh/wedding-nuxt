@@ -1,5 +1,5 @@
 .wedding__event {
-  padding: 12rem 0;
+  padding: 7rem 0;
 
   .wedding__event--header {
     text-align: center;
@@ -118,6 +118,16 @@
           color: #fff;
           transition: 0.3s all;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1249px) {
+  .wedding__event {
+    .wedding__event--content {
+      .wedding__event--product {
+        width: calc(30% - 2rem);
       }
     }
   }

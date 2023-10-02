@@ -1,0 +1,15 @@
+.upload_file {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input[type='file'] {
+    display: none;
+  }
+
+  .label__file {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}

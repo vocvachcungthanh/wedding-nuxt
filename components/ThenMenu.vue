@@ -2,9 +2,14 @@
   <div class="menu">
     <div class="container">
       <ul class="menu-box font__dancing">
-        <li v-for="menu in getMenuList" :key="menu.menu_id" class="menu__list">
-          <NuxtLink class="menu__link" :to="menu.menu_link">
-            {{ menu.menu_name }}
+        <li
+          v-for="menu in getMenuList"
+          :key="menu.key"
+          class="menu__list"
+          @click="handleTtitle(menu)"
+        >
+          <NuxtLink class="menu__link" to="/">
+            {{ menu.name }}
           </NuxtLink>
         </li>
       </ul>
@@ -21,8 +26,18 @@ export default {
   data() {
     return {
       menus: [],
+
+      title: 'Hữu Thành - Thủy Tiên',
     }
   },
+
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+
+  // this.$route.name
 
   computed: {
     ...mapGetters({
@@ -35,6 +50,14 @@ export default {
   },
 
   methods: {
+    async handleTtitle(menu) {
+      this.title = menu.name
+      await this.$nextTick()
+      document
+        .getElementById(`${menu.link}`)
+        .scrollIntoView({ behavior: 'smooth' })
+    },
+
     ...mapActions({
       actGetMenus: 'ACT_GET_MENUS',
     }),

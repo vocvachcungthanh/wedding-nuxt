@@ -1,9 +1,11 @@
 #components-layout-demo-side {
   .header-admin {
     background-color: #fff;
-    padding: 2rem 1.5rem;
+    padding: 2rem;
     height: auto;
     line-height: unset;
+    display: flex;
+    align-items: center;
   }
 
   .logo {
@@ -13,6 +15,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     img {
       max-width: 100%;
       object-fit: contain;
@@ -22,8 +25,84 @@
   }
 
   .admin-content {
-    margin: 30px;
-    padding: 15px;
-    background-color: #fff;
+    margin: 2rem;
+  }
+
+  .ant {
+    &-card {
+      border-radius: 1rem;
+      background-color: #fff;
+    }
+
+    &-layout {
+      background: transparent;
+
+      &-sider {
+        background-image: linear-gradient(
+          to top,
+          #2cd8d5 0%,
+          #6b8dd6 48%,
+          #8e37d7 100%
+        );
+
+        &-trigger {
+          color: #fff;
+          background-image: linear-gradient(to left, #02a8d7 0%, #0858d5 100%);
+        }
+      }
+
+      &-footer {
+        background-color: #fff;
+      }
+    }
+
+    &-menu {
+      background: transparent;
+
+      &-item {
+        &-selected {
+          background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+        }
+
+        > a {
+          color: #fff;
+        }
+      }
+
+      &-submenu {
+        &-popup {
+          background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+        }
+      }
+
+      &-dark {
+        background-color: transparent;
+      }
+
+      &-sub {
+        background-color: transparent;
+      }
+    }
+
+    &-btn {
+      &-primary,
+      &__status {
+        background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+      }
+    }
+
+    &-tag {
+      &__delete {
+        background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+      }
+    }
+  }
+
+  .anticon[tabindex] {
+    font-size: 2.5rem;
+
+    &:hover {
+      color: #04befe;
+    }
   }
 }

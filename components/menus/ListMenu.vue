@@ -2,21 +2,21 @@
   <div class="list-menus">
     <a-collapse
       v-for="item in menus"
-      :key="item.menu_id"
+      :key="item.key"
       accordion
       class="menu__panel"
     >
-      <a-collapse-panel :header="item.menu_name" :show-arrow="false">
+      <a-collapse-panel :header="item.name" :show-arrow="false">
         <a-form-item label="Tên menu">
-          <a-input v-model="item.menu_name" placeholder="Nhập tên menu..." />
+          <a-input v-model="item.name" placeholder="Nhập tên menu..." />
         </a-form-item>
 
         <a-form-item label="Link">
-          <a-input v-model="item.menu_link" placeholder="Nhập link menu..." />
+          <a-input v-model="item.ink" placeholder="Nhập link menu..." />
         </a-form-item>
 
         <a-form-item>
-          <a-radio-group v-model="item.menu_status" name="radioGroup">
+          <a-radio-group v-model="item.status" name="radioGroup">
             <a-radio :value="1"> Hiển thị </a-radio>
             <a-radio :value="0"> Ẩn</a-radio>
           </a-radio-group>

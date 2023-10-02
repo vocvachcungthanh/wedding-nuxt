@@ -1,5 +1,5 @@
 <template>
   <a-layout-footer class="text-center">
-    Ant Design ©2018 Created by Ant UED
+    Wedding Hữu Thành & Thủy Tiên
   </a-layout-footer>
 </template>

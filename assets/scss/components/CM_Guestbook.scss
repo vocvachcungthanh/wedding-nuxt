@@ -44,7 +44,7 @@
   max-width: 636px;
   padding: 4.2rem;
   background-color: transparent;
-  text-align: center;
+
   position: relative;
 
   &::before {
@@ -80,6 +80,7 @@
     position: relative;
     padding-bottom: 8rem;
     color: #fff;
+    text-align: center;
 
     &::before {
       content: '';
@@ -171,6 +172,18 @@
         outline: unset;
       }
     }
+
+    .has-error .ant-input {
+      border-color: #fd222d !important;
+
+      &::placeholder {
+        color: #fd222d;
+      }
+    }
+  }
+
+  .ant-form-explain {
+    margin-top: 0.5rem;
   }
 }
 

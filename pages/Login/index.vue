@@ -9,6 +9,7 @@
           @submit="handleSubmit"
         >
           <h1 class="login__title">Đăng nhập trang quản trị</h1>
+
           <a-alert v-if="message" :message="message" type="error" show-icon />
           <a-form-item>
             <a-input
@@ -91,21 +92,17 @@ export default {
   },
 
   methods: {
-    handleSubmit(e) {
+    async handleSubmit(e) {
       e.preventDefault()
-      this.form.validateFields((err, values) => {
+
+      await this.form.validateFields((err, values) => {
         if (!err) {
-          this.$nuxt.$loading.start()
           this.$store
             .dispatch('ACT_AUTH_LOGIN', values)
             .then((res) => {})
             .catch((error) => {
-              // eslint-disable-next-line no-console
-              console.log(error)
-              this.message = error
+              this.message = error.message
             })
-
-          this.$nuxt.$loading.finish()
         }
       })
     },

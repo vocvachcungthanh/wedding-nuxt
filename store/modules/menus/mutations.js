@@ -1,6 +1,6 @@
 export default {
-  SET_MENUS(state, item) {
-    state.menus = item
+  SET_MENUS(state, data) {
+    state.menus = data
   },
 
   SET_MENUS_CREATE(state, dataItem) {

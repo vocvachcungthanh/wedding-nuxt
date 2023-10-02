@@ -1,0 +1,62 @@
+.view {
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  min-height: 350px;
+  position: relative;
+  cursor: pointer;
+
+  &__couple {
+    max-height: 350px;
+    height: 100%;
+  }
+
+  &__event {
+    max-height: 450px;
+    height: 100%;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+
+  &__camera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    color: #1890ff;
+
+    &--title {
+      font-size: 3rem;
+    }
+
+    &--active {
+      opacity: 0.5;
+    }
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .loading {
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    background: #ffffff;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

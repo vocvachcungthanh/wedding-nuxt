@@ -1,13 +1,17 @@
+// import { MwUrl } from '~/libraries/helpers'
+
 export default {
   SET_SLIDERS(state, data) {
+    state.sliders = []
     state.sliders = data
   },
 
+  // private
+
   SET_UPDATE_STATUS(state, data) {
-    // eslint-disable-next-line array-callback-return
-    state.sliders.map((item) => {
-      if (item.slider_id === data.id) {
-        item.slider_status = data.status
+    state.sliders.forEach((item) => {
+      if (item.id === data.id) {
+        item.status = data.status
       }
     })
 
@@ -16,32 +20,20 @@ export default {
 
   SET_SLIDERS_CREATE(state, dataItem) {
     state.sliders.unshift({
-      slider_id: dataItem.id,
-      slider_img: dataItem.link_img,
-      slide_link: dataItem.link,
-      slider_status: dataItem.status,
+      ...dataItem,
     })
   },
 
   SET_DELETE_SLIDERS(state, id) {
-    const data = []
-    // eslint-disable-next-line array-callback-return
-    state.sliders.map((item) => {
-      if (item.slider_id !== id) {
-        data.push(item)
-      }
-    })
+    const data = state.sliders.filter((item) => item.id !== id)
 
     state.sliders = data
   },
 
-  SET_EDIT_SLIDER(state, dataItem) {
-    // eslint-disable-next-line array-callback-return
-    state.sliders.map((item) => {
-      if (item.slider_id === dataItem.id) {
-        item.slider_img = dataItem.link_img
-        item.slide_link = dataItem.link
-        item.slider_status = dataItem.status
+  SET_SLIDER_STATUS(state, dataItem) {
+    state.sliders.forEach((item) => {
+      if (item.id === dataItem.id) {
+        item.status = dataItem.status
       }
     })
 
@@ -49,6 +41,26 @@ export default {
   },
 
   SET_LIST_SLIDERS(state, data) {
-    state.sliders = [...state.sliders, ...data]
+    const existingIDs = new Set(state.sliders.map((slider) => slider.id))
+
+    const newData = data.filter((slider) => !existingIDs.has(slider.id))
+
+    state.sliders = [...state.sliders, ...newData]
+  },
+
+  SET_UPLOAD_SLIDERS(state, dataItem) {
+    state.sliders.forEach((item) => {
+      if (item.id === dataItem.id) {
+        item.image = dataItem.image
+        item.title = dataItem.title
+        item.url = dataItem.url
+        item.desc = dataItem.desc
+        item.google_id = dataItem.google_id
+        item.source_id = dataItem.source_id
+        item.status = dataItem.status
+      }
+    })
+
+    return state.sliders
   },
 }

@@ -1,14 +1,12 @@
 <template>
-  <div class="text-right">
-    <VueButton
-      class-name="btn__logout"
-      title="Đăng xuất"
-      placement="left"
-      @click.native="handleLogout"
-    >
-      <a-icon type="logout" />
-    </VueButton>
-  </div>
+  <VueButton
+    class-name="btn__logout"
+    title="Đăng xuất"
+    placement="left"
+    @click.native="handleLogout"
+  >
+    <a-icon type="logout" />
+  </VueButton>
 </template>
 
 <script>
@@ -54,11 +52,15 @@ export default {
 <style lang="scss">
 .btn {
   &__logout {
-    background-color: #fff;
     cursor: pointer;
-    width: 2rem;
-    height: 2rem;
+
     font-size: 2rem;
+    background-color: transparent;
+    margin-left: auto;
+
+    &:hover {
+      color: rgb(0, 161, 248);
+    }
   }
 }
 </style>

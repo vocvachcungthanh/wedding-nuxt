@@ -39,11 +39,6 @@ export default {
     },
 
     {
-      src: '~/plugins/axios.js',
-      mode: 'client',
-    },
-
-    {
       src: '~/plugins/InfiniteLoading.js',
       mode: 'client',
     },
@@ -78,7 +73,10 @@ export default {
   build: {},
 
   env: {
-    baseURL: process.env.BASE_RUL || 'http://huuthanh-thuytien.com',
-    baseApiUrl: process.env.BASE_API_URL || 'http://huuthanh-thuytien.com/api/',
+    baseURL: process.env.BASE_URL || 'http://huuthanh-thuytien.com',
+    baseApiUrl:
+      process.env.BASE_API_URL || 'http://huuthanh-thuytien.com:8000/api/',
+    baseGoogleUc:
+      process.env.BASE_GOOGLE_UC || 'https://drive.google.com/uc?id=',
   },
 }
