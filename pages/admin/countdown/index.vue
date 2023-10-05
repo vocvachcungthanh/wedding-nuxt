@@ -1,7 +1,7 @@
 <template>
   <div class="count-dow">
     <a-row>
-      <a-col :span="6">
+      <a-col :lg="7" :xxl="6">
         <a-card
           title="Ngày chung ta về chung một nhà"
           :head-style="customHeadStyle"

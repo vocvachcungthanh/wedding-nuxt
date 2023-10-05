@@ -2,14 +2,14 @@
   <div class="page_music">
     <a-card title="Quản lý nhạc">
       <a-row :gutter="30">
-        <a-col :span="6">
+        <a-col :xl="8" :xxl="6">
           <FormMusic
             :result="result"
             :data-item="items"
             @submit="handleSubmit"
           />
         </a-col>
-        <a-col :span="18">
+        <a-col :xl="16" :xxl="18">
           <MusicGroup @update="handleUpdate" />
         </a-col>
       </a-row>
@@ -49,6 +49,8 @@ export default {
 
   methods: {
     handleSubmit(params) {
+      console.log(params)
+
       if (params.id) {
         this.update(params)
       } else {

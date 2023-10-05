@@ -2,13 +2,13 @@
   <div class="page-couples">
     <a-card title="Cặp đôi">
       <a-row :gutter="30">
-        <a-col :md="{ span: 12 }" :lg="{ span: 14 }" :xxl="{ span: 12 }">
+        <a-col :md="{ span: 12 }" :lg="{ span: 16 }" :xxl="{ span: 12 }">
           <a-row :gutter="30">
             <GroomCouple :grooms="couples.Grooms" />
             <BrideCouple :brides="couples.Brides" />
           </a-row>
         </a-col>
-        <a-col :md="{ span: 12 }" :lg="{ span: 10 }" :xxl="{ span: 12 }">
+        <a-col :md="{ span: 12 }" :lg="{ span: 8 }" :xxl="{ span: 12 }">
           <BgCouple :item-bg="couples.BgCouple"
         /></a-col>
       </a-row>

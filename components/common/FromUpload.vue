@@ -1,5 +1,5 @@
 <template>
-  <div id="components-form-demo-vuex">
+  <div id="components-form-demo">
     <a-form :form="form" @submit="handleSubmit">
       <a-form-item>
         <PreviewAlbumForm
@@ -21,7 +21,12 @@
             'image',
             {
               initialValue: items.image,
-              rules: [{ required: true, message: 'Nhập link ảnh!' }],
+              rules: [
+                { required: true, message: 'Nhập link ảnh!' },
+                {
+                  validator: validateImageURL,
+                },
+              ],
             },
           ]"
           placeholder="Nhập link ảnh"
@@ -244,6 +249,25 @@ export default {
         })
 
       this.loading = false
+    },
+
+    validateImageURL(rule, value, callback) {
+      console.log('validateImageURL được gọi với giá trị:', value)
+      // Kiểm tra tính hợp lệ của đường dẫn hình ảnh
+      if (!value) {
+        callback(new Error('Link ảnh đại diện không được để trống'))
+      } else {
+        const img = new Image()
+        img.onload = () => {
+          // Hình ảnh hợp lệ
+          callback()
+        }
+        img.onerror = () => {
+          // Hình ảnh không hợp lệ
+          callback(new Error('Link ảnh đại diện không hợp lệ'))
+        }
+        img.src = value
+      }
     },
   },
 }
