@@ -204,6 +204,23 @@ export default {
       this.link_src = e.target.value
     },
 
+    validateImageURL(rule, value, callback) {
+      // Kiểm tra tính hợp lệ của đường dẫn hình ảnh
+      if (!value) {
+        callback(new Error('Link ảnh đại diện không được để trống'))
+      } else {
+        const img = new Image()
+        img.onload = () => {
+          // Hình ảnh hợp lệ
+          callback()
+        }
+        img.onerror = () => {
+          // Hình ảnh không hợp lệ
+          callback(new Error('Link ảnh đại diện không hợp lệ'))
+        }
+        img.src = value
+      }
+    },
     handleMp3(e) {
       this.form.setFieldsValue({
         link: e,

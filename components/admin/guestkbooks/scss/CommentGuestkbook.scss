@@ -9,6 +9,11 @@
     border-radius: 2rem;
     padding-left: 1rem;
     color: #fff;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &-content {
       &-author {

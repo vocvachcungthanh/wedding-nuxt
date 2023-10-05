@@ -1,31 +1,34 @@
 <template>
-  <a-comment class="ant-comment">
-    <span
-      v-if="!toggle"
-      slot="actions"
-      key="comment-nested-reply-to"
-      @click="handleToggle"
-      ><a-icon type="message" /> Gửi lời cảm ơn</span
-    >
-    <a slot="author">Nguyễn Đăng Tân</a>
-    <a-avatar
-      slot="avatar"
-      src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-      alt="Han Solo"
-    />
-    <p slot="content">
-      We supply a series of design principles, practical patterns and high
-      quality design resources (Sketch and Axure). Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Sit aspernatur libero amet accusamus quae
-      nobis distinctio quod velit rerum. Eligendi commodi, id numquam velit
-      debitis maxime earum aliquam quidem perferendis.
-    </p>
+  <div>
+    <a-comment v-for="item in data" :key="item.id" class="ant-comment">
+      <span
+        v-if="!item.toggle"
+        slot="actions"
+        key="comment-nested-reply-to"
+        @click="handleToggle(item.id)"
+        ><a-icon type="message" /> Gửi lời cảm ơn</span
+      >
+      <a slot="author" href="#">
+        {{ item.name }}
+      </a>
+      <a-avatar
+        slot="avatar"
+        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        alt="Han Solo"
+      />
+      <p slot="content">
+        {{ item.desc }}
+      </p>
 
-    <ReplyToGuestkbook v-if="toggle" />
-  </a-comment>
+      <ReplyToGuestkbook v-if="item.toggle" />
+    </a-comment>
+  </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { mapGetters } from 'vuex'
+
 import ReplyToGuestkbook from './ReplyToGuestkbook.vue'
 
 import './scss/Commentguestkbook.scss'
@@ -39,13 +42,33 @@ export default {
 
   data() {
     return {
-      toggle: false,
+      data: [],
     }
   },
 
+  computed: {
+    ...mapGetters({
+      comments: 'GET_GUESTKBOOKS',
+    }),
+  },
+
+  async created() {
+    await this.$store.dispatch('ACT_GET_GUESTKBOOK')
+
+    this.data = this.comments
+  },
+
   methods: {
-    handleToggle() {
-      this.toggle = !this.toggle
+    handleToggle(id) {
+      this.data.forEach((item) => {
+        if (item.id === id) {
+          // eslint-disable-next-line import/no-named-as-default-member
+          Vue.set(item, 'toggle', true)
+        } else {
+          // eslint-disable-next-line import/no-named-as-default-member
+          Vue.set(item, 'toggle', false)
+        }
+      })
     },
   },
 }
