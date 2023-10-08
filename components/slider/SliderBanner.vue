@@ -17,8 +17,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
-import '~/assets/scss/components/CM_SliderBanner.scss'
-
 import ContentSlider from './ContentSlider.vue'
 
 export default {

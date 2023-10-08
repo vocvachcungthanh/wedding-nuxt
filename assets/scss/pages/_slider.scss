@@ -1,6 +1,5 @@
 .sidebar-banner {
   position: relative;
-
   overflow: hidden;
 
   &::before {
@@ -110,6 +109,19 @@
 
       button {
         display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .sidebar-banner {
+    &::before {
+      padding-top: 60vh;
+    }
+    .slide__item {
+      .ration {
+        height: 60vh;
       }
     }
   }

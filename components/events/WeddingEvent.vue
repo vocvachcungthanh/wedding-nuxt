@@ -20,8 +20,6 @@ import { mapActions, mapGetters } from 'vuex'
 import HeaderEvent from './HeaderEvent.vue'
 import ItemEvent from './ItemEvent.vue'
 
-import '~/assets/scss/components/CM_WeddingEvent.scss'
-
 export default {
   name: 'WeddingEvent',
 

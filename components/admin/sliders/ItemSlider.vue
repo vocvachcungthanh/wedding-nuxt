@@ -21,8 +21,6 @@
 import ButtonStatus from './ButtonStatus.vue'
 import ButtonDelete from './ButtonDelete.vue'
 
-import '~/assets/scss/components/admin/CM_Slider.scss'
-
 export default {
   name: 'ItemSlider',
 

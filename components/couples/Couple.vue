@@ -30,8 +30,6 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
-import '~/assets/scss/components/CM_Couples.scss'
-
 import HeaderCouple from './HeaderCouple.vue'
 import CoupleItem from './CoupleItem.vue'
 

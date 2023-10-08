@@ -1,11 +1,9 @@
 .couple {
   position: relative;
-
   background: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-
   padding: 7rem 0 12rem;
 
   &::before {
@@ -26,6 +24,7 @@
     position: relative;
     z-index: 2;
     color: #fff;
+
     .couple__title {
       font-size: 5rem;
       font-weight: bold;
@@ -197,6 +196,30 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .couple {
+    padding: 5rem 0 7rem;
+
+    .couple-content {
+      .couple__box {
+        padding: 6rem 0.7rem;
+      }
+    }
+
+    &__desc {
+      &--content {
+        max-height: 9rem;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 0px;
         }
       }
     }

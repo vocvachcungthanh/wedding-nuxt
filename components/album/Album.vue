@@ -25,8 +25,6 @@ import { mapGetters } from 'vuex'
 import HeaderAlbum from './HeaderAlbum.vue'
 import ItemsAlbum from './ItemsAlbum.vue'
 
-import '~/assets/scss/components/CM_Album.scss'
-
 export default {
   name: 'AlbumGallery',
 

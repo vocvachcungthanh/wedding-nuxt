@@ -39,8 +39,6 @@ import DeleteMusic from './DeleteMusic.vue'
 import ThumbnaiMusic from './ThumbnaiMusic.vue'
 import Audio from '~/components/common/Audio.vue'
 
-import '~/assets/scss/components/admin/CM_Music.scss'
-
 export default {
   name: 'MusicGroup',
 

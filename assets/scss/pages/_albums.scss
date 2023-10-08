@@ -74,6 +74,12 @@
   }
 }
 
+@media (max-width: 1100px) {
+  .album {
+    padding: 5rem 0;
+  }
+}
+
 @media (max-width: 768px) {
   .album {
     .album__module {

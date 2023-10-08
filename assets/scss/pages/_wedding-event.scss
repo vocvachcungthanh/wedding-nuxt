@@ -132,3 +132,13 @@
     }
   }
 }
+
+@media (max-width: 1100px) {
+  .wedding__event {
+    padding: 5rem 0;
+
+    .wedding__event--content {
+      padding-top: 7rem;
+    }
+  }
+}

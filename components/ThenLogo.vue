@@ -1,14 +1,19 @@
 <template>
   <div class="container">
     <div class="row">
-      <nuxt-link to="/" title="Hữu Thành & Thủy tiên">
-        <h1 class="Logo font__dancing">
+      <nuxt-link
+        tag="h1"
+        class="header__logo"
+        to="/"
+        title="Hữu Thành & Thủy tiên"
+      >
+        <div class="header__logo--group font__dancing">
           <small> Hữu Thành </small>
           <span class="icon_heart">
             <font-awesome-icon icon="fa-solid fa-heart" />
           </span>
           <small> Thủy Tiên </small>
-        </h1>
+        </div>
 
         <span class="just-married"> Just Married </span>
       </nuxt-link>
@@ -17,8 +22,6 @@
 </template>
 
 <script>
-import '~/assets/scss/components/CM_ThenLogo.scss'
-
 export default {
   name: 'CMLogo',
 }

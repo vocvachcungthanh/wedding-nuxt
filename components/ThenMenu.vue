@@ -20,8 +20,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import '~/assets/scss/components/CM_ThenMenu.scss'
-
 export default {
   data() {
     return {

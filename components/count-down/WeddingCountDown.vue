@@ -17,8 +17,6 @@ import moment from 'moment'
 
 import HeaderCountDown from './HeaderCountDown.vue'
 
-import '~/assets/scss/components/CM_WeddingCountDown.scss'
-
 export default {
   components: {
     HeaderCountDown,

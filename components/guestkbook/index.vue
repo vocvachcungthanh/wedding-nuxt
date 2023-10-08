@@ -78,8 +78,6 @@ import FooterGuestkbook from './FooterGuestkbook.vue'
 import HeaderGuestkbook from './HeaderGuestkbook.vue'
 import { MwHandle } from '~/libraries/helpers'
 
-import '~/assets/scss/components/CM_Guestbook.scss'
-
 const initiateState = {
   name: '',
   email: '',

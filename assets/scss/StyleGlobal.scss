@@ -2,7 +2,9 @@
 @import './fonts';
 @import './keyframe';
 
-@import './pages/PG_Index';
+@import './pages/index';
+@import './pages/admin/index';
+
 img {
   max-width: 100%;
 }

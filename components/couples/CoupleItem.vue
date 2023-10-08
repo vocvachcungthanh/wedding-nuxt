@@ -1,9 +1,9 @@
 <template>
   <div class="couple__item">
     <div class="couple__desc">
-      <p>
+      <div class="couple__desc--content">
         {{ desc }}
-      </p>
+      </div>
 
       <div class="couple__link">
         <a :href="facebook" target="_blank" :title="facebook">
