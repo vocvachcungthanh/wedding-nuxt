@@ -70,12 +70,14 @@
         </a-form>
       </div>
     </div>
+    <BgGuestkbook />
   </section>
 </template>
 
 <script>
 import FooterGuestkbook from './FooterGuestkbook.vue'
 import HeaderGuestkbook from './HeaderGuestkbook.vue'
+import BgGuestkbook from './BgGuestkbook.vue'
 import { MwHandle } from '~/libraries/helpers'
 
 const initiateState = {
@@ -90,6 +92,7 @@ export default {
   components: {
     FooterGuestkbook,
     HeaderGuestkbook,
+    BgGuestkbook,
   },
 
   data() {

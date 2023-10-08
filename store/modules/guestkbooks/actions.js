@@ -5,7 +5,7 @@ const axios = new Refuse()
 export default {
   async ACT_GET_GUESTKBOOK(_context, params) {
     try {
-      const response = await axios.get('guestkbooks')
+      const response = await axios.get('admin/guestkbooks')
 
       if (response.status === 200) {
         _context.commit('SET_GUESTKBOOK', response.data)

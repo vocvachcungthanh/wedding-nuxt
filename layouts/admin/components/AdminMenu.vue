@@ -51,6 +51,9 @@ export default {
       case 'admin-guestkbook':
         this.key = 7
         break
+      case 'admin-menus':
+        this.key = 8
+        break
       default:
         break
     }

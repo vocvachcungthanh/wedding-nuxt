@@ -1,18 +1,29 @@
 <template>
   <div class="page_guestkbook">
     <a-card title="Lời chúc">
-      <CommentGuestkbook />
+      <a-row :gutter="30">
+        <a-col :span="17">
+          <CommentGuestkbook />
+        </a-col>
+        <a-col :span="7">
+          <BackgroundGuestkbook />
+        </a-col>
+      </a-row>
     </a-card>
   </div>
 </template>
 
 <script>
-import { CommentGuestkbook } from '~/components/admin/guestkbooks'
+import {
+  CommentGuestkbook,
+  BackgroundGuestkbook,
+} from '~/components/admin/guestkbooks'
 
 export default {
   name: 'PageQuesTkbook',
   components: {
     CommentGuestkbook,
+    BackgroundGuestkbook,
   },
 
   layout() {

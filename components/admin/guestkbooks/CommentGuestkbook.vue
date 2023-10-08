@@ -31,8 +31,6 @@ import { mapGetters } from 'vuex'
 
 import ReplyToGuestkbook from './ReplyToGuestkbook.vue'
 
-import './scss/Commentguestkbook.scss'
-
 export default {
   name: 'CommentGuestkbook',
 
