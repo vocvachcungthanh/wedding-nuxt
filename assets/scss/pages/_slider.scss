@@ -126,3 +126,16 @@
     }
   }
 }
+
+@media (max-width: 992px) {
+  .sidebar-banner {
+    &::before {
+      padding-top: 45vh;
+    }
+    .slide__item {
+      .ration {
+        height: 45vh;
+      }
+    }
+  }
+}

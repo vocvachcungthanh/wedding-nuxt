@@ -3,7 +3,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 7rem 0 9rem;
+  padding: 7rem 0 9rem;
   position: relative;
 
   .header-count-down {
@@ -124,6 +124,31 @@
         background-position: center;
         background-size: contain;
       }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .wedding-getting {
+    overflow: hidden;
+    padding: 7rem 0 6rem;
+  }
+
+  .count-down {
+    .vuejs-countdown {
+      column-gap: 1.5rem;
+      li {
+        width: 11rem;
+
+        &::before {
+          width: calc(100% + 5rem);
+          height: calc(100% + 5rem);
+        }
+      }
+    }
+
+    .digit {
+      font-size: 2.8rem;
     }
   }
 }

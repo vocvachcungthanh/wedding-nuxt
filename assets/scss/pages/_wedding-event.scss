@@ -142,3 +142,13 @@
     }
   }
 }
+
+@media (max-width: 992px) {
+  .wedding__event {
+    .wedding__event--content {
+      .wedding__event--product {
+        width: calc(40% - 2rem);
+      }
+    }
+  }
+}
