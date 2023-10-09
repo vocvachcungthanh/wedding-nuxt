@@ -14,5 +14,11 @@ export default {
         'https://cdn.biihappy.com/ziiweb/default/template/644000ba4f8e0c7ddf09c709/a33b08a813ee02e7a4b7d72ce05d9e93.jpg',
     }
   },
+
+  async created() {
+    const response = await this.$store.dispatch('ACT_GET_BG_GUESTKBOOK')
+
+    if (response) return (this.backgroundImage = response)
+  },
 }
 </script>

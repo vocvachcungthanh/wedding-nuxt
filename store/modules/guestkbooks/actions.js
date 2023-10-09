@@ -47,4 +47,17 @@ export default {
       }
     }
   },
+
+  async ACT_GET_BG_GUESTKBOOK(_context) {
+    try {
+      const response = await axios.get('guestkbooks')
+
+      if (response.status === 200) {
+        return Promise.resolve(response.data)
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error)
+    }
+  },
 }
