@@ -132,9 +132,38 @@
     &::before {
       padding-top: 45vh;
     }
+
     .slide__item {
       .ration {
         height: 45vh;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.99px) {
+  .sidebar-banner {
+    &::before {
+      padding-top: 35vh;
+    }
+
+    .slide__item {
+      .ration {
+        height: 35vh;
+      }
+    }
+  }
+}
+
+@media (max-width: 399px) {
+  .sidebar-banner {
+    &::before {
+      padding-top: 25vh;
+    }
+
+    .slide__item {
+      .ration {
+        height: 25vh;
       }
     }
   }

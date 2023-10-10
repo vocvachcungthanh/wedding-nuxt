@@ -82,19 +82,31 @@
 
 @media (max-width: 768px) {
   .album {
+    padding-top: 4.5rem;
+
     .album__module {
-      .album__gallery {
-        columns: 2;
+      .gallery {
+        columns: 3;
+      }
+    }
+
+    .album__header {
+      margin-bottom: 3rem;
+
+      .album__title {
+        font-size: 3.5rem;
       }
     }
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 399px) {
   .album {
+    padding: 3rem 0;
+
     .album__module {
-      .album__gallery {
-        columns: 1;
+      .gallery {
+        columns: 2;
       }
     }
   }

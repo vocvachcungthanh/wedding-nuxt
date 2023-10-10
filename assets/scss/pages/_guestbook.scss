@@ -205,3 +205,37 @@
     padding: 5rem 0;
   }
 }
+
+@media (max-width: 599px) {
+  .guestbook_group {
+    padding: 0rem 3rem;
+
+    .guestbook__form {
+      padding: 3rem 1.5rem 1.5rem 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 399px) {
+  .guestbook {
+    padding: 3rem 0rem;
+
+    .guestbook_group {
+      padding: 0 1rem;
+    }
+
+    .guestbook__form {
+      .guestbook__title {
+        padding-bottom: 5rem;
+
+        &::before {
+          bottom: -2.2rem;
+        }
+      }
+
+      .btn_save {
+        min-width: 180px;
+      }
+    }
+  }
+}

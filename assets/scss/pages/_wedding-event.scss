@@ -152,3 +152,46 @@
     }
   }
 }
+
+@media (max-width: 767.99px) {
+  .wedding__event {
+    .wedding__event--header {
+      .wedding__event--title {
+        font-size: 3.5rem;
+      }
+    }
+
+    .wedding__event--content {
+      padding-top: 5rem;
+
+      .wedding__event--product {
+        width: calc(50%);
+
+        .wedding__event-title {
+          font-size: 1.8rem;
+        }
+
+        .wedding__event--desc {
+          font-size: 1.4rem;
+        }
+
+        .link__map {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 399px) {
+  .wedding__event {
+    padding: 3rem 0;
+    .wedding__event--content {
+      flex-wrap: wrap;
+      .wedding__event--product {
+        max-width: 320px;
+        width: 100%;
+      }
+    }
+  }
+}

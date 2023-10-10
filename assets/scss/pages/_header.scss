@@ -63,3 +63,15 @@
     }
   }
 }
+
+@media (max-width: 767.99px) {
+  .header__logo--group {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .header__logo--group {
+    font-size: 3rem;
+  }
+}

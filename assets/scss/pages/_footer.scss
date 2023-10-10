@@ -1,3 +1,9 @@
 .footer {
   padding: 5rem 0;
 }
+
+@media (max-width: 599px) {
+  .footer {
+    padding: 3rem 0;
+  }
+}

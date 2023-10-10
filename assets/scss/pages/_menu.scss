@@ -24,3 +24,15 @@
     }
   }
 }
+
+@media (max-width: 767.99px) {
+  .menu {
+    .menu-box {
+      .menu__list {
+        .menu__link {
+          padding: 1rem 1.5rem;
+        }
+      }
+    }
+  }
+}
