@@ -79,4 +79,8 @@ export default {
     baseGoogleUc:
       process.env.BASE_GOOGLE_UC || 'https://drive.google.com/uc?id=',
   },
+
+  router: {
+    middleware: 'mobile',
+  },
 }

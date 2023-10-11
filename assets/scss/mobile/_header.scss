@@ -1,0 +1,42 @@
+.mobile {
+  &__header {
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  &__menu {
+    border-top: 1px solid #cccccc61;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+
+    &--group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__drawer {
+    z-index: 100000;
+
+    .ant-drawer-header-no-title {
+      padding-bottom: 55px;
+      border-bottom: 1px solid #cccccc52;
+    }
+  }
+
+  &__nav {
+    .menu__list {
+      .menu__link {
+        font-size: 2rem;
+        padding: 7px 0;
+        display: flex;
+        color: #000;
+
+        &:hover {
+          color: #f82faf;
+        }
+      }
+    }
+  }
+}

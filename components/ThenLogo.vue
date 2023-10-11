@@ -15,7 +15,7 @@
           <small> Thủy Tiên </small>
         </div>
 
-        <span class="just-married"> Just Married </span>
+        <span class="just-married"> Mèo con & Gà Già</span>
       </nuxt-link>
     </div>
   </div>
