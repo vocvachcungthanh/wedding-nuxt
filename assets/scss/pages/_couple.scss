@@ -238,6 +238,7 @@
 
         .couple__item {
           max-width: 300px;
+          width: 100%;
           flex-direction: column;
 
           .couple__desc {
@@ -246,6 +247,7 @@
             transform: translateX(0px) translateY(-80px);
             margin-left: 0px;
             padding: 100px 1.5rem 1.5rem 1.5rem;
+            width: 100%;
 
             .couple__desc--content {
               max-height: unset;
