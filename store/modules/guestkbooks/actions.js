@@ -21,6 +21,7 @@ export default {
       const response = await axios.post('guestkbook-create', params)
 
       if (response.status === 200) {
+        _context.commit('SET_CREATE_GUESTKBOOK', response.data)
         return Promise.resolve(response.message)
       }
     } catch (error) {
@@ -48,7 +49,7 @@ export default {
     }
   },
 
-  async ACT_GET_BG_GUESTKBOOK(_context) {
+  async ACT_GET_PUBLIC_GUESTKBOOK(_context) {
     try {
       const response = await axios.get('guestkbooks')
 

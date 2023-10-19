@@ -66,11 +66,11 @@
             <button class="btn_save" html-type="submit">Gửi lời chúc</button>
           </div>
 
-          <FooterGuestkbook />
+          <FooterGuestkbook :data="data" />
         </a-form>
       </div>
     </div>
-    <BgGuestkbook />
+    <BgGuestkbook :bg="backgroundImage" />
   </section>
 </template>
 
@@ -101,6 +101,16 @@ export default {
       form: this.$form.createForm(this, initiateState),
       loading: false,
       linkImage: '',
+      backgroundImage: '',
+    }
+  },
+
+  async created() {
+    const response = await this.$store.dispatch('ACT_GET_PUBLIC_GUESTKBOOK')
+
+    if (response) {
+      this.backgroundImage = response.bg
+      this.data = response.data
     }
   },
 
