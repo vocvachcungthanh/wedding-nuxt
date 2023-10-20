@@ -7,12 +7,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  props: {
-    bg: {
-      type: String,
-      default: String,
-    },
+  computed: {
+    ...mapGetters({
+      bg: 'GET_GUESTKBOOK_BG',
+    }),
   },
 }
 </script>

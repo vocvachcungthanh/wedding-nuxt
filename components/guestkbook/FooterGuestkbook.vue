@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import ItemGuestkbook from './ItemGuestkbook.vue'
 
 export default {
@@ -19,11 +21,10 @@ export default {
     ItemGuestkbook,
   },
 
-  props: {
-    data: {
-      type: Array,
-      default: Array,
-    },
+  computed: {
+    ...mapGetters({
+      data: 'GET_GUESTKBOOKS',
+    }),
   },
 }
 </script>

@@ -16,4 +16,8 @@ export default {
 
     if (!isCheck) state.guestkbooks.data.unshift(dataItem)
   },
+
+  SET_GUESTKBOOK_PUBLIC(state, data) {
+    state.guestkbooks = data
+  },
 }

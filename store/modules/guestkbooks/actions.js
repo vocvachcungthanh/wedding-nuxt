@@ -54,6 +54,7 @@ export default {
       const response = await axios.get('guestkbooks')
 
       if (response.status === 200) {
+        _context.commit('SET_GUESTKBOOK_PUBLIC', response.data)
         return Promise.resolve(response.data)
       }
     } catch (error) {

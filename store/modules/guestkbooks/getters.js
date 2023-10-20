@@ -1,6 +1,6 @@
 export default {
   GET_GUESTKBOOKS(state) {
-    return state.guestkbooks.data
+    return state.guestkbooks.data || []
   },
 
   GET_GUESTKBOOK_BG(state) {
