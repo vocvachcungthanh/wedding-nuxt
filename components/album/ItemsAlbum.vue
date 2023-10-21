@@ -11,6 +11,7 @@
         :title="dataItem.title"
         :desc="dataItem.desc"
         :link="dataItem.url"
+        @click.native="handleModal"
       />
     </Transition>
   </div>
@@ -32,7 +33,18 @@ export default {
   data() {
     return {
       isShow: false,
+      visible: false,
     }
+  },
+
+  methods: {
+    handleModal() {
+      this.visible = true
+    },
+
+    hideModal() {
+      this.visible = false
+    },
   },
 }
 </script>

@@ -8,9 +8,14 @@
             v-for="item in albumGallerys"
             :key="item.id"
             :data-item="item"
+            @click.native="() => handleShow(item)"
           />
         </div>
-
+        <ShowImage
+          v-if="isShow"
+          :data-item="dataItem"
+          @toggleShow="handleClone"
+        />
         <infinite-loading v-if="isLoading" @infinite="loadingAlbum">
           <div slot="spinner"><a-spin /></div>
         </infinite-loading>
@@ -24,6 +29,7 @@ import { mapGetters } from 'vuex'
 
 import HeaderAlbum from './HeaderAlbum.vue'
 import ItemsAlbum from './ItemsAlbum.vue'
+import ShowImage from './ShowImage.vue'
 
 export default {
   name: 'AlbumGallery',
@@ -31,6 +37,7 @@ export default {
   components: {
     HeaderAlbum,
     ItemsAlbum,
+    ShowImage,
   },
 
   data() {
@@ -41,6 +48,8 @@ export default {
       },
 
       isLoading: true,
+      isShow: false,
+      dataItem: {},
     }
   },
 
@@ -67,6 +76,17 @@ export default {
         .catch((_error) => {
           this.isLoading = false
         })
+    },
+
+    handleShow(dataItem) {
+      this.dataItem = dataItem
+      document.body.classList.add('overflow-hidden')
+      this.isShow = !this.isShow
+    },
+
+    handleClone(e) {
+      this.isShow = e
+      document.body.classList.remove('overflow-hidden')
     },
   },
 }

@@ -1,5 +1,5 @@
 <template>
-  <a :href="link" class="gallery__box" :title="title">
+  <div class="gallery__box">
     <div class="gallery__content">
       <h3 class="gallery__title">
         {{ title }}
@@ -8,7 +8,7 @@
         {{ desc }}
       </div>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
