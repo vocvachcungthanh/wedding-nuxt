@@ -3,6 +3,7 @@
     <SliderBanner />
     <WeddingCountDown />
     <Couple />
+    <LoveStory />
     <WeddingEvent />
     <Album />
     <Guestbook />
@@ -16,6 +17,7 @@ import {
   Album,
   WeddingCountDown,
   Couple,
+  LoveStory,
   WeddingEvent,
   Guestbook,
   Music,
@@ -28,6 +30,7 @@ export default {
     SliderBanner,
     WeddingCountDown,
     Couple,
+    LoveStory,
     WeddingEvent,
     Guestbook,
     Album,

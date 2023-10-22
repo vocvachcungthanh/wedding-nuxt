@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import FormMenu from '~/components/menus/FormMenus.vue'
-import ListMenu from '~/components/menus/ListMenu.vue'
+import { FormMenu, ListMenu } from '~/components/admin/menus'
 
 export default {
   name: 'PageMenu',

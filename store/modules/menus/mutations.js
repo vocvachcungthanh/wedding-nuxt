@@ -23,4 +23,14 @@ export default {
 
     return state.menus
   },
+
+  SET_MENUS_ADMIN(state, data) {
+    state.menus = data
+  },
+
+  DELETE_MENU_ADMIN(state, id) {
+    const data = state.menus.filter((item) => item.id !== id)
+
+    state.menus = data
+  },
 }

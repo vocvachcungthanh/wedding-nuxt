@@ -1,7 +1,7 @@
 <template>
   <div class="list-menus">
     <a-collapse
-      v-for="item in menus"
+      v-for="item in listMenus"
       :key="item.key"
       accordion
       class="menu__panel"
@@ -12,7 +12,7 @@
         </a-form-item>
 
         <a-form-item label="Link">
-          <a-input v-model="item.ink" placeholder="Nhập link menu..." />
+          <a-input v-model="item.link" placeholder="Nhập link menu..." />
         </a-form-item>
 
         <a-form-item>
@@ -31,17 +31,18 @@
           >
             Cập nhật</a-button
           >
-          <a-button type="danger">Xóa </a-button>
+          <DeleteMenu :id="item.id" />
         </a-form-item>
       </a-collapse-panel>
     </a-collapse>
-    <NoData v-if="menus.length <= 0" />
+    <NoData v-if="listMenus.length <= 0" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
+import DeleteMenu from './DeleteMenu.vue'
 import NoData from '~/components/NoData.vue'
 import { MwHandle } from '~/libraries/helpers'
 
@@ -50,13 +51,13 @@ export default {
 
   components: {
     NoData,
+    DeleteMenu,
   },
 
   data() {
     return {
       formLayout: 'horizontal',
       form: this.$form.createForm(this, { name: 'coordinated' }),
-      menus: [],
     }
   },
 
@@ -64,12 +65,6 @@ export default {
     ...mapGetters({
       listMenus: 'GET_LIST_MENUS',
     }),
-  },
-
-  watch: {
-    listMenus() {
-      this.menus = this.listMenus
-    },
   },
 
   created: function () {
@@ -103,38 +98,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.menu__panel {
-  margin-bottom: 1rem;
-
-  .ant-collapse-header {
-    background-color: #1890ff;
-    color: #fff !important;
-    font-weight: bold;
-    border-bottom: 1px solid #1890ff;
-    padding: 0.8rem 1.6rem;
-  }
-
-  .ant-collapse-content {
-    border-top: 1px solid transparent;
-  }
-}
-
-.ant-collapse {
-  border: 1px solid #1890ff !important;
-}
-
-.ant-collapse > .ant-collapse-item {
-  border-bottom: 0px;
-}
-
-.form__footer {
-  display: flex;
-  gap: 2rem;
-}
-
-.btn__update {
-  margin-right: 1.5rem;
-}
-</style>

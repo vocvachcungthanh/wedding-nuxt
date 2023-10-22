@@ -1,9 +1,9 @@
 export default {
   GET_LIST_MENUS(state) {
-    return state.menus
+    return state.menus || []
   },
 
   GET_LIST_MENUS_ADMIN(state) {
-    return state.menus_admin
+    return state.menus_admin || []
   },
 }

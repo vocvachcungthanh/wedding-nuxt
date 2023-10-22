@@ -48,19 +48,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.btn {
-  &__logout {
-    cursor: pointer;
-
-    font-size: 2rem;
-    background-color: transparent;
-    margin-left: auto;
-
-    &:hover {
-      color: rgb(0, 161, 248);
-    }
-  }
-}
-</style>

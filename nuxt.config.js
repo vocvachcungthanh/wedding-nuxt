@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'wedding-nuxt',
+    title: 'Hữu Thành - Thủy Tiên',
     htmlAttrs: {
       lang: 'en',
     },

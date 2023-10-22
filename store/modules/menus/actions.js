@@ -30,7 +30,7 @@ export default {
 
   async ACT_GET_MENU_LIST(context) {
     try {
-      const response = await axios.post('menus/list')
+      const response = await axios.get('admin/menus')
 
       if (response.status === 200) {
         context.commit('SET_MENUS', response.data)
@@ -51,6 +51,19 @@ export default {
       if (response.status === 200) {
         context.commit('SET_MENUS_UPDATE', params)
 
+        return Promise.resolve(response.message)
+      }
+    } catch (error) {
+      return Promise.reject(error.message)
+    }
+  },
+
+  async ACT_MENU_DELETE(_context, ID) {
+    try {
+      const response = await axios.delete(`admin/menus/${ID}`)
+
+      if (response.status === 200) {
+        _context.commit('DELETE_MENU_ADMIN', ID)
         return Promise.resolve(response.message)
       }
     } catch (error) {
