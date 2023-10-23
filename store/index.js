@@ -18,6 +18,7 @@ import { eventsStore } from '~/store/modules/events'
 import { countDownStore } from '~/store/modules/countdowns'
 import { musicStore } from '~/store/modules/music'
 import { guestkbookStore } from '~/store/modules/guestkbooks'
+import { loveStoryStore } from '~/store/modules/love-story'
 
 const store = () =>
   // eslint-disable-next-line import/no-named-as-default-member
@@ -40,6 +41,7 @@ const store = () =>
       storeCountDown: countDownStore,
       storeMusic: musicStore,
       storeQuestKbook: guestkbookStore,
+      storeLoveStory: loveStoryStore,
     },
   })
 
