@@ -47,6 +47,10 @@ export default {
     this.actGetMenus()
   },
 
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+
   methods: {
     async handleTtitle(menu) {
       this.title = menu.name
@@ -54,6 +58,22 @@ export default {
       document
         .getElementById(`${menu.link}`)
         .scrollIntoView({ behavior: 'smooth' })
+    },
+
+    handleScroll() {
+      const windowHeight = window.innerHeight
+
+      for (const menu of this.getMenuList) {
+        const element = document.getElementById(menu.link)
+
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top >= 0 && rect.top < windowHeight) {
+            this.title = menu.name
+            break
+          }
+        }
+      }
     },
 
     ...mapActions({

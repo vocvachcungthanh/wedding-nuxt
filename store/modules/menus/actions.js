@@ -17,7 +17,7 @@ export default {
 
   async ACT_MENUS_CREATE(context, params) {
     try {
-      const response = await axios.post('admin/menus', { ...params })
+      const response = await axios.post('admin/menus', params)
 
       if (response.status === 200) {
         context.commit('SET_MENUS_CREATE', response.data)
@@ -43,10 +43,7 @@ export default {
 
   async ACT_MENU_UPDATE(context, params) {
     try {
-      const response = await axios.post(
-        `menus/update/${params.menu_id}`,
-        params
-      )
+      const response = await axios.put(`admin/menus/${params.id}`, params)
 
       if (response.status === 200) {
         context.commit('SET_MENUS_UPDATE', params)

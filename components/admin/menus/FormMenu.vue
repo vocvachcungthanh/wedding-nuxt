@@ -72,6 +72,8 @@ export default {
         name: '',
         link: '',
         status: 1,
+        parent_id: 0,
+        desc: 'menu',
       },
     }
   },
@@ -87,7 +89,7 @@ export default {
       e.preventDefault()
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.menus = values
+          this.menus = { ...this.menus, ...values }
 
           this.$store
             .dispatch('ACT_MENUS_CREATE', this.menus)
