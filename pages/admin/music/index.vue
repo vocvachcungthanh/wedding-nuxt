@@ -49,13 +49,10 @@ export default {
 
   methods: {
     handleSubmit(params) {
-      console.log(params)
-
       if (params.id) {
         this.update(params)
       } else {
         this.create(params)
-        console.log(params)
       }
     },
 

@@ -15,7 +15,6 @@
           {
             initialValue: items.avatar,
             rules: [
-              { required: true, message: 'Nhập link ảnh!' },
               {
                 validator: validateImageURL,
               },
@@ -77,6 +76,21 @@
         @change="handleChange"
       />
     </a-form-item>
+    <a-form-item>
+      <a-radio-group
+        v-decorator="[
+          'status',
+          {
+            initialValue: items.status || 1,
+          },
+        ]"
+        name="radioGroup"
+        @change="handleStatus"
+      >
+        <a-radio :value="1"> Hiển thị </a-radio>
+        <a-radio :value="0"> Ẩn</a-radio>
+      </a-radio-group>
+    </a-form-item>
     <a-form-item class="hidden">
       <a-input
         v-decorator="[
@@ -129,6 +143,7 @@ const initState = {
   date: '',
   google_id: '',
   source_id: 1,
+  status: 1,
 }
 export default {
   components: {

@@ -42,7 +42,6 @@ export default {
 
   methods: {
     handleCollapsed(e) {
-      console.log(e)
       this.collapsed = !e
     },
   },

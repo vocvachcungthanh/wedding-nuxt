@@ -4,7 +4,7 @@
       <a-button slot="extra" type="primary" @click="handleVisible">
         <a-icon type="folder-add" /> Thêm câu chuyện
       </a-button>
-
+      <a-row> <ItemLoveStory /> </a-row>
       <Drawer
         :title="getTitle"
         :visible="visible"
@@ -18,12 +18,13 @@
 
 <script>
 import Drawer from '~/components/common/Drawer.vue'
-import { LoveStory } from '~/components/admin/love-stroy'
+import { LoveStory, ItemLoveStory } from '~/components/admin/love-stroy'
 
 export default {
   components: {
     Drawer,
     LoveStory,
+    ItemLoveStory,
   },
 
   layout() {

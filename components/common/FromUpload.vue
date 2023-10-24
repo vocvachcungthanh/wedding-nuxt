@@ -252,8 +252,6 @@ export default {
     },
 
     validateImageURL(rule, value, callback) {
-      console.log('validateImageURL được gọi với giá trị:', value)
-      // Kiểm tra tính hợp lệ của đường dẫn hình ảnh
       if (!value) {
         callback(new Error('Link ảnh đại diện không được để trống'))
       } else {

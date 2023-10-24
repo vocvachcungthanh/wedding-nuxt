@@ -14,9 +14,9 @@ export default {
   methods: {
     handleSubmit(params) {
       if (params.id) {
-        this.update()
+        this.update(params)
       } else {
-        this.create()
+        this.create(params)
       }
     },
 
