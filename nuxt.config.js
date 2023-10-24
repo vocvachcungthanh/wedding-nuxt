@@ -73,14 +73,19 @@ export default {
   build: {},
 
   env: {
-    baseURL: process.env.BASE_URL || 'http://huuthanh-thuytien.com',
+    baseURL: process.env.BASE_URL || 'https://huuthanh-thuytien.click',
     baseApiUrl:
-      process.env.BASE_API_URL || 'http://huuthanh-thuytien.com:8000/api/',
+      process.env.BASE_API_URL ||
+      'https://huuthanh-thuytien.click/wedding-api/api/',
     baseGoogleUc:
       process.env.BASE_GOOGLE_UC || 'https://drive.google.com/uc?id=',
   },
 
   router: {
     middleware: 'mobile',
+  },
+
+  server: {
+    port: process.env.PORT || 3002, // default: 3000
   },
 }
