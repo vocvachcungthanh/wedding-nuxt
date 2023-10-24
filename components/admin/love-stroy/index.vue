@@ -1,5 +1,10 @@
 <template>
-  <FormLoveStroy :items="{}" @submit="handleSubmit" />
+  <FormLoveStroy
+    :items="{}"
+    :result="result"
+    @submit="handleSubmit"
+    @result="handleResult"
+  />
 </template>
 
 <script>
@@ -10,6 +15,12 @@ export default {
   name: 'LoveStory',
 
   components: { FormLoveStroy },
+
+  data() {
+    return {
+      result: false,
+    }
+  },
 
   methods: {
     handleSubmit(params) {
@@ -54,6 +65,10 @@ export default {
             context: error,
           })
         })
+    },
+
+    handleResult(e) {
+      this.result = e
     },
   },
 }

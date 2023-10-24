@@ -85,7 +85,6 @@
           },
         ]"
         name="radioGroup"
-        @change="handleStatus"
       >
         <a-radio :value="1"> Hiển thị </a-radio>
         <a-radio :value="0"> Ẩn</a-radio>
@@ -155,6 +154,11 @@ export default {
       type: Object,
       default: Object,
     },
+
+    result: {
+      type: Boolean,
+      default: Boolean,
+    },
   },
 
   data() {
@@ -169,6 +173,17 @@ export default {
   computed: {
     viewImage() {
       return this.linkImage || this.items.avatar
+    },
+  },
+
+  watch: {
+    result() {
+      if (this.result) {
+        this.linkImage = ''
+        this.form.resetFields()
+
+        this.$emit('result', false)
+      }
     },
   },
 

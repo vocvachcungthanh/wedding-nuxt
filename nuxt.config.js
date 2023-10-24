@@ -70,7 +70,9 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    modern: false,
+  },
 
   env: {
     baseURL: process.env.BASE_URL || 'https://huuthanh-thuytien.click',
@@ -86,6 +88,6 @@ export default {
   },
 
   server: {
-    port: process.env.PORT || 3002, // default: 3000
+    port: process.env.PORT || 3002,
   },
 }

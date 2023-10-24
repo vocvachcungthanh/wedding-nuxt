@@ -6,4 +6,8 @@ export default {
       ...dataItem,
     })
   },
+
+  SET_LOVE_STORY(state, data) {
+    state.loveStory = data
+  },
 }

@@ -19,4 +19,24 @@ export default {
       }
     }
   },
+
+  async ACT_GET_LOVE_STORY(_context) {
+    try {
+      const response = await axios.get('admin/love-story')
+
+      if (response.status === 200) {
+        _context.commit('SET_LOVE_STORY', response.data)
+      }
+    } catch (error) {}
+  },
+
+  async ACT_GET_LOVE_STORY_PUBLIC(_context) {
+    try {
+      const response = await axios.get('love-story')
+
+      if (response.status === 200) {
+        return Promise.resolve(response.data)
+      }
+    } catch (error) {}
+  },
 }

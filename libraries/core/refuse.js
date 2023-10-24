@@ -74,7 +74,7 @@ export class Refuse {
     const headers = {
       'X-Requested-With': 'XMLHttpsRequest',
       access_token: strAuthorization,
-      user_id: userId,
+      user_id: userId || 1,
     }
 
     let agent = {}
