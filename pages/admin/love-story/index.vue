@@ -12,26 +12,19 @@
         />
       </a-row>
       <NoData v-else />
-      <Drawer
-        :title="getTitle"
-        :visible="visible"
-        @visibleEvent="handleVisible"
-      >
-        <LoveStory />
-      </Drawer>
+
+      <LoveStory />
     </a-card>
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Drawer from '~/components/common/Drawer.vue'
+import { mapGetters, mapActions } from 'vuex'
 import { LoveStory, ItemLoveStory } from '~/components/admin/love-stroy'
 import NoData from '~/components/NoData.vue'
 
 export default {
   components: {
-    Drawer,
     LoveStory,
     ItemLoveStory,
     NoData,
@@ -43,16 +36,11 @@ export default {
 
   data() {
     return {
-      visible: false,
       dataItem: {},
     }
   },
 
   computed: {
-    getTitle() {
-      return this.dataItem.id ? 'Cập nhật câu chuyện' : 'Thêm câu chuyện'
-    },
-
     ...mapGetters({
       loveStorys: 'GET_LOVE_STORY',
     }),
@@ -64,8 +52,14 @@ export default {
 
   methods: {
     handleVisible() {
-      this.visible = !this.visible
+      this.setVisible(true)
+      this.setFromLoveStory({})
     },
+
+    ...mapActions({
+      setVisible: 'ACT_SET_VISIBLE',
+      setFromLoveStory: 'ACT_GET_DATA_FROM',
+    }),
   },
 }
 </script>

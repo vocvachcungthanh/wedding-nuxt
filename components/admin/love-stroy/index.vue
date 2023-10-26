@@ -1,6 +1,6 @@
 <template>
   <FormLoveStroy
-    :items="{}"
+    :items="dataItem"
     :result="result"
     @submit="handleSubmit"
     @result="handleResult"
@@ -15,6 +15,13 @@ export default {
   name: 'LoveStory',
 
   components: { FormLoveStroy },
+
+  props: {
+    dataItem: {
+      type: Object,
+      default: Object,
+    },
+  },
 
   data() {
     return {

@@ -17,10 +17,7 @@
         <div class="love-story__desc" v-html="dataItem.desc"></div>
       </div>
       <div class="love-story__footer">
-        <button class="btn btn__edit">
-          <a-icon type="edit" />
-          Sửa
-        </button>
+        <EditLoveStory :data-item="dataItem" />
         <button class="btn btn__delete">
           <a-icon type="delete" />
           Xóa
@@ -31,7 +28,11 @@
 </template>
 
 <script>
+import EditLoveStory from './EditLoveStory.vue'
+
 export default {
+  components: { EditLoveStory },
+
   props: {
     dataItem: {
       type: Object,

@@ -1,137 +1,143 @@
 <template>
-  <a-form :form="form" @submit="handleSubmit">
-    <a-form-item>
-      <PreviewLoverStory
-        :image="viewImage"
-        :loading="loading"
-        class-view="view__event"
-        @file="handleFile"
-      />
-    </a-form-item>
-    <a-form-item>
-      <a-input
-        v-decorator="[
-          'avatar',
-          {
-            initialValue: items.avatar,
-            rules: [
-              {
-                validator: validateImageURL,
-              },
-            ],
-          },
-        ]"
-        placeholder="Nhập link ảnh ..."
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item>
-      <a-input
-        v-decorator="[
-          'title',
-          {
-            initialValue: items.title,
-            rules: [
-              {
-                required: true,
-                message: 'Nhập tiêu đề !',
-              },
-            ],
-          },
-        ]"
-        placeholder="Nhập tiêu đề ... "
-        @change="handleChange"
-      />
-    </a-form-item>
+  <Drawer :title="title">
+    <a-form :form="form" @submit="handleSubmit">
+      {{ loveStorys }}
+      <a-form-item>
+        <PreviewLoverStory
+          :image="viewImage"
+          :loading="loading"
+          class-view="view__event"
+          @file="handleFile"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-input
+          v-decorator="[
+            'avatar',
+            {
+              initialValue: items.avatar,
+              rules: [
+                {
+                  validator: validateImageURL,
+                },
+              ],
+            },
+          ]"
+          placeholder="Nhập link ảnh ..."
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-input
+          v-decorator="[
+            'title',
+            {
+              initialValue: items.title,
+              rules: [
+                {
+                  required: true,
+                  message: 'Nhập tiêu đề !',
+                },
+              ],
+            },
+          ]"
+          placeholder="Nhập tiêu đề ... "
+          @change="handleChange"
+        />
+      </a-form-item>
 
-    <a-form-item>
-      <a-input
-        v-decorator="[
-          'date',
-          {
-            initialValue: items.date,
-            rules: [
-              {
-                required: true,
-                message: 'Nhập thời điểm câu chuyện !',
-              },
-            ],
-          },
-        ]"
-        placeholder="Thời điểm câu chuyện ..."
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item>
-      <a-textarea
-        v-decorator="[
-          'desc',
-          {
-            initialValue: items.address,
-            rules: [{ required: true, message: 'Nhập mô tả câu chuyện!' }],
-          },
-        ]"
-        placeholder="Mô tả câu chuyện ..."
-        :auto-size="{ minRows: 4 }"
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item>
-      <a-radio-group
-        v-decorator="[
-          'status',
-          {
-            initialValue: items.status || 1,
-          },
-        ]"
-        name="radioGroup"
-      >
-        <a-radio :value="1"> Hiển thị </a-radio>
-        <a-radio :value="0"> Ẩn</a-radio>
-      </a-radio-group>
-    </a-form-item>
-    <a-form-item class="hidden">
-      <a-input
-        v-decorator="[
-          'google_id',
-          {
-            initialValue: items.google_id,
-          },
-        ]"
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item class="hidden">
-      <a-input
-        v-decorator="[
-          'id',
-          {
-            initialValue: items.id,
-          },
-        ]"
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item class="hidden">
-      <a-input
-        v-decorator="[
-          'source_id',
-          {
-            initialValue: items.source_id,
-          },
-        ]"
-        @change="handleChange"
-      />
-    </a-form-item>
-    <a-form-item>
-      <a-button type="primary" html-type="submit" class="w-full">
-        Cập nhật
-      </a-button>
-    </a-form-item>
-  </a-form>
+      <a-form-item>
+        <a-input
+          v-decorator="[
+            'date',
+            {
+              initialValue: items.date,
+              rules: [
+                {
+                  required: true,
+                  message: 'Nhập thời điểm câu chuyện !',
+                },
+              ],
+            },
+          ]"
+          placeholder="Thời điểm câu chuyện ..."
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-textarea
+          v-decorator="[
+            'desc',
+            {
+              initialValue: items.desc,
+              rules: [{ required: true, message: 'Nhập mô tả câu chuyện!' }],
+            },
+          ]"
+          placeholder="Mô tả câu chuyện ..."
+          :auto-size="{ minRows: 4 }"
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-radio-group
+          v-decorator="[
+            'status',
+            {
+              initialValue: items.status || 1,
+            },
+          ]"
+          name="radioGroup"
+        >
+          <a-radio :value="1"> Hiển thị </a-radio>
+          <a-radio :value="0"> Ẩn</a-radio>
+        </a-radio-group>
+      </a-form-item>
+      <a-form-item class="hidden">
+        <a-input
+          v-decorator="[
+            'google_id',
+            {
+              initialValue: items.google_id,
+            },
+          ]"
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item class="hidden">
+        <a-input
+          v-decorator="[
+            'id',
+            {
+              initialValue: items.id,
+            },
+          ]"
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item class="hidden">
+        <a-input
+          v-decorator="[
+            'source_id',
+            {
+              initialValue: items.source_id,
+            },
+          ]"
+          @change="handleChange"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-button type="primary" html-type="submit" class="w-full">
+          Cập nhật
+        </a-button>
+      </a-form-item>
+    </a-form>
+  </Drawer>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
+import Drawer from '~/components/common/Drawer.vue'
 import { PreviewAlbumForm } from '~/components/common/forms/index.js'
 import { MwHandle, keyGoogle } from '~/libraries/helpers'
 
@@ -147,14 +153,10 @@ const initState = {
 export default {
   components: {
     PreviewLoverStory: PreviewAlbumForm,
+    Drawer,
   },
 
   props: {
-    items: {
-      type: Object,
-      default: Object,
-    },
-
     result: {
       type: Boolean,
       default: Boolean,
@@ -167,6 +169,8 @@ export default {
       form: this.$form.createForm(this, initState),
       loading: false,
       linkImage: '',
+
+      title: 'Thêm mới câu chuyện',
     }
   },
 
@@ -174,6 +178,10 @@ export default {
     viewImage() {
       return this.linkImage || this.items.avatar
     },
+
+    ...mapState({
+      items: (state) => state.storeLoveStory.dataFromLoveStory,
+    }),
   },
 
   watch: {
@@ -183,6 +191,14 @@ export default {
         this.form.resetFields()
 
         this.$emit('result', false)
+      }
+    },
+
+    items() {
+      if (this.items.id) {
+        return (this.title = 'Sửa câu chuyện')
+      } else {
+        return (this.title = 'Thêm mới câu chuyện')
       }
     },
   },

@@ -39,4 +39,22 @@ export default {
       }
     } catch (error) {}
   },
+
+  async ACT_UPDATE_LOVE_STORY(_context, params) {
+    try {
+      const response = await axios.put(`admin/love-story/${params.id}`, params)
+
+      if (response.status === 200) {
+        _context.commit('SET_LOVE_STORY_UPDATE', params)
+
+        return Promise.resolve(response.message)
+      }
+    } catch (error) {
+      return Promise.reject(error.message)
+    }
+  },
+
+  ACT_GET_DATA_FROM(_context, dataItem) {
+    _context.commit('SET_DATA_FROM', dataItem)
+  },
 }

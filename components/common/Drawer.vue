@@ -12,25 +12,32 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'DrawerCommon',
 
   props: {
-    visible: {
-      type: Boolean,
-      default: false,
-    },
-
     title: {
       type: String,
       default: 'Thêm mới',
     },
   },
 
+  computed: {
+    ...mapState({
+      visible: (state) => state.visible,
+    }),
+  },
+
   methods: {
     onClose() {
-      this.$emit('visibleEvent', false)
+      this.setVisible(false)
     },
+
+    ...mapActions({
+      setVisible: 'ACT_SET_VISIBLE',
+    }),
   },
 }
 </script>

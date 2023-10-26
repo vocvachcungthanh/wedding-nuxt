@@ -1,29 +1,28 @@
 <template>
   <div class="create__slider">
-    <FromUpload
-      :result="result"
-      :items="dataItem"
-      @submit="handleSubmit"
-      @result="handleResult"
-    />
+    <Drawer :title="title">
+      <FromUpload
+        :result="result"
+        :items="dataItem"
+        @submit="handleSubmit"
+        @result="handleResult"
+      />
+    </Drawer>
   </div>
 </template>
 
 <script>
+import Drawer from '~/components/common/Drawer.vue'
 import { MwHandle } from '~/libraries/helpers'
 import FromUpload from '~/components/common/FromUpload.vue'
 
 export default {
   components: {
     FromUpload,
+    Drawer,
   },
 
   props: {
-    visible: {
-      type: Boolean,
-      default: Boolean,
-    },
-
     dataItem: {
       type: Object,
       default: Object,
@@ -33,13 +32,16 @@ export default {
   data() {
     return {
       result: false,
+      title: 'Thêm mới slider',
     }
   },
 
   watch: {
-    visible() {
-      if (this.visible === false) {
-        this.result = true
+    dataItem() {
+      if (this.dataItem.id) {
+        this.title = 'Sửa slider'
+      } else {
+        this.title = 'Thêm mới slider'
       }
     },
   },

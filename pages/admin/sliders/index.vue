@@ -1,7 +1,7 @@
 <template>
   <div>
     <a-card title="Quản lý slides">
-      <a-button slot="extra" type="primary" @click="handleVisible(true)">
+      <a-button slot="extra" type="primary" @click="handleVisible">
         <a-icon type="folder-add" /> Thêm mới slider
       </a-button>
       <div class="admin__slider">
@@ -21,19 +21,16 @@
       <NoData v-if="sliders.length <= 0" />
     </a-card>
 
-    <Drawer :title="getTitle" :visible="visible" @visibleEvent="handleVisible">
-      <FormSlider :data-item="dataItem" :visible="visible" />
-    </Drawer>
+    <FormSlider :data-item="dataItem" />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import { ItemSlider, FormSlider } from '~/components/admin/sliders'
 
 import NoData from '~/components/NoData.vue'
-import Drawer from '~/components/common/Drawer.vue'
 
 export default {
   name: 'SliderAdmin',
@@ -41,7 +38,6 @@ export default {
   components: {
     ItemSlider,
     NoData,
-    Drawer,
 
     FormSlider,
   },
@@ -77,14 +73,14 @@ export default {
   },
 
   methods: {
-    handleVisible(e) {
+    handleVisible() {
       this.dataItem = {}
-      return (this.visible = e)
+      this.setVisible(true)
     },
 
     handleEdit(dataItem) {
       this.dataItem = dataItem
-      this.visible = true
+      this.setVisible(true)
     },
 
     loadingSlider($state) {
@@ -107,14 +103,10 @@ export default {
           console.log(error)
         })
     },
+
+    ...mapActions({
+      setVisible: 'ACT_SET_VISIBLE',
+    }),
   },
 }
 </script>
-
-<style lang="scss">
-.admin__slider {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 2rem;
-}
-</style>
