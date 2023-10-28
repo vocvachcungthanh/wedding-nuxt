@@ -12,7 +12,7 @@
       <div class="love__story--content">
         <div class="love__group">
           <div
-            v-for="item in loveStorys"
+            v-for="item in loveStory"
             :key="item.id"
             class="love__group--item"
           >
@@ -41,13 +41,13 @@ export default {
 
   data() {
     return {
-      loveStorys: [],
+      loveStory: [],
     }
   },
 
   async created() {
     await this.$store.dispatch('ACT_GET_LOVE_STORY_PUBLIC').then((res) => {
-      this.loveStorys = res
+      this.loveStory = res
     })
   },
 }

@@ -18,7 +18,8 @@
 }
 
 .love__story--content {
-  padding: 0 7rem 7rem 7rem;
+  max-width: 945px;
+  margin: auto;
 
   .love__group {
     position: relative;
@@ -77,6 +78,7 @@
           bottom: 0;
           object-fit: cover;
           object-position: center;
+          width: 100%;
         }
       }
 
@@ -193,6 +195,138 @@
 
       &::-webkit-scrollbar {
         width: 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 910px) {
+  .love__story {
+    padding: 5rem 0;
+
+    &--header {
+      margin: 0px auto 5rem auto;
+      max-width: 100%;
+    }
+
+    &--info {
+      max-width: 80%;
+    }
+
+    &--content {
+      .love__group--item {
+        &:nth-child(odd) {
+          .love__group--avatar {
+            margin-left: 5rem;
+          }
+        }
+
+        &:nth-child(even) {
+          .love__group--avatar {
+            margin-right: 5rem;
+          }
+        }
+
+        &::after {
+          transform: translateX(-50%) rotate(42deg);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767.99px) {
+  .love__story {
+    &--title {
+      font-size: 3.5rem;
+    }
+
+    &--content {
+      .love__group {
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        &--item {
+          padding: 0;
+
+          &::before,
+          &::after {
+            display: none;
+          }
+
+          &:nth-child(odd) {
+            .love__group--avatar {
+              margin-left: 1.5rem;
+            }
+          }
+
+          &:nth-child(even) {
+            .love__group--avatar {
+              margin-right: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 479.9px) {
+  .love__story {
+    &--content {
+      .love__group {
+        padding: 0;
+        box-shadow: unset;
+        background-color: transparent;
+
+        &--item {
+          flex-direction: column;
+          margin-bottom: 2rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          &:nth-child(odd) {
+            .love__group {
+              &--header {
+                text-align: left;
+              }
+
+              &--context {
+                padding: 1.5rem;
+                order: 2;
+              }
+
+              &--avatar {
+                margin-left: 0;
+              }
+            }
+          }
+
+          &:nth-child(even) {
+            .love__group {
+              &--context {
+                padding: 1.5rem;
+              }
+            }
+          }
+
+          .love__group--avatar {
+            width: 100%;
+            padding: unset;
+
+            .love__image {
+              position: relative;
+            }
+          }
+        }
+
+        &--context {
+          width: 100%;
+        }
       }
     }
   }

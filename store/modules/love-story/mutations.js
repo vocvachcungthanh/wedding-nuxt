@@ -16,15 +16,19 @@ export default {
   },
 
   SET_LOVE_STORY_UPDATE(state, dataItem) {
-    // eslint-disable-next-line array-callback-return
-    state.loveStory.map((item) => {
-      if (item.id === dataItem.id) {
-        item = dataItem
+    const index = state.loveStory.findIndex((item) => item.id === dataItem.id)
 
-        state.dataFromLoveStory = dataItem
-      }
-    })
+    if (index !== -1) {
+      state.loveStory.splice(index, 1, dataItem)
+      state.dataFromLoveStory = dataItem
+    }
 
-    return state.menus
+    return state.loveStory
+  },
+
+  DELETE_LOVE_STORY(state, id) {
+    const data = state.loveStory.filter((item) => item.id !== id)
+
+    state.loveStory = data
   },
 }

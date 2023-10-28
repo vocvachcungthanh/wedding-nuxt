@@ -8,12 +8,11 @@ export default {
   },
 
   SET_MENUS_UPDATE(state, dataItem) {
-    // eslint-disable-next-line array-callback-return
-    state.menus.map((item) => {
-      if (item.menu_id === dataItem.menu_id) {
-        item = dataItem
-      }
-    })
+    const index = state.state.menus((item) => item.id === dataItem.id)
+
+    if (index !== -1) {
+      state.menus.splice(index, 1, dataItem)
+    }
 
     return state.menus
   },

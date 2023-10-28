@@ -57,4 +57,17 @@ export default {
   ACT_GET_DATA_FROM(_context, dataItem) {
     _context.commit('SET_DATA_FROM', dataItem)
   },
+
+  async ACT_DELETE_LOVE_STORY(_context, params) {
+    try {
+      const response = await axios.post('admin/lover-story-delete', params)
+
+      if (response.status === 200) {
+        _context.commit('DELETE_LOVE_STORY', params.id)
+        return Promise.resolve(response.message)
+      }
+    } catch (error) {
+      return Promise.reject(error.message)
+    }
+  },
 }

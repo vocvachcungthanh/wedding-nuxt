@@ -1,7 +1,6 @@
 <template>
   <Drawer :title="title">
     <a-form :form="form" @submit="handleSubmit">
-      {{ loveStorys }}
       <a-form-item>
         <PreviewLoverStory
           :image="viewImage"

@@ -18,20 +18,24 @@
       </div>
       <div class="love-story__footer">
         <EditLoveStory :data-item="dataItem" />
-        <button class="btn btn__delete">
-          <a-icon type="delete" />
-          Xóa
-        </button>
+        <DeleteLoveStory
+          :data-item="{
+            id: dataItem.id,
+            google_id: dataItem.google_id,
+            source_id: dataItem.source_id,
+          }"
+        />
       </div>
     </a-card>
   </a-col>
 </template>
 
 <script>
+import DeleteLoveStory from './DeleteLoveStory.vue'
 import EditLoveStory from './EditLoveStory.vue'
 
 export default {
-  components: { EditLoveStory },
+  components: { EditLoveStory, DeleteLoveStory },
 
   props: {
     dataItem: {

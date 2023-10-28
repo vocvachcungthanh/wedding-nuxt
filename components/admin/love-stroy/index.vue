@@ -56,7 +56,7 @@ export default {
         })
     },
 
-    async upload(params) {
+    async update(params) {
       await this.$store
         .dispatch('ACT_UPDATE_LOVE_STORY', params)
         .then((res) => {

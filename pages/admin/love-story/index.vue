@@ -4,9 +4,9 @@
       <a-button slot="extra" type="primary" @click="handleVisible">
         <a-icon type="folder-add" /> Thêm câu chuyện
       </a-button>
-      <a-row v-if="loveStorys.length > 0" :gutter="[15, 15]">
+      <a-row v-if="loveStory.length > 0" :gutter="[15, 15]">
         <ItemLoveStory
-          v-for="item in loveStorys"
+          v-for="item in loveStory"
           :key="item.id"
           :data-item="item"
         />
@@ -42,7 +42,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      loveStorys: 'GET_LOVE_STORY',
+      loveStory: 'GET_LOVE_STORY',
     }),
   },
 
