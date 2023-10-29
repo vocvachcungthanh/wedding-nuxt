@@ -4,7 +4,12 @@
       <div class="count-down">
         <HeaderCountDown :date-time="dateTime" />
         <template v-if="date">
-          <count-down :end="date"></count-down>
+          <no-ssr>
+            <count-down
+              class="count__down--cunstome"
+              :deadline="date"
+            ></count-down>
+          </no-ssr>
         </template>
       </div>
     </div>
@@ -25,6 +30,12 @@ export default {
   data() {
     return {
       date: null,
+      defaultLabels: {
+        days: 'Ngày',
+        hours: 'Hours',
+        minutes: 'Minutes',
+        seconds: 'Seconds',
+      },
     }
   },
 

@@ -49,81 +49,89 @@
   }
 }
 
-.count-down {
-  .vuejs-countdown {
-    display: flex;
-    justify-content: center;
+.count__down--cunstome {
+  .flip-card__top[data-v-b6b5360c],
+  .flip-card__bottom[data-v-b6b5360c],
+  .flip-card__back-bottom[data-v-b6b5360c],
+  .flip-card__back[data-v-b6b5360c]::before,
+  .flip-card__back[data-v-b6b5360c]::after {
+    background: linear-gradient(
+      to bottom,
+      rgb(244, 196, 243),
+      rgb(252, 103, 250)
+    );
+    color: #fff;
+  }
 
-    li {
-      width: 18rem;
-      color: #f88dbd;
-      margin: 0;
+  .flip-clock__slot {
+    display: none;
+  }
 
-      animation: count-heart 3s infinite;
-      animation-direction: alternate-reverse;
+  .flip-card__bottom[data-v-b6b5360c],
+  .flip-card__back-bottom[data-v-b6b5360c],
+  .flip-card__bottom-4digits[data-v-b6b5360c],
+  .flip-card__back-bottom-4digits[data-v-b6b5360c] {
+    border-top: solid 1px #ce93d8;
+  }
 
-      .text {
-        color: #fff;
-        position: relative;
+  .flip-clock__piece[data-v-b6b5360c] {
+    padding-bottom: 1.2rem;
 
-        &::before {
-          position: absolute;
-          color: #f88dbd;
-          font-size: 1.7rem;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-      }
-
-      &:nth-child(1) {
-        .text {
-          &::before {
-            content: 'Ngày';
-          }
-        }
-      }
-
-      &:nth-child(2) {
-        .text {
-          &::before {
-            content: 'Giờ';
-          }
-        }
-      }
-
-      &:nth-child(3) {
-        .text {
-          &::before {
-            content: 'Phút';
-          }
-        }
-      }
-
-      &:nth-child(4) {
-        .text {
-          &::before {
-            content: 'Giây';
-          }
-        }
-      }
+    .flip-clock__slot {
+      color: transparent;
+      position: relative;
 
       &::after {
-        display: none;
-      }
-
-      &::before {
         content: '';
+        color: #000;
+        font-size: 22px;
         position: absolute;
-        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: calc(100% + 8rem);
-        height: calc(100% + 8rem);
-        background: url('~/assets/images/love.png') no-repeat;
-        background-position: center;
-        background-size: contain;
+        transform: translateX(-50%);
       }
+    }
+
+    &:nth-child(1) {
+      .flip-clock__slot {
+        &::after {
+          content: 'Ngày';
+
+          top: 0;
+          right: 0;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .flip-clock__slot {
+        &::after {
+          content: 'Giờ';
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      .flip-clock__slot {
+        &::after {
+          content: 'Phút';
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      .flip-clock__slot {
+        &::after {
+          content: 'Giây';
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .count__down--cunstome {
+    .flip-card[data-v-b6b5360c] {
+      font-size: 5rem;
     }
   }
 }
@@ -132,24 +140,6 @@
   .wedding-getting {
     overflow: hidden;
     padding: 7rem 0 6rem;
-  }
-
-  .count-down {
-    .vuejs-countdown {
-      column-gap: 1.5rem;
-      li {
-        width: 11rem;
-
-        &::before {
-          width: calc(100% + 5rem);
-          height: calc(100% + 5rem);
-        }
-      }
-    }
-
-    .digit {
-      font-size: 2.8rem;
-    }
   }
 }
 
@@ -192,20 +182,6 @@
       }
     }
   }
-
-  .count-down {
-    .vuejs-countdown {
-      flex-wrap: wrap;
-
-      li {
-        margin-bottom: 7rem;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-    }
-  }
 }
 
 @media (max-width: 399px) {
@@ -225,16 +201,6 @@
           background-size: 15%;
           width: 168%;
           height: 100%;
-        }
-      }
-    }
-  }
-
-  .count-down {
-    .vuejs-countdown {
-      li {
-        &:last-child {
-          margin-bottom: 7rem;
         }
       }
     }

@@ -3,7 +3,7 @@ export default {
     let data = {}
 
     state.couples.data.forEach((item) => {
-      if (item.status === 1) {
+      if (parseInt(item.status, 10) === 1) {
         data = item
       }
     })
@@ -18,7 +18,7 @@ export default {
     const data = state.couples.data || []
 
     data.forEach((item) => {
-      if (item.status === 2) {
+      if (parseInt(item.status, 10) === 2) {
         Grooms = item
       } else {
         Brides = item

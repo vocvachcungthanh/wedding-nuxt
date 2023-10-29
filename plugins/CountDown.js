@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import Countdown from 'vuejs-countdown'
+import FlipCountdown from 'vue2-flip-countdown'
 
-Vue.component('CountDown', Countdown)
+Vue.component('CountDown', FlipCountdown)

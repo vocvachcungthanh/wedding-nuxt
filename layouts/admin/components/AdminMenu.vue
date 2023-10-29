@@ -31,28 +31,31 @@ export default {
       case 'admin-sliders':
         this.key = 1
         break
-      case 'admin-albums':
+      case 'admin-couples':
       case 'admin-albums-update':
         this.key = 2
         break
-      case 'admin-couples':
+      case 'admin-love-story':
         this.key = 3
         break
-      case 'admin-events':
+      case 'admin-albums':
         this.key = 4
         break
-      case 'admin-countdown':
+      case 'admin-events':
         this.key = 5
         break
-      case 'admin-music':
+      case 'admin-countdown':
         this.key = 6
         break
 
-      case 'admin-guestkbook':
+      case 'admin-music':
         this.key = 7
         break
-      case 'admin-menus':
+      case 'admin-guestkbook':
         this.key = 8
+        break
+      case 'admin-menu':
+        this.key = 9
         break
       default:
         break
