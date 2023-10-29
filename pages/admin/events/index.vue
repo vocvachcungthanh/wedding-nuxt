@@ -45,6 +45,7 @@ export default {
   },
 
   async created() {
+    await this.$store.dispatch('ACT_SET_KEY_MENU', 5)
     await this.getEvents()
   },
 

@@ -48,6 +48,7 @@ export default {
 
   async created() {
     await this.$store.dispatch('ACT_GET_LOVE_STORY')
+    await this.$store.dispatch('ACT_SET_KEY_MENU', 3)
   },
 
   methods: {

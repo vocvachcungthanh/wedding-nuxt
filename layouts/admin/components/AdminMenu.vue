@@ -16,14 +16,21 @@ export default {
 
   data() {
     return {
-      key: 1,
+      key: 0,
     }
   },
 
   computed: {
     ...mapGetters({
       menusAdmin: 'GET_LIST_MENUS_ADMIN',
+      keyMenu: 'GET_KEY_MENU',
     }),
+  },
+
+  watch: {
+    keyMenu(keyNew) {
+      return (this.key = keyNew)
+    },
   },
 
   created() {

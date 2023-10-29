@@ -33,5 +33,9 @@ export default {
   layout() {
     return 'LayoutAdmin'
   },
+
+  async created() {
+    await this.$store.dispatch('ACT_SET_KEY_MENU', 9)
+  },
 }
 </script>

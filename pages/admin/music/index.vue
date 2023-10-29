@@ -73,6 +73,8 @@ export default {
             context: error,
           })
         })
+
+      await this.$store.dispatch('ACT_SET_KEY_MENU', 7)
     },
 
     async update(params) {

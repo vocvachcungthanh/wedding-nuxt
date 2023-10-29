@@ -19,6 +19,7 @@ import { countDownStore } from '~/store/modules/countdowns'
 import { musicStore } from '~/store/modules/music'
 import { guestkbookStore } from '~/store/modules/guestkbooks'
 import { loveStoryStore } from '~/store/modules/love-story'
+import { dashboardsStore } from '~/store/modules/dashboards'
 
 const store = () =>
   // eslint-disable-next-line import/no-named-as-default-member
@@ -42,6 +43,7 @@ const store = () =>
       storeMusic: musicStore,
       storeQuestKbook: guestkbookStore,
       storeLoveStory: loveStoryStore,
+      storeDashboards: dashboardsStore,
     },
   })
 

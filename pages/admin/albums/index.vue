@@ -32,6 +32,10 @@ export default {
     }
   },
 
+  async created() {
+    await this.$store.dispatch('ACT_SET_KEY_MENU', 4)
+  },
+
   methods: {
     handleCreate() {
       this.setDataItemsAlbum({})

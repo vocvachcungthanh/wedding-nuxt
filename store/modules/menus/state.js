@@ -6,6 +6,7 @@ export default () => ({
       link: '/admin/sliders',
       name: 'Sliders',
       icon: 'sliders',
+      code: 'sliders',
     },
 
     {
@@ -13,6 +14,7 @@ export default () => ({
       link: '/admin/couples',
       name: 'Cặp đôi',
       icon: 'usergroup-add',
+      code: 'couples',
     },
 
     {
@@ -20,6 +22,7 @@ export default () => ({
       link: '/admin/love-story',
       name: 'Câu chuyện tình yêu',
       icon: 'file-word',
+      code: 'love-story',
     },
 
     {
@@ -27,6 +30,7 @@ export default () => ({
       link: '/admin/albums',
       name: 'Albums',
       icon: 'desktop',
+      code: 'albums',
     },
 
     {
@@ -34,30 +38,35 @@ export default () => ({
       link: '/admin/events',
       name: 'Sự kiện cưới',
       icon: 'gift',
+      code: 'events',
     },
     {
       key: 6,
       link: '/admin/countdown',
       name: 'Về một nhà',
       icon: 'home',
+      code: 'count-down',
     },
     {
       key: 7,
       link: '/admin/music',
       name: 'Nhạc',
       icon: 'customer-service',
+      code: 'music',
     },
     {
       key: 8,
       link: '/admin/guestkbook',
       name: 'Lời chúc',
       icon: 'edit',
+      code: 'guestkbook',
     },
     {
       key: 9,
       link: '/admin/menus',
       name: 'Menu',
       icon: 'menu-unfold',
+      code: 'menus',
     },
   ],
 })

@@ -37,5 +37,9 @@ export default {
       title: 'Về một nhà',
     }
   },
+
+  async created() {
+    await this.$store.dispatch('ACT_SET_KEY_MENU', 6)
+  },
 }
 </script>
