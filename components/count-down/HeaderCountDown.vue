@@ -25,10 +25,13 @@ export default {
   components: {
     LineHeart,
   },
+
   props: {
     dateTime: {
-      type: Object,
-      default: Object,
+      type: Date,
+      default: function () {
+        return new Date()
+      },
     },
   },
 

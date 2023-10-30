@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import '~/assets/scss/common/VueButton.scss'
-
 export default {
   name: 'VueButton',
 

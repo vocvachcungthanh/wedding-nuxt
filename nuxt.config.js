@@ -34,11 +34,6 @@ export default {
     },
 
     {
-      src: '~/plugins/CountDown.js',
-      mode: 'client',
-    },
-
-    {
       src: '~/plugins/InfiniteLoading.js',
       mode: 'client',
     },

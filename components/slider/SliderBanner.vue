@@ -11,6 +11,7 @@
     </a-carousel>
 
     <ContentSlider />
+    <AffterSlider />
   </section>
 </template>
 
@@ -18,6 +19,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import ContentSlider from './ContentSlider.vue'
+import AffterSlider from './AffterSlider.vue'
 
 export default {
   name: 'SiderBanner',
@@ -25,6 +27,7 @@ export default {
   components: {
     // VueSlickCarousel,
     ContentSlider,
+    AffterSlider,
   },
 
   computed: {

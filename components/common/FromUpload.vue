@@ -115,8 +115,6 @@
 import { PreviewAlbumForm } from './forms/index.js'
 import { MwHandle, keyGoogle } from '~/libraries/helpers'
 
-import './scss/FromUpload.scss'
-
 const intiState = {
   image: '',
   title: '',

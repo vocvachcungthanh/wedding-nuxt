@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import './scss/UploadFile.scss'
-
 export default {
   name: 'UploadFile',
 

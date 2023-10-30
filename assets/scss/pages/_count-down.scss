@@ -7,7 +7,6 @@
   position: relative;
 
   .header-count-down {
-    margin-bottom: 10rem;
     .title {
       margin-bottom: 7.2rem;
       font-size: 4rem;
@@ -49,90 +48,58 @@
   }
 }
 
-.count__down--cunstome {
-  .flip-card__top[data-v-b6b5360c],
-  .flip-card__bottom[data-v-b6b5360c],
-  .flip-card__back-bottom[data-v-b6b5360c],
-  .flip-card__back[data-v-b6b5360c]::before,
-  .flip-card__back[data-v-b6b5360c]::after {
-    background: linear-gradient(
-      to bottom,
-      rgb(244, 196, 243),
-      rgb(252, 103, 250)
+.countdown {
+  display: grid;
+  justify-content: center;
+  color: #f88dbd;
+  column-gap: 10rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(
+      0,
+      1fr
     );
-    color: #fff;
-  }
 
-  .flip-clock__slot {
-    display: none;
-  }
+  &__block {
+    text-align: center;
+    position: relative;
+    min-width: 5rem;
 
-  .flip-card__bottom[data-v-b6b5360c],
-  .flip-card__back-bottom[data-v-b6b5360c],
-  .flip-card__bottom-4digits[data-v-b6b5360c],
-  .flip-card__back-bottom-4digits[data-v-b6b5360c] {
-    border-top: solid 1px #ce93d8;
-  }
+    animation: count-heart 3s infinite;
+    animation-direction: alternate-reverse;
 
-  .flip-clock__piece[data-v-b6b5360c] {
-    padding-bottom: 1.2rem;
-
-    .flip-clock__slot {
-      color: transparent;
-      position: relative;
-
-      &::after {
-        content: '';
-        color: #000;
-        font-size: 22px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: url('~/assets/images/love.png') no-repeat;
+      background-position: center;
+      background-size: contain;
+      z-index: 5;
+      width: calc(100% + 8rem);
+      height: calc(100% + 8rem);
     }
 
-    &:nth-child(1) {
-      .flip-clock__slot {
-        &::after {
-          content: 'Ngày';
-
-          top: 0;
-          right: 0;
-        }
-      }
+    &:first-child {
+      padding-left: 0;
     }
-
-    &:nth-child(2) {
-      .flip-clock__slot {
-        &::after {
-          content: 'Giờ';
-        }
-      }
-    }
-
-    &:nth-child(3) {
-      .flip-clock__slot {
-        &::after {
-          content: 'Phút';
-        }
-      }
-    }
-
-    &:nth-child(4) {
-      .flip-clock__slot {
-        &::after {
-          content: 'Giây';
-        }
-      }
+    &:last-child {
+      padding-right: 0;
     }
   }
-}
 
-@media (min-width: 1000px) {
-  .count__down--cunstome {
-    .flip-card[data-v-b6b5360c] {
-      font-size: 5rem;
-    }
+  &__text {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  &__digit {
+    font-size: 300%;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 5px;
   }
 }
 
@@ -172,7 +139,7 @@
 
 @media (max-width: 599px) {
   .wedding-getting {
-    padding: 5rem 0;
+    padding: 5rem 0 6rem 0;
 
     .header-count-down {
       .title {
@@ -182,11 +149,23 @@
       }
     }
   }
+
+  .countdown {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    row-gap: 6rem;
+
+    &__block {
+      &::before {
+        width: calc(100% + 6rem);
+        height: calc(100% + 6rem);
+      }
+    }
+  }
 }
 
 @media (max-width: 399px) {
   .wedding-getting {
-    padding: 3rem 0;
+    padding: 3rem 0 6rem 0;
 
     .header-count-down {
       .title {

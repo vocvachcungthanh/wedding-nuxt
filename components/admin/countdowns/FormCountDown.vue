@@ -75,8 +75,6 @@
 <script>
 import moment from 'moment'
 
-import './scss/FormCountDow.scss'
-
 const intiState = {
   title: '',
   date: null,

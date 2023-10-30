@@ -1,3 +1,3 @@
-import WeddingCountDown from './WeddingCountDown.vue'
+import WeddingCountDown from './index.vue'
 
 export default WeddingCountDown
