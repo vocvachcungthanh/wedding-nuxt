@@ -1,6 +1,6 @@
 <template>
   <section v-if="sliders.length > 0" class="sidebar-banner">
-    <a-carousel autoplay>
+    <a-carousel autoplay="{10000}" effect="fade">
       <template v-for="(slider, index) in sliders">
         <div :key="index" class="slide__item">
           <div class="ration">
@@ -10,7 +10,7 @@
       </template>
     </a-carousel>
 
-    <ContentSlider />
+    <ContentSlider :title="getTitle" :date="date.date" />
     <AffterSlider />
   </section>
 </template>
@@ -25,14 +25,18 @@ export default {
   name: 'SiderBanner',
 
   components: {
-    // VueSlickCarousel,
     ContentSlider,
     AffterSlider,
   },
 
   computed: {
+    getTitle() {
+      return this.sliders[0].title || 'Hữu Thành - Thủy Tiên'
+    },
+
     ...mapGetters({
       sliders: 'GET_LIST_SLIDERS',
+      date: 'GET_COUNT_DOWN',
     }),
   },
 

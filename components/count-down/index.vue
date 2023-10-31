@@ -2,8 +2,8 @@
   <div class="container">
     <div class="wedding-getting font__dancing">
       <div class="count-down">
-        <HeaderCountDown :date-time="date" />
-        <ItemCountDown :date="date" />
+        <HeaderCountDown :date-time="dateTime" />
+        <ItemCountDown :date="getDate" />
       </div>
     </div>
   </div>
@@ -30,6 +30,10 @@ export default {
   },
 
   computed: {
+    getDate() {
+      return new Date(this.dateTime.date) || new Date(this.date)
+    },
+
     ...mapGetters({
       dateTime: 'GET_COUNT_DOWN',
     }),
@@ -37,10 +41,6 @@ export default {
 
   async created() {
     await this.$store.dispatch('ACT_GET_COUNT_DOWN')
-
-    if (this.dateTime.date) {
-      this.date = new Date(this.dateTime.date)
-    }
   },
 }
 </script>

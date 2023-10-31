@@ -28,10 +28,8 @@ export default {
 
   props: {
     dateTime: {
-      type: Date,
-      default: function () {
-        return new Date()
-      },
+      type: Object,
+      default: Object,
     },
   },
 

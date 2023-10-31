@@ -32,6 +32,8 @@
         bottom: 0;
         object-fit: cover;
         object-position: top center;
+        animation: imageScale 10s infinite;
+        animation-direction: alternate-reverse;
       }
     }
   }
