@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <section id="love-story" class="love__story">
-    <div class="container">
+    <div v-if="!isLoadding" class="container">
       <div class="love__story--header">
         <h2 class="love__story--title font__dancing">Câu chuyện tình yêu</h2>
         <p class="love__stroy--info">
@@ -32,23 +32,30 @@
         </div>
       </div>
     </div>
+    <LoveStorySkeleton v-if="isLoadding" />
   </section>
 </template>
 
 <script>
+import LoveStorySkeleton from './loveStorySkeleton.vue'
+
 export default {
   name: 'LoveStory',
+  components: { LoveStorySkeleton },
 
   data() {
     return {
       loveStory: [],
+      isLoadding: false,
     }
   },
 
   async created() {
+    this.isLoadding = true
     await this.$store.dispatch('ACT_GET_LOVE_STORY_PUBLIC').then((res) => {
       this.loveStory = res
     })
+    this.isLoadding = false
   },
 }
 </script>

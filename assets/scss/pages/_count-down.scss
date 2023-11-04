@@ -165,7 +165,7 @@
   }
 }
 
-@media (max-width: 399px) {
+@media (max-width: 500px) {
   .wedding-getting {
     padding: 3rem 0 6rem 0;
 
@@ -185,5 +185,10 @@
         }
       }
     }
+  }
+
+  .countdown {
+    column-gap: 10rem;
+    row-gap: 10rem;
   }
 }

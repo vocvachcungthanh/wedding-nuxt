@@ -1,6 +1,6 @@
 <template>
   <section id="wedding" class="wedding__event">
-    <div class="container">
+    <div v-if="!isLoading" class="container">
       <HeaderEvent :info="events.info" />
 
       <div class="wedding__event--content">
@@ -11,6 +11,7 @@
         />
       </div>
     </div>
+    <EventSkeleton v-if="isLoading" />
   </section>
 </template>
 
@@ -19,6 +20,7 @@ import { mapActions, mapGetters } from 'vuex'
 
 import HeaderEvent from './HeaderEvent.vue'
 import ItemEvent from './ItemEvent.vue'
+import EventSkeleton from './EventSkeleton.vue'
 
 export default {
   name: 'WeddingEvent',
@@ -26,6 +28,13 @@ export default {
   components: {
     HeaderEvent,
     ItemEvent,
+    EventSkeleton,
+  },
+
+  data() {
+    return {
+      isLoading: false,
+    }
   },
 
   computed: {
@@ -35,7 +44,9 @@ export default {
   },
 
   async created() {
+    this.isLoading = true
     await this.actEvent()
+    this.isLoading = false
   },
 
   methods: {

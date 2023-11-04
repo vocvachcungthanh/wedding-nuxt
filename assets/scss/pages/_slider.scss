@@ -178,15 +178,27 @@
   }
 }
 
-@media (max-width: 399px) {
+@media (max-width: 500px) {
   .sidebar-banner {
     &::before {
-      padding-top: 25vh;
+      padding-top: 36vh;
     }
 
     .slide__item {
       .ration {
-        height: 25vh;
+        height: 36vh;
+      }
+    }
+
+    .slide__content {
+      .slide__title {
+        font-size: 4rem;
+      }
+    }
+
+    .affter__slider {
+      img {
+        margin-bottom: 6px;
       }
     }
   }
