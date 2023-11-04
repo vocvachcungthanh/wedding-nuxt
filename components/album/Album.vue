@@ -11,13 +11,18 @@
             @click.native="() => handleShow(item)"
           />
         </div>
+
         <ShowImage
           v-if="isShow"
           :data-item="dataItem"
           @toggleShow="handleClone"
         />
         <infinite-loading v-if="isLoading" @infinite="loadingAlbum">
-          <div slot="spinner"><a-spin /></div>
+          <div slot="spinner">
+            <div class="gallery">
+              <SkeletonAlbum v-for="(_item, index) in 4" :key="index" />
+            </div>
+          </div>
         </infinite-loading>
       </div>
     </div>
@@ -30,6 +35,7 @@ import { mapGetters } from 'vuex'
 import HeaderAlbum from './HeaderAlbum.vue'
 import ItemsAlbum from './ItemsAlbum.vue'
 import ShowImage from './ShowImage.vue'
+import SkeletonAlbum from './SkeletonAlbum.vue'
 
 export default {
   name: 'AlbumGallery',
@@ -38,6 +44,7 @@ export default {
     HeaderAlbum,
     ItemsAlbum,
     ShowImage,
+    SkeletonAlbum,
   },
 
   data() {
@@ -60,8 +67,8 @@ export default {
   },
 
   methods: {
-    loadingAlbum($state) {
-      this.$store
+    async loadingAlbum($state) {
+      await this.$store
         .dispatch('ACT_GET_ALBUMS', this.initPage)
         .then((response) => {
           if (response.current_page < response.last_page) {

@@ -1,6 +1,6 @@
 <template>
   <div id="couple" class="couple" :style="bgCouples">
-    <div class="container">
+    <div v-if="!isLoadding" class="container">
       <div class="couple-content">
         <HeaderCouple />
         <div class="couple__box">
@@ -24,6 +24,8 @@
         </div>
       </div>
     </div>
+
+    <CoupleSkeleton v-if="isLoadding" />
   </div>
 </template>
 
@@ -32,6 +34,7 @@ import { mapActions, mapGetters } from 'vuex'
 
 import HeaderCouple from './HeaderCouple.vue'
 import CoupleItem from './CoupleItem.vue'
+import CoupleSkeleton from './CoupleSkeleton.vue'
 
 export default {
   name: 'CoupleGroup',
@@ -39,6 +42,13 @@ export default {
   components: {
     CoupleItem,
     HeaderCouple,
+    CoupleSkeleton,
+  },
+
+  data() {
+    return {
+      isLoadding: false,
+    }
   },
 
   computed: {
@@ -60,7 +70,9 @@ export default {
   },
 
   async created() {
+    this.isLoadding = true
     await this.actGetCouples()
+    this.isLoadding = false
   },
 
   methods: {

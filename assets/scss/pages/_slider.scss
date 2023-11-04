@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     right: 0;
-    padding-top: 83vh;
+    padding-top: 90vh;
     background: radial-gradient(circle at center, transparent, #00000053);
     z-index: 2;
   }
@@ -16,7 +16,7 @@
   .slide__item {
     .ration {
       width: 100%;
-      height: 83vh;
+      height: 90vh;
       position: relative;
       overflow: hidden;
       z-index: 4;
@@ -46,10 +46,19 @@
     right: 0;
     z-index: 5;
 
+    .slider__header {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
     .slide__title {
       color: #fff;
       text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.6);
       font-size: 6rem;
+      display: inline-flex;
+      gap: 3rem;
+      align-items: center;
 
       .icon__heart {
         color: #f88b8b;
@@ -63,7 +72,7 @@
 
     .date {
       color: #fff;
-      margin: 5rem 0;
+      margin: 2rem 0;
       display: inline-flex;
       font-size: 2rem;
       justify-content: center;

@@ -31,17 +31,13 @@ export default {
   },
 
   props: {
-    date: {
-      type: Date,
-      default: function () {
-        return new Date()
-      },
-    },
+    // eslint-disable-next-line vue/require-default-prop
+    date: null,
   },
 
   data() {
     return {
-      now: Math.trunc(new Date().getTime() / 1000),
+      now: Math.trunc(new Date(this.date).getTime() / 1000),
       event: this.date,
       finish: false,
     }

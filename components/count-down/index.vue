@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <div class="wedding-getting font__dancing">
-      <div class="count-down">
+      <div v-if="!isLoading" class="count-down">
         <HeaderCountDown :date-time="dateTime" />
         <ItemCountDown :date="getDate" />
       </div>
+
+      <CountDownSkeleton v-if="isLoading" />
     </div>
   </div>
 </template>
@@ -14,6 +16,7 @@ import { mapGetters } from 'vuex'
 
 import HeaderCountDown from './HeaderCountDown.vue'
 import ItemCountDown from './ItemCountDown.vue'
+import CountDownSkeleton from './CountDownSkeleton.vue'
 
 export default {
   name: 'CountDown',
@@ -21,17 +24,19 @@ export default {
   components: {
     HeaderCountDown,
     ItemCountDown,
+    CountDownSkeleton,
   },
 
   data() {
     return {
-      date: new Date('2023-12-03'),
+      date: new Date('2023-12-02'),
+      isLoading: false,
     }
   },
 
   computed: {
     getDate() {
-      return new Date(this.dateTime.date) || new Date(this.date)
+      return this.dateTime.date || '2023-12-02'
     },
 
     ...mapGetters({
@@ -40,7 +45,9 @@ export default {
   },
 
   async created() {
+    this.isLoading = true
     await this.$store.dispatch('ACT_GET_COUNT_DOWN')
+    this.isLoading = false
   },
 }
 </script>

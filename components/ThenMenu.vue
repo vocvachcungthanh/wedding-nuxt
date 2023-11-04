@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
   <div class="menu">
     <div class="container">
@@ -12,6 +13,11 @@
             {{ menu.name }}
           </NuxtLink>
         </li>
+        <ThemMenuSkeleton
+          v-for="(_item, index) in 6"
+          v-if="isLoading"
+          :key="index"
+        />
       </ul>
     </div>
   </div>
@@ -20,31 +26,34 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import ThemMenuSkeleton from './ThemMenuSkeleton.vue'
+
 export default {
+  components: { ThemMenuSkeleton },
+
   data() {
     return {
       menus: [],
-
       title: 'Hữu Thành - Thủy Tiên',
+      isLoading: true,
     }
   },
-
   head() {
     return {
       title: this.title,
     }
   },
-
   // this.$route.name
-
   computed: {
     ...mapGetters({
       getMenuList: 'GET_LIST_MENUS',
     }),
   },
 
-  created: function () {
-    this.actGetMenus()
+  async created() {
+    this.isLoading = true
+    await this.actGetMenus()
+    this.isLoading = false
   },
 
   mounted() {
@@ -62,10 +71,8 @@ export default {
 
     handleScroll() {
       const windowHeight = window.innerHeight
-
       for (const menu of this.getMenuList) {
         const element = document.getElementById(menu.link)
-
         if (element) {
           const rect = element.getBoundingClientRect()
           if (rect.top >= 0 && rect.top < windowHeight) {
@@ -75,7 +82,6 @@ export default {
         }
       }
     },
-
     ...mapActions({
       actGetMenus: 'ACT_GET_MENUS',
     }),

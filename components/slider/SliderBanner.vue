@@ -1,17 +1,19 @@
 <template>
-  <section v-if="sliders.length > 0" class="sidebar-banner">
-    <a-carousel autoplay="{10000}" effect="fade">
-      <template v-for="(slider, index) in sliders">
-        <div :key="index" class="slide__item">
+  <section class="sidebar-banner">
+    <template v-if="sliders.length > 0">
+      <a-carousel autoplay effect="fade" autoplay-speed="10000">
+        <div v-for="slider in sliders" :key="slider.id" class="slide__item">
           <div class="ration">
             <img class="ration__link" :src="slider.image" :alt="slider.title" />
           </div>
         </div>
-      </template>
-    </a-carousel>
+      </a-carousel>
 
-    <ContentSlider :title="getTitle" :date="date.date" />
-    <AffterSlider />
+      <ContentSlider :title="getTitle" :date="date.date" />
+      <AffterSlider />
+    </template>
+
+    <SliderSkeleton v-if="isLoading" />
   </section>
 </template>
 
@@ -20,6 +22,7 @@ import { mapActions, mapGetters } from 'vuex'
 
 import ContentSlider from './ContentSlider.vue'
 import AffterSlider from './AffterSlider.vue'
+import SliderSkeleton from './SliderSkeleton.vue'
 
 export default {
   name: 'SiderBanner',
@@ -27,6 +30,13 @@ export default {
   components: {
     ContentSlider,
     AffterSlider,
+    SliderSkeleton,
+  },
+
+  data() {
+    return {
+      isLoading: true,
+    }
   },
 
   computed: {
@@ -41,7 +51,9 @@ export default {
   },
 
   async created() {
+    this.isLoading = true
     await this.actGetSlider()
+    this.isLoading = false
   },
 
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <div class="slide__content">
     <div class="container">
-      <div class="text-center">
+      <div class="slider__header">
         <h2 class="slide__title font__dancing">
           <small>{{ getRoom }} </small>
           <span class="icon__heart">
