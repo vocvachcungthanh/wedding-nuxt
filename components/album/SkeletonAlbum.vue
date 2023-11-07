@@ -1,9 +1,6 @@
 <template>
   <div class="gallery__item">
-    <LoadingSkeleton
-      class-name="gallery__img"
-      :style-name="{ height: '470px' }"
-    />
+    <LoadingSkeleton class-name="gallery__img skeleton__item--gallery" />
   </div>
 </template>
 
@@ -16,3 +13,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.skeleton__item--gallery {
+  height: 470px;
+}
+</style>

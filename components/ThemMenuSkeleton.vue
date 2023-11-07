@@ -1,9 +1,6 @@
 <template>
   <li class="menu__list">
-    <LoadingSkeleton
-      class-name="menu__link"
-      :style-name="{ height: '20px', width: '100px', margin: '10px 5px' }"
-    />
+    <LoadingSkeleton class-name="menu__link skeleton-menu__link" />
   </li>
 </template>
 
@@ -16,3 +13,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.skeleton-menu__link {
+  width: 100px;
+  margin: 10px 5px;
+  height: 20px;
+}
+</style>

@@ -10,17 +10,17 @@
       <div class="container">
         <div class="slider__header">
           <h2 class="slide__title font__dancing tex-center">
-            <LoadingSkeleton :style-name="styleName" />
+            <LoadingSkeleton class-name="skeleton-slider__name" />
             <span class="icon__heart">
               <font-awesome-icon icon="fa-solid fa-heart-pulse" />
             </span>
             <small>
-              <LoadingSkeleton :style-name="styleName" />
+              <LoadingSkeleton class-name="skeleton-slider__name" />
             </small>
           </h2>
 
           <span class="date">
-            <LoadingSkeleton :style-name="styleDate" />
+            <LoadingSkeleton class-name="skeleton-slider__date" />
           </span>
         </div>
       </div>
@@ -35,25 +35,25 @@ export default {
   components: {
     LoadingSkeleton,
   },
-
-  data() {
-    return {
-      styleName: {
-        width: '100px',
-        height: '10px',
-        borderRadius: '999px',
-        margin: 'auto',
-        border: '1px solid',
-      },
-
-      styleDate: {
-        width: '50px',
-        height: '10px',
-        margin: 'auto',
-        borderRadius: '999px',
-        border: '1px solid',
-      },
-    }
-  },
 }
 </script>
+
+<style lang="scss">
+.skeleton-slider {
+  &__name,
+  &__date {
+    height: 10px;
+    margin: auto;
+    border-radius: 999px;
+    border: 1px solid;
+  }
+
+  &__name {
+    width: 100%;
+  }
+
+  &__date {
+    width: 50px;
+  }
+}
+</style>

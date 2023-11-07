@@ -2,17 +2,17 @@
   <div class="count-dow">
     <div class="header-count-down">
       <h2 class="title">
-        <LoadingSkeleton :style-name="styleTitle" />
+        <LoadingSkeleton class-name="skeleton-count-down__title" />
       </h2>
 
       <div class="page-w">
         <h3>
-          <LoadingSkeleton :style-name="styleDate" />
+          <LoadingSkeleton class-name="skeleton-count-down__date" />
         </h3>
         <LineHeart />
 
         <p class="info">
-          <LoadingSkeleton :style-name="styleInfo" />
+          <LoadingSkeleton class-name="skeleton-count-down__info" />
         </p>
       </div>
     </div>
@@ -32,35 +32,6 @@ import LoadingSkeleton from '~/components/common/LoadingSkeleton.vue'
 export default {
   components: {
     LoadingSkeleton,
-  },
-
-  data() {
-    return {
-      styleTitle: {
-        width: '300px',
-        height: '30px',
-        borderRadius: '999px',
-        margin: 'auto',
-        border: '1px solid #ccc',
-      },
-
-      styleDate: {
-        width: '200px',
-
-        height: '25px',
-        borderRadius: '999px',
-        margin: 'auto',
-        border: '1px solid #ccc',
-      },
-
-      styleInfo: {
-        width: '500px',
-        height: '10px',
-        borderRadius: '999px',
-        margin: '10px auto',
-        border: '1px solid #ccc',
-      },
-    }
   },
 }
 </script>
@@ -83,6 +54,31 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: 10px;
+  }
+}
+
+.skeleton-count-down {
+  &__title,
+  &__date,
+  &__info {
+    border-radius: 999px;
+    margin: auto;
+    border: 1px solid #ccc;
+  }
+
+  &__title {
+    width: 300px;
+    height: 30px;
+  }
+
+  &__date {
+    width: 200px;
+    height: 25px;
+  }
+
+  &__info {
+    width: 500px;
+    height: 10px;
   }
 }
 </style>

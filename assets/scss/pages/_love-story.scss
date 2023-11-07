@@ -20,14 +20,16 @@
 .love__story--content {
   max-width: 945px;
   margin: auto;
+  margin-bottom: 2rem;
 
   .love__group {
     position: relative;
-    box-shadow: 0px 0px 12px 8px #dedede;
-    border-radius: 5px;
+
+    border-radius: 20px;
     overflow: hidden;
     padding: 3rem 0;
     background-color: #fff;
+    border: 1px #ed0d01;
 
     &::before,
     &::after {
@@ -41,20 +43,25 @@
       top: 50%;
       transform: translate(-50%, -50%);
       width: 3px;
-      height: calc(100% - 6rem);
-      background-color: #1d561c;
+      animation: hearH 5s infinite;
+      animation-delay: 1s;
+      animation-duration: alternate-reverse;
+      background-color: #ed0d01;
     }
 
     &::after {
-      bottom: 2rem;
+      bottom: 1.5rem;
       left: 50%;
-      transform: translateX(-50%);
-      width: 2rem;
-      height: 2rem;
-      background-color: #fff;
-      border: 2px solid #1d561c;
+
+      width: 5rem;
+      height: 5rem;
+      z-index: 1;
+      background: url('~/assets/images/hear.png') no-repeat;
+      object-position: center;
+
+      background-size: contain;
       border-radius: 50%;
-      animation: notbg 1s infinite;
+      animation: hear 5s infinite;
       animation-direction: alternate-reverse;
     }
 
@@ -67,46 +74,35 @@
       .love__group--avatar {
         position: relative;
         overflow: hidden;
-        padding-top: 45.69%;
-        background-color: #000;
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        max-width: calc(50% - 4rem);
+        width: 100%;
+        margin: auto;
+        border: 1px solid #ed0d01;
 
         .love__image {
-          position: absolute;
-          top: 0;
-          right: 0;
-          left: 0;
-          bottom: 0;
-          object-fit: cover;
-          object-position: center;
           width: 100%;
+          border-radius: 1.5rem;
         }
       }
 
       &::before {
         content: '';
         position: absolute;
-        top: -1rem;
+        top: -25px;
         left: 50%;
         transform: translateX(-50%);
-        width: 2rem;
-        height: 2rem;
+        width: 5rem;
+        height: 5rem;
         z-index: 1;
-        background-color: #fff;
-        border: 2px solid #1d561c;
-        border-radius: 50%;
-        animation: notbg 1s infinite;
-        animation-direction: alternate-reverse;
-      }
+        background: url('~/assets/images/hear.png') no-repeat;
+        object-position: center;
 
-      &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%) rotate(60deg);
-        border: 1px #0b310a dotted;
-        width: 2px;
-        height: 200px;
-        top: -10rem;
+        background-size: contain;
+        border-radius: 50%;
+        animation: hear 5s infinite;
+        animation-direction: alternate-reverse;
       }
 
       .love__group--header {
@@ -115,41 +111,29 @@
 
       .love__group--context {
         text-align: justify;
+        padding: 2rem;
       }
 
       &:nth-child(odd) {
-        &::after {
-          transform: translateX(-50%) rotate(300deg);
-        }
-
         .love__group--header {
           text-align: right;
-        }
-
-        .love__group--context {
-          padding: 1.5rem 0rem 1.5rem 1.5rem;
-        }
-
-        .love__group--avatar {
-          margin-left: 10rem;
         }
       }
 
       &:nth-child(even) {
         .love__group--context {
-          padding: 1.5rem 1.5rem 1.5rem 0rem;
           order: 2;
         }
 
         .love__group--avatar {
-          margin-right: 10rem;
           order: 1;
         }
       }
 
       &:first-child {
+        border-top: 0;
         &::before {
-          background-color: #1d561c;
+          top: -15px;
         }
 
         &::after {
@@ -166,6 +150,8 @@
       font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1.2rem;
+      color: #ed0d01;
+      text-transform: uppercase;
     }
 
     &--context,
@@ -175,10 +161,10 @@
       width: 50%;
     }
 
-    .lover {
+    .love {
       &__time {
         font-size: 1.8rem;
-        color: #133615;
+        color: #ed0d01;
         font-weight: bold;
       }
     }
@@ -215,18 +201,6 @@
 
     &--content {
       .love__group--item {
-        &:nth-child(odd) {
-          .love__group--avatar {
-            margin-left: 5rem;
-          }
-        }
-
-        &:nth-child(even) {
-          .love__group--avatar {
-            margin-right: 5rem;
-          }
-        }
-
         &::after {
           transform: translateX(-50%) rotate(42deg);
         }
@@ -255,25 +229,13 @@
           &::after {
             display: none;
           }
-
-          &:nth-child(odd) {
-            .love__group--avatar {
-              margin-left: 1.5rem;
-            }
-          }
-
-          &:nth-child(even) {
-            .love__group--avatar {
-              margin-right: 1.5rem;
-            }
-          }
         }
       }
     }
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 688px) {
   .love__story {
     &--content {
       .love__group {
@@ -284,6 +246,7 @@
         &--item {
           flex-direction: column;
           margin-bottom: 2rem;
+          border-radius: 1.5rem;
 
           &:last-child {
             margin-bottom: 0;
@@ -296,7 +259,6 @@
               }
 
               &--context {
-                padding: 1.5rem;
                 order: 2;
               }
 
@@ -306,17 +268,10 @@
             }
           }
 
-          &:nth-child(even) {
-            .love__group {
-              &--context {
-                padding: 1.5rem;
-              }
-            }
-          }
-
           .love__group--avatar {
             width: 100%;
             padding: unset;
+            max-width: 100%;
 
             .love__image {
               position: relative;
@@ -326,6 +281,10 @@
 
         &--context {
           width: 100%;
+        }
+
+        &--title {
+          font-size: 2.4rem;
         }
       }
     }
