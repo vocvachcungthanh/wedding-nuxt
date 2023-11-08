@@ -1,7 +1,7 @@
 <template>
   <section class="sidebar-banner">
     <template v-if="sliders.length > 0">
-      <a-carousel autoplay effect="fade" autoplay-speed="10000">
+      <a-carousel autoplay effect="fade" :autoplay-speed="10000">
         <div v-for="slider in sliders" :key="slider.id" class="slide__item">
           <div class="ration">
             <img class="ration__link" :src="slider.image" :alt="slider.title" />

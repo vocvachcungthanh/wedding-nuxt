@@ -1,11 +1,14 @@
 <template>
   <section class="page__admin">
-    <a-row :gutter="[30, 30]">
+    <a-row :gutter="[15, 15]">
       <a-col
         v-for="_item in dashboard"
         :key="_item.key"
         class="dashboard"
-        :span="6"
+        :xxl="{ span: 6 }"
+        :xl="{ span: 8 }"
+        :lg="{ span: 12 }"
+        :md="{ span: 12 }"
       >
         <nuxt-link class="dashboard__box" :to="_item.link">
           <div class="dashboard__box--icon">

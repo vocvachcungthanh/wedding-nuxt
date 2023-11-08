@@ -51,8 +51,8 @@ export default {
 <style lang="scss">
 .link__map {
   position: relative;
-  width: 100px;
-  height: 35px;
+  min-height: 3.8rem;
+  min-width: 120px;
 }
 .skeleton__event {
   &--title,
@@ -91,6 +91,7 @@ export default {
 
   &--map {
     width: 100%;
+
     height: 100%;
     position: absolute;
     top: 0;

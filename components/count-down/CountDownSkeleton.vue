@@ -9,7 +9,6 @@
         <h3>
           <LoadingSkeleton class-name="skeleton-count-down__date" />
         </h3>
-        <LineHeart />
 
         <p class="info">
           <LoadingSkeleton class-name="skeleton-count-down__info" />
