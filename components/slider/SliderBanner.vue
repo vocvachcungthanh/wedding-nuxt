@@ -39,6 +39,40 @@ export default {
     }
   },
 
+  head() {
+    const metaImage = this.sliders[0].image
+
+    return {
+      meta: [
+        {
+          property: 'og:image',
+          content: metaImage,
+        },
+
+        {
+          property: 'og:image:url',
+          content: metaImage,
+        },
+
+        {
+          property: 'og:image:secure_url',
+          content: metaImage,
+        },
+
+        {
+          property: 'twitter:image:src',
+          content: metaImage,
+        },
+
+        {
+          itemprop: 'image',
+          content: metaImage,
+        },
+        // Thêm các thẻ meta khác nếu cần
+      ],
+    }
+  },
+
   computed: {
     getTitle() {
       return this.sliders[0].title || 'Hữu Thành - Thủy Tiên'

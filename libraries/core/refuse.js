@@ -102,9 +102,8 @@ export class Refuse {
           }
 
           if (status === 403) {
-            MwAuth.handleWarning({
-              context: 'Phiên làm việc đã hết hạng, đề nghị đăng nhập lại',
-            })
+            window.alert('Phiên làm việc đã hết hạn , đề nghị đăng nhập lại')
+
             auth.logout()
             window.location.reload()
           }
