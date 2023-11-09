@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 import {
   SliderBanner,
   Album,
@@ -21,10 +23,10 @@ import {
   WeddingEvent,
   Guestbook,
   Music,
-} from '~/components'
+} from "~/components";
 
 export default {
-  name: 'HomePage',
+  name: "HomePage",
 
   components: {
     SliderBanner,
@@ -38,7 +40,19 @@ export default {
   },
 
   layout(context) {
-    return context.isMobile ? 'LayoutMobile' : 'default'
+    return context.isMobile ? "LayoutMobile" : "default";
   },
-}
+
+  head() {
+    return {
+      meta: this.metas,
+    };
+  },
+
+  computed: {
+    ...mapState({
+      metas: (state) => state.meta,
+    }),
+  },
+};
 </script>

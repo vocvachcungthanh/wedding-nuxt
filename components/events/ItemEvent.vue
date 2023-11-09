@@ -34,38 +34,38 @@ export default {
     },
   },
 
-  head() {
-    const metaImage = this.dataItem.image
+  created() {
+    const metaImage = this.dataItem?.image;
 
-    return {
-      meta: [
-        {
-          property: 'og:image',
-          content: metaImage,
-        },
+    const meta = [
+      {
+        property: "og:image",
+        content: metaImage,
+      },
 
-        {
-          property: 'og:image:url',
-          content: metaImage,
-        },
+      {
+        property: "og:image:url",
+        content: metaImage,
+      },
 
-        {
-          property: 'og:image:secure_url',
-          content: metaImage,
-        },
+      {
+        property: "og:image:secure_url",
+        content: metaImage,
+      },
 
-        {
-          property: 'twitter:image:src',
-          content: metaImage,
-        },
+      {
+        property: "twitter:image:src",
+        content: metaImage,
+      },
 
-        {
-          itemprop: 'image',
-          content: metaImage,
-        },
-        // Thêm các thẻ meta khác nếu cần
-      ],
-    }
+      {
+        itemprop: "image",
+        content: metaImage,
+      },
+      // Thêm các thẻ meta khác nếu cần
+    ];
+
+    this.$store.dispatch("ACT_SET_META", meta);
   },
-}
+};
 </script>

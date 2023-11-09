@@ -30,14 +30,14 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from "vuex";
 
-import HeaderCouple from './HeaderCouple.vue'
-import CoupleItem from './CoupleItem.vue'
-import CoupleSkeleton from './CoupleSkeleton.vue'
+import HeaderCouple from "./HeaderCouple.vue";
+import CoupleItem from "./CoupleItem.vue";
+import CoupleSkeleton from "./CoupleSkeleton.vue";
 
 export default {
-  name: 'CoupleGroup',
+  name: "CoupleGroup",
 
   components: {
     CoupleItem,
@@ -48,71 +48,69 @@ export default {
   data() {
     return {
       isLoadding: false,
-    }
-  },
-
-  head() {
-    const metaImage = this.grooms.avatar
-
-    return {
-      meta: [
-        {
-          property: 'og:image',
-          content: metaImage,
-        },
-
-        {
-          property: 'og:image:url',
-          content: metaImage,
-        },
-
-        {
-          property: 'og:image:secure_url',
-          content: metaImage,
-        },
-
-        {
-          property: 'twitter:image:src',
-          content: metaImage,
-        },
-
-        {
-          itemprop: 'image',
-          content: metaImage,
-        },
-        // Thêm các thẻ meta khác nếu cần
-      ],
-    }
+    };
   },
 
   computed: {
     grooms() {
-      return this.getCouples.Grooms || {}
+      return this.getCouples.Grooms || {};
     },
 
     brides() {
-      return this.getCouples.Brides || {}
+      return this.getCouples.Brides || {};
     },
 
     bgCouples() {
-      return `background-image:url(${this.getCouples.BgCouple.bg})`
+      return `background-image:url(${this.getCouples.BgCouple.bg})`;
     },
 
     ...mapGetters({
-      getCouples: 'GET_COUPLES',
+      getCouples: "GET_COUPLES",
     }),
   },
 
   async created() {
-    this.isLoadding = true
-    await this.actGetCouples()
-    this.isLoadding = false
+    this.isLoadding = true;
+    await this.actGetCouples();
+    this.isLoadding = false;
+
+    const metaImage = this.grooms?.avatar;
+
+    const meta = [
+      {
+        property: "og:image",
+        content: metaImage,
+      },
+
+      {
+        property: "og:image:url",
+        content: metaImage,
+      },
+
+      {
+        property: "og:image:secure_url",
+        content: metaImage,
+      },
+
+      {
+        property: "twitter:image:src",
+        content: metaImage,
+      },
+
+      {
+        itemprop: "image",
+        content: metaImage,
+      },
+      // Thêm các thẻ meta khác nếu cần
+    ];
+
+    this.$store.dispatch("ACT_SET_META", meta);
   },
 
   methods: {
     ...mapActions({
-      actGetCouples: 'ACT_GET_LIST_COUPLES',
+      actGetCouples: "ACT_GET_LIST_COUPLES",
     }),
   },
-}
+};
 </script>

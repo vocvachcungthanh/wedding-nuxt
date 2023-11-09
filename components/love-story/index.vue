@@ -37,59 +37,57 @@
 </template>
 
 <script>
-import LoveStorySkeleton from './loveStorySkeleton.vue'
+import LoveStorySkeleton from "./loveStorySkeleton.vue";
 
 export default {
-  name: 'LoveStory',
+  name: "LoveStory",
   components: { LoveStorySkeleton },
 
   data() {
     return {
       loveStory: [],
       isLoadding: false,
-    }
-  },
-
-  head() {
-    const metaImage = this.loveStory[0].avatar
-
-    return {
-      meta: [
-        {
-          property: 'og:image',
-          content: metaImage,
-        },
-
-        {
-          property: 'og:image:url',
-          content: metaImage,
-        },
-
-        {
-          property: 'og:image:secure_url',
-          content: metaImage,
-        },
-
-        {
-          property: 'twitter:image:src',
-          content: metaImage,
-        },
-
-        {
-          itemprop: 'image',
-          content: metaImage,
-        },
-        // Thêm các thẻ meta khác nếu cần
-      ],
-    }
+    };
   },
 
   async created() {
-    this.isLoadding = true
-    await this.$store.dispatch('ACT_GET_LOVE_STORY_PUBLIC').then((res) => {
-      this.loveStory = res
-    })
-    this.isLoadding = false
+    this.isLoadding = true;
+    await this.$store.dispatch("ACT_GET_LOVE_STORY_PUBLIC").then((res) => {
+      this.loveStory = res;
+    });
+    this.isLoadding = false;
+
+    const metaImage = this.loveStory[0]?.avatar;
+
+    const meta = [
+      {
+        property: "og:image",
+        content: metaImage,
+      },
+
+      {
+        property: "og:image:url",
+        content: metaImage,
+      },
+
+      {
+        property: "og:image:secure_url",
+        content: metaImage,
+      },
+
+      {
+        property: "twitter:image:src",
+        content: metaImage,
+      },
+
+      {
+        itemprop: "image",
+        content: metaImage,
+      },
+      // Thêm các thẻ meta khác nếu cần
+    ];
+
+    this.$store.dispatch("ACT_SET_META", meta);
   },
-}
+};
 </script>
