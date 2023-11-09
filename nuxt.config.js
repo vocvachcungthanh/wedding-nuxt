@@ -14,7 +14,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "web đám cưới hữu thành thỷ tiên",
+        content: "website Hữu Thành & Thủy Tiên",
       },
       { name: "format-detection", content: "telephone=no" },
 

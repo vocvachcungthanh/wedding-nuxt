@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 import {
   SliderBanner,
   Album,
@@ -41,18 +39,6 @@ export default {
 
   layout(context) {
     return context.isMobile ? "LayoutMobile" : "default";
-  },
-
-  head() {
-    return {
-      meta: this.metas,
-    };
-  },
-
-  computed: {
-    ...mapState({
-      metas: (state) => state.meta,
-    }),
   },
 };
 </script>
