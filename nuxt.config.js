@@ -35,6 +35,23 @@ export default {
         content:
           "Hữu thành, thủy tiên, ablum, câu chuyện tình yêu, huuthanh thuytien,",
       },
+      {
+        property: "og:image:type",
+        content: "image/png",
+      },
+      {
+        property: "og:image:width",
+        content: "436",
+      },
+      {
+        property: "og:image:height",
+        content: "228",
+      },
+
+      {
+        property: "og:image",
+        content: "https://huuthanh-thuytien.click/3.png",
+      },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },

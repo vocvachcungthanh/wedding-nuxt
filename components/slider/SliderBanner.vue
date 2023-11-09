@@ -54,37 +54,6 @@ export default {
     this.isLoading = true;
     await this.actGetSlider();
     this.isLoading = false;
-    const metaImage = this.sliders[0]?.image;
-
-    const meta = [
-      {
-        property: "og:image",
-        content: metaImage,
-      },
-
-      {
-        property: "og:image:url",
-        content: metaImage,
-      },
-
-      {
-        property: "og:image:secure_url",
-        content: metaImage,
-      },
-
-      {
-        property: "twitter:image:src",
-        content: metaImage,
-      },
-
-      {
-        itemprop: "image",
-        content: metaImage,
-      },
-      // Thêm các thẻ meta khác nếu cần
-    ];
-
-    this.$store.dispatch("ACT_SET_META", meta);
   },
 
   methods: {
