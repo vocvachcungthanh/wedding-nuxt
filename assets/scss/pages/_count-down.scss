@@ -17,12 +17,12 @@
       text-align: center;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: url('~/assets/images/bg_name_c.png') no-repeat;
+        background: url("~/assets/images/bg_name_c.png") no-repeat;
         background-size: contain;
         background-position: center;
         width: calc(100% + 4rem);
@@ -69,14 +69,14 @@
     animation-direction: alternate-reverse;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
       height: 100%;
-      background: url('~/assets/images/love.png') no-repeat;
+      background: url("~/assets/images/love.png") no-repeat;
       background-position: center;
       background-size: contain;
       z-index: 5;
@@ -145,9 +145,16 @@
 
     .header-count-down {
       .title {
+        font-size: 3.1rem;
         &::before {
           width: 93%;
         }
+      }
+    }
+
+    .page-w {
+      h3 {
+        font-size: 2.5rem;
       }
     }
   }
@@ -155,40 +162,17 @@
   .countdown {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     row-gap: 6rem;
+    column-gap: 3rem;
 
     &__block {
       &::before {
-        width: calc(100% + 6rem);
-        height: calc(100% + 6rem);
+        width: calc(60% + 6rem);
+        height: calc(60% + 6rem);
       }
     }
-  }
-}
 
-@media (max-width: 500px) {
-  .wedding-getting {
-    padding: 3rem 0 6rem 0;
-
-    .header-count-down {
-      .title {
-        font-size: 3.5rem;
-        padding: 0 17px;
-        line-height: 5rem;
-
-        &::before {
-          top: 0%;
-          left: 90%;
-          transform: translate(-50%, -50%) rotate(45deg);
-          background-size: 15%;
-          width: 168%;
-          height: 100%;
-        }
-      }
+    &__digit {
+      font-size: 3.5rem;
     }
-  }
-
-  .countdown {
-    column-gap: 10rem;
-    row-gap: 10rem;
   }
 }

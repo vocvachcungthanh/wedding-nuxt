@@ -7,7 +7,7 @@
   padding: 7rem 0 12rem;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -105,14 +105,14 @@
           }
 
           &::before {
-            content: '';
+            content: "";
             position: absolute;
             width: calc(100% + 25px);
             height: calc(100% + 25px);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: url('~/assets/images/bg_couple.png');
+            background: url("~/assets/images/bg_couple.png");
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -297,38 +297,27 @@
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 688px) {
   .couple {
-    .couple-content {
-      .couple__box {
-        column-gap: 1.5rem;
-
-        .couple__item {
-          .couple__avatar {
-            width: 150px;
-            height: 150px;
-          }
-        }
-
-        .icon__couple {
-          font-size: 4rem;
-          margin-top: 0;
-        }
-      }
-    }
+    padding: 3rem 0 0px 0px;
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 599px) {
   .couple {
     .couple-content {
       .couple__box {
         flex-direction: column;
         max-width: 100%;
         align-items: center;
+        padding-left: 0;
+        padding-right: 0;
 
         .couple__item {
+          max-width: 100%;
+
           .couple__desc {
+            max-width: 100%;
             transform: translateX(0px) translateY(-50px);
             padding-top: 7rem;
 
@@ -336,10 +325,25 @@
               max-height: unset;
             }
           }
+
+          .couple__avatar {
+            width: 250px;
+            height: 250px;
+          }
         }
 
         .icon__couple {
-          margin-bottom: 4rem;
+          margin: 0 0 4rem 0;
+
+          & + .couple__item {
+            .couple__desc {
+              order: 2;
+              transform: translateX(0px) translateY(-60px);
+              margin-left: 0px;
+              margin-right: 0px;
+              padding: 80px 1.5rem 1.5rem 1.5rem;
+            }
+          }
         }
       }
     }

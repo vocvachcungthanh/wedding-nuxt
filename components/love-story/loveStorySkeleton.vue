@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="love__group--avatar">
-            <LoadingSkeleton class-name="love__image" />
+            <LoadingSkeleton class-name="love__image skeletion__love--image" />
           </div>
         </div>
       </div>
@@ -43,13 +43,13 @@
 </template>
 
 <script>
-import LoadingSkeleton from '~/components/common/LoadingSkeleton.vue'
+import LoadingSkeleton from "~/components/common/LoadingSkeleton.vue";
 
 export default {
   components: {
     LoadingSkeleton,
   },
-}
+};
 </script>
 
 <style lang="scss">
@@ -86,7 +86,7 @@ export default {
     margin-bottom: 10px;
   }
 
-  .love__image {
+  .skeletion__love--image {
     max-width: 400px;
     width: 100%;
     max-height: 400px;
@@ -96,7 +96,10 @@ export default {
 }
 
 @media (max-width: 500px) {
-  .love__story--content .love__group--item .love__group--avatar .love__image {
+  .love__story--content
+    .love__group--item
+    .love__group--avatar
+    .skeletion__love--image {
     min-height: 400px;
   }
 }
