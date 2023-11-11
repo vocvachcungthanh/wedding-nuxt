@@ -20,19 +20,19 @@
         {{ item.desc }}
       </p>
 
-      <ReplyToGuestkbook v-if="item.toggle" />
+      <ReplyToGuestkbook v-if="item.toggle" :data-item="item" />
     </a-comment>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import Vue from "vue";
+import { mapGetters } from "vuex";
 
-import ReplyToGuestkbook from './ReplyToGuestkbook.vue'
+import ReplyToGuestkbook from "./ReplyToGuestkbook.vue";
 
 export default {
-  name: 'CommentGuestkbook',
+  name: "CommentGuestkbook",
 
   components: {
     ReplyToGuestkbook,
@@ -41,19 +41,25 @@ export default {
   data() {
     return {
       data: [],
-    }
+    };
   },
 
   computed: {
     ...mapGetters({
-      comments: 'GET_GUESTKBOOKS',
+      comments: "GET_GUESTKBOOKS",
     }),
   },
 
-  async created() {
-    await this.$store.dispatch('ACT_GET_GUESTKBOOK')
+  watch: {
+    comments(news) {
+      this.data = news;
+    },
+  },
 
-    this.data = this.comments
+  async created() {
+    await this.$store.dispatch("ACT_GET_GUESTKBOOK");
+
+    this.data = this.comments;
   },
 
   methods: {
@@ -61,13 +67,13 @@ export default {
       this.data.forEach((item) => {
         if (item.id === id) {
           // eslint-disable-next-line import/no-named-as-default-member
-          Vue.set(item, 'toggle', true)
+          Vue.set(item, "toggle", true);
         } else {
           // eslint-disable-next-line import/no-named-as-default-member
-          Vue.set(item, 'toggle', false)
+          Vue.set(item, "toggle", false);
         }
-      })
+      });
     },
   },
-}
+};
 </script>

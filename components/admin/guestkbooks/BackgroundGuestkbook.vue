@@ -1,12 +1,12 @@
 <template>
-  <BgForm :items="itemBg" @submit="handleSubmit" />
+  <BgForm :items="computedItemBg" @submit="handleSubmit" />
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
-import { MwHandle } from '~/libraries/helpers'
-import { BgForm } from '~/components/common/forms'
+import { MwHandle } from "~/libraries/helpers";
+import { BgForm } from "~/components/common/forms";
 
 export default {
   components: {
@@ -23,57 +23,57 @@ export default {
   data() {
     return {
       customHeadStyle: {
-        textAlign: 'center',
-        textTransform: 'uppercase',
+        textAlign: "center",
+        textTransform: "uppercase",
       },
-    }
+    };
   },
 
   computed: {
     ...mapGetters({
-      itemBg: 'GET_GUESTKBOOK_BG',
+      computedItemBg: "GET_GUESTKBOOK_BG",
     }),
   },
 
   methods: {
     handleSubmit(params) {
-      const data = { ...params, key: 'guestkbook' }
+      const data = { ...params, key: "guestkbook" };
       if (data.id) {
-        this.update(data)
+        this.update(data);
       } else {
-        this.create(data)
+        this.create(data);
       }
     },
 
     async update(params) {
       await this.$store
-        .dispatch('ACT_UPDATE_BG', params)
+        .dispatch("ACT_UPDATE_BG", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     async create(params) {
       await this.$store
-        .dispatch('ACT_CREATE_BG', params)
+        .dispatch("ACT_CREATE_BG", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
   },
-}
+};
 </script>

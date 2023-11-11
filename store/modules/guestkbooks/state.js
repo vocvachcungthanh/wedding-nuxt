@@ -1,3 +1,6 @@
 export default {
-  guestkbooks: [],
-}
+  guestkbooks: {
+    bgGuestkbook: {},
+    data: [],
+  },
+};

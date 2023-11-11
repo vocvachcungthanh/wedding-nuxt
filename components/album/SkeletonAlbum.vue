@@ -5,17 +5,23 @@
 </template>
 
 <script>
-import LoadingSkeleton from '~/components/common/LoadingSkeleton.vue'
+import LoadingSkeleton from "~/components/common/LoadingSkeleton.vue";
 
 export default {
   components: {
     LoadingSkeleton,
   },
-}
+};
 </script>
 
 <style lang="scss">
 .skeleton__item--gallery {
   height: 470px;
+}
+
+@media (max-width: 550px) {
+  .skeleton__item--gallery {
+    height: 247px;
+  }
 }
 </style>

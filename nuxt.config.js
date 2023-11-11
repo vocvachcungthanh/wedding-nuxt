@@ -122,6 +122,7 @@ export default {
   },
 
   server: {
+    hots: "192.168.0.100",
     port: process.env.PORT || 3002,
   },
 };

@@ -1,65 +1,79 @@
-import { Refuse } from '@/libraries/core/refuse'
+import { Refuse } from "@/libraries/core/refuse";
 
-const axios = new Refuse()
+const axios = new Refuse();
 
 export default {
   async ACT_GET_GUESTKBOOK(_context, params) {
     try {
-      const response = await axios.get('admin/guestkbooks')
+      const response = await axios.get("admin/guestkbooks");
 
       if (response.status === 200) {
-        _context.commit('SET_GUESTKBOOK', response.data)
+        _context.commit("SET_GUESTKBOOK", response.data);
       }
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error)
+      console.log(error);
     }
   },
 
   async ACT_CREATE_GUESTKBOOK(_context, params) {
     try {
-      const response = await axios.post('guestkbook-create', params)
+      const response = await axios.post("guestkbook-create", params);
 
       if (response.status === 200) {
-        _context.commit('SET_CREATE_GUESTKBOOK', response.data)
-        return Promise.resolve(response.message)
+        _context.commit("SET_CREATE_GUESTKBOOK", response.data);
+        return Promise.resolve(response.message);
       }
     } catch (error) {
       if (error.status === 500) {
-        return Promise.reject(error.errors)
+        return Promise.reject(error.errors);
       } else {
-        return Promise.reject(error)
+        return Promise.reject(error);
       }
     }
   },
 
   async ACT_REPLY_GUESTKBOOK(_context, params) {
     try {
-      const response = await axios.post('admin/send-message', params)
+      const response = await axios.post("admin/send-message", params);
 
       if (response.status === 200) {
-        return Promise.resolve(response.message)
+        return Promise.resolve(response.message);
       }
     } catch (error) {
       if (error.status === 500) {
-        return Promise.reject(error.errors)
+        return Promise.reject(error.errors);
       } else {
-        return Promise.reject(error)
+        return Promise.reject(error);
       }
     }
   },
 
   async ACT_GET_PUBLIC_GUESTKBOOK(_context) {
     try {
-      const response = await axios.get('guestkbooks')
+      const response = await axios.get("guestkbooks");
 
       if (response.status === 200) {
-        _context.commit('SET_GUESTKBOOK_PUBLIC', response.data)
-        return Promise.resolve(response.data)
+        _context.commit("SET_GUESTKBOOK_PUBLIC", response.data);
+        return Promise.resolve(response.data);
       }
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error)
+      console.log(error);
     }
   },
-}
+
+  async ACT_COMMENT_DELETE(_context, params) {
+    try {
+      const response = await axios.delete(`admin/guestkbooks/${params}`);
+
+      if (response.status === 200) {
+        _context.commit("DELETE_COMMENT", params);
+
+        return Promise.resolve(response.message);
+      }
+    } catch (error) {
+      return Promise.reject(error.errors.message);
+    }
+  },
+};
