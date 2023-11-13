@@ -6,6 +6,7 @@
     <LoveStory />
     <WeddingEvent />
     <Album />
+    <BridesmaidsGroomsmen />
     <Guestbook />
     <Music />
   </section>
@@ -21,6 +22,7 @@ import {
   WeddingEvent,
   Guestbook,
   Music,
+  BridesmaidsGroomsmen,
 } from "~/components";
 
 export default {
@@ -35,6 +37,7 @@ export default {
     Guestbook,
     Album,
     Music,
+    BridesmaidsGroomsmen,
   },
 
   layout(context) {

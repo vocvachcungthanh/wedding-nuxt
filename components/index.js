@@ -1,8 +1,9 @@
-export { default as Guestbook } from '~/components/guestkbook/index.vue'
-export { default as WeddingCountDown } from '~/components/count-down'
-export { default as Album } from '~/components/album'
-export { default as Couple } from '~/components/couples'
-export { default as LoveStory } from '~/components/love-story'
-export { default as WeddingEvent } from '~/components/events'
-export { default as Music } from '~/components/music'
-export { default as SliderBanner } from '~/components/slider'
+export { default as Guestbook } from "~/components/guestkbook/index.vue";
+export { default as WeddingCountDown } from "~/components/count-down";
+export { default as Album } from "~/components/album";
+export { default as Couple } from "~/components/couples";
+export { default as LoveStory } from "~/components/love-story";
+export { default as WeddingEvent } from "~/components/events";
+export { default as Music } from "~/components/music";
+export { default as SliderBanner } from "~/components/slider";
+export { default as BridesmaidsGroomsmen } from "~/components/BridesmaidsGroomsmen";
