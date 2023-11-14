@@ -1,6 +1,6 @@
 <template>
   <a-card title="Phù dâu" :head-style="customHeadStyle">
-    <FormVue :items="brides" @submit="handleSubmit" />
+    <FormVue :items="bridesmaids" @submit="handleSubmit" />
   </a-card>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   components: { FormVue },
 
   props: {
-    brides: {
+    bridesmaids: {
       type: Object,
       default: Object,
     },
@@ -71,8 +71,8 @@ export default {
     },
 
     ...mapActions({
-      actCreate: "ACT_CREATE_COUPLE",
-      actUpdate: "ACT_UPDATE_COUPLE",
+      actCreate: "ACT_CREATE_BRIDESMAIDS_GROOMSMEN",
+      actUpdate: "ACT_UPDATE_BRIDESMAIDS_GROOMSMEN",
     }),
   },
 };

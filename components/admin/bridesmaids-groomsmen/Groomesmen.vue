@@ -1,6 +1,6 @@
 <template>
   <a-card title="Phù rể" :head-style="customHeadStyle">
-    <FormVue :items="grooms" @submit="handleSubmit" />
+    <FormVue :items="groomesmen" @submit="handleSubmit" />
   </a-card>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   },
 
   props: {
-    brides: {
+    groomesmen: {
       type: Object,
       default: Object,
     },
@@ -35,7 +35,7 @@ export default {
 
   methods: {
     handleSubmit(params) {
-      const data = { ...params, status: 1 };
+      const data = { ...params, status: 2 };
 
       if (data.id) {
         this.update(data);
@@ -73,8 +73,8 @@ export default {
     },
 
     ...mapActions({
-      actCreate: "ACT_CREATE_COUPLE",
-      actUpdate: "ACT_UPDATE_COUPLE",
+      actCreate: "ACT_CREATE_BRIDESMAIDS_GROOMSMEN",
+      actUpdate: "ACT_UPDATE_BRIDESMAIDS_GROOMSMEN",
     }),
   },
 };

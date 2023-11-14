@@ -67,7 +67,7 @@ export default () => ({
       link: "/admin/bridesmaids-groomsmen",
       name: "Phù dâu & phù rể",
       icon: "usergroup-add",
-      code: "menus",
+      code: "bridesmaids-groomsmen",
     },
     {
       key: 10,

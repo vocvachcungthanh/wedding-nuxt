@@ -1,25 +1,26 @@
-import Vuex from 'vuex'
+import Vuex from "vuex";
 
-import mutations from '~/store/mutations'
-import actions from '~/store/actions'
-import getters from '~/store/getters'
-import state from '~/store/state'
+import mutations from "~/store/mutations";
+import actions from "~/store/actions";
+import getters from "~/store/getters";
+import state from "~/store/state";
 
-import { menuStore } from '~/store/modules/menus'
-import { slidersStore } from '~/store/modules/sliders'
-import { albumStore } from '~/store/modules/albums'
-import { weddingsStore } from '~/store/modules/weddings'
-import { couplesStore } from '~/store/modules/couples'
-import { settingsStore } from '~/store/modules/settings'
-import { authStore } from '~/store/modules/auth'
-import { uploadsStore } from '~/store/modules/uploads'
-import { bgsStore } from '~/store/modules/backgrounds'
-import { eventsStore } from '~/store/modules/events'
-import { countDownStore } from '~/store/modules/countdowns'
-import { musicStore } from '~/store/modules/music'
-import { guestkbookStore } from '~/store/modules/guestkbooks'
-import { loveStoryStore } from '~/store/modules/love-story'
-import { dashboardsStore } from '~/store/modules/dashboards'
+import { menuStore } from "~/store/modules/menus";
+import { slidersStore } from "~/store/modules/sliders";
+import { albumStore } from "~/store/modules/albums";
+import { weddingsStore } from "~/store/modules/weddings";
+import { couplesStore } from "~/store/modules/couples";
+import { settingsStore } from "~/store/modules/settings";
+import { authStore } from "~/store/modules/auth";
+import { uploadsStore } from "~/store/modules/uploads";
+import { bgsStore } from "~/store/modules/backgrounds";
+import { eventsStore } from "~/store/modules/events";
+import { countDownStore } from "~/store/modules/countdowns";
+import { musicStore } from "~/store/modules/music";
+import { guestkbookStore } from "~/store/modules/guestkbooks";
+import { loveStoryStore } from "~/store/modules/love-story";
+import { dashboardsStore } from "~/store/modules/dashboards";
+import { bridesmaidsGroomsmenStore } from "~/store/modules/BridesmaidsGroomsmen";
 
 const store = () =>
   // eslint-disable-next-line import/no-named-as-default-member
@@ -44,7 +45,8 @@ const store = () =>
       storeQuestKbook: guestkbookStore,
       storeLoveStory: loveStoryStore,
       storeDashboards: dashboardsStore,
+      storeBridesmaidsGroomsmen: bridesmaidsGroomsmenStore,
     },
-  })
+  });
 
-export default store
+export default store;

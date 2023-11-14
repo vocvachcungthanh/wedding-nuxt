@@ -1,14 +1,14 @@
 .view {
   display: flex;
+  position: relative;
   max-width: 100%;
   overflow: hidden;
   border: 1px solid #ccc;
-  min-height: 350px;
-  position: relative;
+  border-radius: 1rem;
   cursor: pointer;
+  padding-top: 83.105%;
 
   &__couple {
-    max-height: 350px;
     height: 100%;
   }
 
@@ -17,7 +17,7 @@
     height: 100%;
   }
 
-  input[type='file'] {
+  input[type="file"] {
     display: none;
   }
 
@@ -43,7 +43,13 @@
   img {
     width: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
   }
 
   .loading {

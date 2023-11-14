@@ -33,7 +33,11 @@
             'avatar',
             {
               initialValue: items.avatar,
-              rules: [{ required: true, message: 'Nhập link avatar !' }],
+              rules: [
+                {
+                  validator: validateImageURL,
+                },
+              ],
             },
           ]"
           placeholder="Nhập link avatar ..."
@@ -197,6 +201,23 @@ export default {
         });
 
       this.loading = false;
+    },
+
+    validateImageURL(rule, value, callback) {
+      if (!value) {
+        callback(new Error("Link ảnh đại diện không được để trống"));
+      } else {
+        const img = new Image();
+        img.onload = () => {
+          // Hình ảnh hợp lệ
+          callback();
+        };
+        img.onerror = () => {
+          // Hình ảnh không hợp lệ
+          callback(new Error("Link ảnh đại diện không hợp lệ"));
+        };
+        img.src = value;
+      }
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <section class="page__admin">
-    <a-row :gutter="[15, 15]">
+    <a-row :gutter="[20, 20]">
       <a-col
         v-for="_item in dashboard"
         :key="_item.key"
@@ -25,28 +25,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'PageAdmin',
+  name: "PageAdmin",
 
   layout() {
-    return 'LayoutAdmin'
+    return "LayoutAdmin";
   },
 
   computed: {
     ...mapGetters({
-      dashboard: 'GET_DASHBOARDS',
+      dashboard: "GET_DASHBOARDS",
     }),
   },
 
   async created() {
-    await this.$store.dispatch('ACT_GET_DASHBOARDS')
-    await this.$store.dispatch('ACT_SET_KEY_MENU', 0)
+    await this.$store.dispatch("ACT_GET_DASHBOARDS");
+    await this.$store.dispatch("ACT_SET_KEY_MENU", 0);
   },
 
   methods: {
     handleKey(key) {},
   },
-}
+};
 </script>
