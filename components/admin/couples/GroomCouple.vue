@@ -1,19 +1,17 @@
 <template>
-  <a-col :md="{ span: 12 }" :lg="{ spa: 12 }" :xxl="{ span: 12 }">
-    <a-card title="Thông tin chú rể" :head-style="customHeadStyle">
-      <FormCouple :items="grooms" @submit="handleSubmit" />
-    </a-card>
-  </a-col>
+  <a-card title="Thông tin chú rể" :head-style="customHeadStyle">
+    <FormCouple :items="grooms" @submit="handleSubmit" />
+  </a-card>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
-import { FormCouple } from './index.js'
-import { MwHandle } from '~/libraries/helpers'
+import { FormCouple } from "./index.js";
+import { MwHandle } from "~/libraries/helpers";
 
 export default {
-  name: 'GroomCouple',
+  name: "GroomCouple",
 
   components: {
     FormCouple,
@@ -29,20 +27,20 @@ export default {
   data() {
     return {
       customHeadStyle: {
-        textAlign: 'center',
-        textTransform: 'uppercase',
+        textAlign: "center",
+        textTransform: "uppercase",
       },
-    }
+    };
   },
 
   methods: {
     handleSubmit(params) {
-      const data = { ...params, status: 2 }
+      const data = { ...params, status: 2 };
 
       if (data.id) {
-        this.update(data)
+        this.update(data);
       } else {
-        this.create(data)
+        this.create(data);
       }
     },
 
@@ -51,13 +49,13 @@ export default {
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     async update(params) {
@@ -65,19 +63,19 @@ export default {
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     ...mapActions({
-      actCreate: 'ACT_CREATE_COUPLE',
-      actUpdate: 'ACT_UPDATE_COUPLE',
+      actCreate: "ACT_CREATE_COUPLE",
+      actUpdate: "ACT_UPDATE_COUPLE",
     }),
   },
-}
+};
 </script>
