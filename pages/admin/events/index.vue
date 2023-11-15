@@ -2,11 +2,21 @@
   <div class="page-event">
     <a-card title="Sự kiện cưới">
       <a-row :gutter="30">
-        <a-col :span="16">
-          <a-row :gutter="30">
-            <GroomsFramily :grooms="events.Grooms" />
-            <BridesFramily :brides="events.Brides" />
-          </a-row>
+        <a-col
+          :sm="{ sapn: 24 }"
+          :md="{ span: 24 }"
+          :lg="{ span: 12 }"
+          :xl="{ span: 6 }"
+        >
+          <GroomsFramily :grooms="events.Grooms" />
+        </a-col>
+        <a-col
+          :sm="{ sapn: 24 }"
+          :md="{ span: 24 }"
+          :lg="{ span: 12 }"
+          :xl="{ span: 6 }"
+        >
+          <BridesFramily :brides="events.Brides" />
         </a-col>
       </a-row>
     </a-card>
@@ -14,9 +24,9 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from "vuex";
 
-import { BridesFramily, GroomsFramily } from '~/components/admin/events'
+import { BridesFramily, GroomsFramily } from "~/components/admin/events";
 
 export default {
   components: {
@@ -25,34 +35,34 @@ export default {
   },
 
   layout() {
-    return 'LayoutAdmin'
+    return "LayoutAdmin";
   },
 
   data() {
-    return {}
+    return {};
   },
 
   head() {
     return {
-      title: 'Sự kiện cưới',
-    }
+      title: "Sự kiện cưới",
+    };
   },
 
   computed: {
     ...mapGetters({
-      events: 'GET_EVENTS',
+      events: "GET_EVENTS",
     }),
   },
 
   async created() {
-    await this.$store.dispatch('ACT_SET_KEY_MENU', 5)
-    await this.getEvents()
+    await this.$store.dispatch("ACT_SET_KEY_MENU", 5);
+    await this.getEvents();
   },
 
   methods: {
     ...mapActions({
-      getEvents: 'ACT_GET_EVENTS',
+      getEvents: "ACT_GET_EVENTS",
     }),
   },
-}
+};
 </script>

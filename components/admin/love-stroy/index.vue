@@ -1,6 +1,5 @@
 <template>
   <FormLoveStroy
-    :items="dataItem"
     :result="result"
     @submit="handleSubmit"
     @result="handleResult"
@@ -8,75 +7,68 @@
 </template>
 
 <script>
-import FormLoveStroy from './FormLoveStroy.vue'
-import { MwHandle } from '~/libraries/helpers'
+import FormLoveStroy from "./FormLoveStroy.vue";
+import { MwHandle } from "~/libraries/helpers";
 
 export default {
-  name: 'LoveStory',
+  name: "LoveStory",
 
   components: { FormLoveStroy },
-
-  props: {
-    dataItem: {
-      type: Object,
-      default: Object,
-    },
-  },
 
   data() {
     return {
       result: false,
-    }
+    };
   },
 
   methods: {
     handleSubmit(params) {
       if (params.id) {
-        this.update(params)
+        this.update(params);
       } else {
-        this.create(params)
+        this.create(params);
       }
     },
 
     async create(params) {
       await this.$store
-        .dispatch('ACT_CREATE_LOVE_STORY', params)
+        .dispatch("ACT_CREATE_LOVE_STORY", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
 
-          this.result = true
+          this.result = true;
         })
         .catch((error) => {
-          this.result = false
+          this.result = false;
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     async update(params) {
       await this.$store
-        .dispatch('ACT_UPDATE_LOVE_STORY', params)
+        .dispatch("ACT_UPDATE_LOVE_STORY", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
 
-          this.result = true
+          this.result = true;
         })
         .catch((error) => {
-          this.result = false
+          this.result = false;
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     handleResult(e) {
-      this.result = e
+      this.result = e;
     },
   },
-}
+};
 </script>

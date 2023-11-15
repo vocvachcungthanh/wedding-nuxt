@@ -1,19 +1,17 @@
 <template>
-  <a-col :span="12">
-    <a-card title="Thông tin lễ cưới nhà trai" :head-style="customHeadStyle">
-      <FormEvent :items="grooms" @submit="handleSubmit" />
-    </a-card>
-  </a-col>
+  <a-card title="Thông tin lễ cưới nhà trai" :head-style="customHeadStyle">
+    <FormEvent :items="grooms" @submit="handleSubmit" />
+  </a-card>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
-import { FormEvent } from './index.js'
-import { MwHandle } from '~/libraries/helpers'
+import { FormEvent } from "./index.js";
+import { MwHandle } from "~/libraries/helpers";
 
 export default {
-  name: 'GroomsFamilyEvent',
+  name: "GroomsFamilyEvent",
   components: {
     FormEvent,
   },
@@ -28,20 +26,20 @@ export default {
   data() {
     return {
       customHeadStyle: {
-        textAlign: 'center',
-        textTransform: 'uppercase',
+        textAlign: "center",
+        textTransform: "uppercase",
       },
-    }
+    };
   },
 
   methods: {
     handleSubmit(params) {
-      const data = { ...params, key: 'groom' }
+      const data = { ...params, key: "groom" };
 
       if (data.id) {
-        this.update(data)
+        this.update(data);
       } else {
-        this.create(data)
+        this.create(data);
       }
     },
 
@@ -50,13 +48,13 @@ export default {
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     async update(params) {
@@ -64,19 +62,19 @@ export default {
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
 
     ...mapActions({
-      actCreate: 'ACT_CREATE_EVENT',
-      actUpdate: 'ACT_UPDATE_EVENT',
+      actCreate: "ACT_CREATE_EVENT",
+      actUpdate: "ACT_UPDATE_EVENT",
     }),
   },
-}
+};
 </script>
