@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <a-col :sm="24" :xl="24" :xxl="12">
     <a-comment v-for="item in data" :key="item.id" class="ant-comment">
       <span
         v-if="!item.toggle"
@@ -22,7 +22,7 @@
 
       <ReplyToGuestkbook v-if="item.toggle" :data-item="item" />
     </a-comment>
-  </div>
+  </a-col>
 </template>
 
 <script>

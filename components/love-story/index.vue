@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <section id="love-story" class="love__story">
+  <section id="love-story" class="love__story" v-if="loveStory.length > 0">
     <div v-if="!isLoadding" class="container">
       <div class="love__story--header">
         <h2 class="love__story--title font__dancing">Câu chuyện tình yêu</h2>

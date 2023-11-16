@@ -1,0 +1,156 @@
+.audio {
+  position: fixed;
+  left: 3rem;
+  bottom: 100px;
+  z-index: 9999;
+  height: 45px;
+
+  width: 45px;
+  background-image: linear-gradient(
+    -225deg,
+    #2cd8d5 0%,
+    #6b8dd6 48%,
+    #8e37d7 100%
+  );
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  gap: 20px;
+
+  transition: 0.3s all;
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+
+    background-image: linear-gradient(
+      to left,
+      rgba(221, 62, 83, 0.221),
+      rgba(107, 229, 133, 0.203)
+    );
+  }
+
+  &::after {
+    z-index: -2;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    animation: zoom infinite 2s;
+    animation-direction: alternate-reverse;
+    border-radius: 50%;
+  }
+
+  &::before {
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    z-index: -1;
+
+    animation: zoom infinite 2s;
+    animation-direction: alternate-reverse;
+
+    border-radius: 50%;
+  }
+
+  &:hover {
+    transition: 0.3s all;
+    width: 170px;
+    &::after,
+    &::before {
+      border-radius: 9999px;
+    }
+    .audio-item {
+      background-image: linear-gradient(to top, #37ecb9ab 0%, #72afd392 100%);
+      &.audio-prev,
+      &.audio-next {
+        transition-delay: 1.5s;
+        transition: 0.4s all;
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  audio {
+    display: none;
+  }
+
+  .audio-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.5rem;
+
+    cursor: pointer;
+    width: 3.3rem;
+    height: 3.3rem;
+
+    border-radius: 50%;
+
+    &.audio-prev {
+      text-align: left;
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    &.audio-next {
+      text-align: right;
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+
+  &__tooltip {
+    .ant-tooltip-inner {
+      background-image: linear-gradient(
+        -225deg,
+        #2cd8d5 0%,
+        #6b8dd6 48%,
+        #8e37d7 100%
+      );
+    }
+
+    .audio__group {
+      display: flex;
+
+      .audio__thumbnail {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        position: relative;
+
+        .audo__playing {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        img {
+          max-width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .audio__content {
+        padding-left: 0.5rem;
+
+        .audio__title {
+          font-size: 1.3rem;
+          font-weight: 600;
+        }
+
+        .audio__singer {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

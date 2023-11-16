@@ -1,4 +1,4 @@
-@import '../ant-design/index';
+@import "../ant-design/index";
 
 #components-layout-demo-side {
   .header-admin {
@@ -105,6 +105,17 @@
 
     &:hover {
       color: #04befe;
+    }
+  }
+}
+
+@media (max-width: 677px) {
+  .ant-layout-sider {
+    &.isMobile {
+      transform: translateX(-100%);
+      max-width: 0px !important;
+      width: 0 !important;
+      flex: 0 !important;
     }
   }
 }

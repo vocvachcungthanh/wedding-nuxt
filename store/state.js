@@ -3,4 +3,5 @@ export default {
   keyMenu: 0,
 
   meta: [],
+  isMobile: false,
 };

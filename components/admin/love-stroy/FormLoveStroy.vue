@@ -82,7 +82,7 @@
           v-decorator="[
             'status',
             {
-              initialValue: items.status || 1,
+              initialValue: items.status,
             },
           ]"
           name="radioGroup"
@@ -134,21 +134,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
-import Drawer from '~/components/common/Drawer.vue'
-import { PreviewAlbumForm } from '~/components/common/forms/index.js'
-import { MwHandle, keyGoogle } from '~/libraries/helpers'
+import Drawer from "~/components/common/Drawer.vue";
+import { PreviewAlbumForm } from "~/components/common/forms/index.js";
+import { MwHandle, keyGoogle } from "~/libraries/helpers";
 
 const initState = {
-  avatar: '',
-  title: '',
-  desc: '',
-  date: '',
-  google_id: '',
+  avatar: "",
+  title: "",
+  desc: "",
+  date: "",
+  google_id: "",
   source_id: 1,
   status: 1,
-}
+};
 export default {
   components: {
     PreviewLoverStory: PreviewAlbumForm,
@@ -164,18 +164,18 @@ export default {
 
   data() {
     return {
-      formLayout: 'horizontal',
+      formLayout: "horizontal",
       form: this.$form.createForm(this, initState),
       loading: false,
-      linkImage: '',
+      linkImage: "",
 
-      title: 'Thêm mới câu chuyện',
-    }
+      title: "Thêm mới câu chuyện",
+    };
   },
 
   computed: {
     viewImage() {
-      return this.linkImage || this.items.avatar
+      return this.linkImage || this.items.avatar;
     },
 
     ...mapState({
@@ -186,116 +186,116 @@ export default {
   watch: {
     result() {
       if (this.result) {
-        this.linkImage = ''
-        this.form.resetFields()
+        this.linkImage = "";
+        this.form.resetFields();
 
-        this.$emit('result', false)
+        this.$emit("result", false);
       }
     },
 
     items() {
       if (this.items.id) {
-        return (this.title = 'Sửa câu chuyện')
+        return (this.title = "Sửa câu chuyện");
       } else {
-        return (this.title = 'Thêm mới câu chuyện')
+        return (this.title = "Thêm mới câu chuyện");
       }
     },
   },
 
   methods: {
     handleSubmit(e) {
-      e.preventDefault()
+      e.preventDefault();
 
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.$emit('submit', values)
+          this.$emit("submit", values);
         }
-      })
+      });
     },
 
     async handleFile(file) {
-      this.loading = true
+      this.loading = true;
 
       // eslint-disable-next-line prefer-const
-      let formData = new FormData()
+      let formData = new FormData();
 
-      formData.append('file', file)
+      formData.append("file", file);
 
-      formData.append('google_id', this.items.google_id)
+      formData.append("google_id", this.items.google_id);
 
       await this.$store
-        .dispatch('ACT_UPLOAD_FILES', formData)
+        .dispatch("ACT_UPLOAD_FILES", formData)
         .then((res) => {
-          this.linkImage = res
+          this.linkImage = res;
           this.form.setFieldsValue({
             avatar: res,
             source_id: 2,
             google_id: keyGoogle(res),
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
 
-      this.loading = false
+      this.loading = false;
     },
 
     handleChange(e) {
-      const filedName = e.target.id
+      const filedName = e.target.id;
 
-      const googleId = this.items.google_id
+      const googleId = this.items.google_id;
 
-      if (filedName === 'avatar') {
+      if (filedName === "avatar") {
         if (googleId) {
-          this.handleDeleteImage(googleId)
+          this.handleDeleteImage(googleId);
         }
 
-        this.linkImage = e.target.value
+        this.linkImage = e.target.value;
 
         this.form.setFieldsValue({
           source_id: 1,
-          google_id: '',
-        })
+          google_id: "",
+        });
       }
     },
 
     async handleDeleteImage(googleId) {
-      this.loading = true
+      this.loading = true;
 
       await this.$store
-        .dispatch('ACT_DELETE_IMAGE', googleId)
+        .dispatch("ACT_DELETE_IMAGE", googleId)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
 
-      this.loading = false
+      this.loading = false;
     },
 
     validateImageURL(rule, value, callback) {
       if (!value) {
-        callback(new Error('Link ảnh đại diện không được để trống'))
+        callback(new Error("Link ảnh đại diện không được để trống"));
       } else {
-        const img = new Image()
+        const img = new Image();
         img.onload = () => {
           // Hình ảnh hợp lệ
-          callback()
-        }
+          callback();
+        };
         img.onerror = () => {
           // Hình ảnh không hợp lệ
-          callback(new Error('Link ảnh đại diện không hợp lệ'))
-        }
-        img.src = value
+          callback(new Error("Link ảnh đại diện không hợp lệ"));
+        };
+        img.src = value;
       }
     },
   },
-}
+};
 </script>

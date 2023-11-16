@@ -9,7 +9,9 @@
   >
     <a-card hoverable class="love-story">
       <div class="love-story__avatar">
-        <img class="love-story__avatar--img" :src="dataItem.avatar" />
+        <a-tooltip :title="getTitleTooltip">
+          <img :class="getClassImage" :src="dataItem.avatar" />
+        </a-tooltip>
       </div>
 
       <div class="love-story__meta">
@@ -50,6 +52,20 @@ export default {
     dataItem: {
       type: Object,
       default: Object,
+    },
+  },
+
+  computed: {
+    getClassImage() {
+      return `love-story__avatar--img ${
+        this.dataItem.status === 0 ? "hidden__img" : ""
+      }`;
+    },
+
+    getTitleTooltip() {
+      return this.dataItem.status === 0
+        ? "Câu chuyện này đã ẩn khỏi trang hiển thị"
+        : "";
     },
   },
 };

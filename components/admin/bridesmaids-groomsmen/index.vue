@@ -1,9 +1,19 @@
 <template>
-  <a-row :gutter="30">
-    <a-col :md="{ span: 14 }" :lg="{ spa: 8 }" :xxl="{ span: 7 }">
+  <a-row :gutter="[30, 30]">
+    <a-col
+      :md="{ span: 24 }"
+      :lg="{ span: 12 }"
+      :xl="{ span: 12 }"
+      :xxl="{ span: 7 }"
+    >
       <Bridesmaids :bridesmaids="data.Bridesmaids" />
     </a-col>
-    <a-col :md="{ span: 24 }" :lg="{ spa: 8 }" :xxl="{ span: 7 }">
+    <a-col
+      :md="{ span: 24 }"
+      :lg="{ span: 12 }"
+      :xl="{ span: 12 }"
+      :xxl="{ span: 7 }"
+    >
       <Groomesmen :groomesmen="data.Groomsmen" />
     </a-col>
   </a-row>

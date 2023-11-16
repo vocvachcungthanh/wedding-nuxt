@@ -35,3 +35,30 @@
 .btn__update {
   margin-right: 1.5rem;
 }
+
+.list-menus {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+
+  &:hover {
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: #ccc;
+      border-radius: 9999px;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .ant-btn {
+    height: 3rem !important;
+    max-width: 100% !important;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0.5rem;
+  }
+}

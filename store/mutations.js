@@ -10,4 +10,8 @@ export default {
   SET_META(state, meta) {
     state.meta = meta;
   },
+
+  SET_IS_MOBILE(state, value) {
+    state.isMobile = value;
+  },
 };

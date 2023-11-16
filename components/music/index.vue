@@ -15,16 +15,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
-import PlayMusic from './PlayMusic.vue'
-import NextMusic from './NextMusic.vue'
-import PrevMusic from './PrevMusic.vue'
-
-import './scss/Music.scss'
+import PlayMusic from "./PlayMusic.vue";
+import NextMusic from "./NextMusic.vue";
+import PrevMusic from "./PrevMusic.vue";
 
 export default {
-  name: 'MusicAudio',
+  name: "MusicAudio",
 
   components: { PlayMusic, NextMusic, PrevMusic },
 
@@ -33,7 +31,7 @@ export default {
       link: null,
       play: false,
       order: 0,
-    }
+    };
   },
 
   computed: {
@@ -45,57 +43,57 @@ export default {
   watch: {
     order() {
       if (this.order < this.music.length) {
-        this.link = this.music[this.order]?.link
+        this.link = this.music[this.order]?.link;
       }
     },
 
     play() {
       if (this.play) {
-        this.$refs.audio.play()
+        this.$refs.audio.play();
       } else {
-        this.$refs.audio.pause()
+        this.$refs.audio.pause();
       }
     },
 
     link(newLink) {
       if (newLink) {
-        this.$refs.audio.src = newLink
-        this.$refs.audio.load()
+        this.$refs.audio.src = newLink;
+        this.$refs.audio.load();
         if (this.play) {
-          this.$refs.audio.play()
+          this.$refs.audio.play();
         }
 
-        this.$refs.audio.addEventListener('ended', () => {
-          this.play = false
-        })
+        this.$refs.audio.addEventListener("ended", () => {
+          this.play = false;
+        });
       }
     },
   },
 
   async created() {
-    await this.$store.dispatch('ACT_GET_MUSIC')
+    await this.$store.dispatch("ACT_GET_MUSIC");
 
-    this.link = this.music[this.order]?.link
+    this.link = this.music[this.order]?.link;
   },
 
   methods: {
     handleAudio() {
-      this.play = !this.play
+      this.play = !this.play;
     },
 
     handleNext() {
-      this.play = true
+      this.play = true;
       if (!(this.order === this.music.length)) {
-        this.order++
+        this.order++;
       }
     },
 
     handlePrev() {
-      this.play = true
+      this.play = true;
       if (this.order > 0) {
-        this.order--
+        this.order--;
       }
     },
   },
-}
+};
 </script>

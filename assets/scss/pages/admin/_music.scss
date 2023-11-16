@@ -35,7 +35,7 @@
 
     &--action {
       &::after {
-        content: '';
+        content: "";
         width: calc(100% + 4px);
         height: calc(100% + 4px);
         position: absolute;
@@ -201,4 +201,18 @@
   border: 1px solid #ccccccd2;
   padding: 1.5rem;
   border-radius: 1rem;
+}
+
+@media (max-width: 1199px) {
+  .music {
+    &__desc {
+      max-width: 63%;
+    }
+  }
+}
+
+@media (max-width: 991.99px) {
+  .form__box {
+    margin-bottom: 1.5rem;
+  }
 }

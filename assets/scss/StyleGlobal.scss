@@ -1,11 +1,11 @@
-@import './reset';
-@import './fonts';
-@import './keyframe';
+@import "./reset";
+@import "./fonts";
+@import "./keyframe";
 
-@import './common/index';
+@import "./common/index";
 
-@import './pages/index';
-@import './pages/admin/index';
+@import "./pages/index";
+@import "./pages/admin/index";
 
 img {
   display: flex;
@@ -75,6 +75,10 @@ img {
 
 .ant-drawer-mask {
   background-color: rgb(0 0 0 / 14%);
+}
+
+.hidden__img {
+  filter: grayscale(1);
 }
 
 @media (max-width: 992px) {

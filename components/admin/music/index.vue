@@ -1,7 +1,12 @@
 <template>
   <a-row :gutter="10">
     <template v-if="music.length > 0">
-      <a-col v-for="item in music" :key="item.id" class="a__col" :span="12">
+      <a-col
+        v-for="item in music"
+        :key="item.id"
+        class="a__col"
+        :xxl="{ span: 12 }"
+      >
         <div class="music__group">
           <ThumbnaiMusic
             :data-item="item"
@@ -33,14 +38,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
 
-import DeleteMusic from './DeleteMusic.vue'
-import ThumbnaiMusic from './ThumbnaiMusic.vue'
-import Audio from '~/components/common/Audio.vue'
+import DeleteMusic from "./DeleteMusic.vue";
+import ThumbnaiMusic from "./ThumbnaiMusic.vue";
+import Audio from "~/components/common/Audio.vue";
 
 export default {
-  name: 'MusicGroup',
+  name: "MusicGroup",
 
   components: {
     AudioMp3: Audio,
@@ -53,61 +58,61 @@ export default {
       page: 1,
       isLoading: true,
       play: false,
-      link: '',
-    }
+      link: "",
+    };
   },
 
   computed: {
     ...mapGetters({
-      music: 'GET_MUSICS',
+      music: "GET_MUSICS",
     }),
   },
 
   methods: {
     async loadingSlider($state) {
       await this.$store
-        .dispatch('ACT_GET_MUSIC_ADMIN', {
+        .dispatch("ACT_GET_MUSIC_ADMIN", {
           page: this.page,
         })
         .then((response) => {
           if (response.current_page < response.last_page) {
-            this.page++
-            $state.loaded()
+            this.page++;
+            $state.loaded();
           } else {
-            $state.complete()
-            this.isLoading = false
+            $state.complete();
+            this.isLoading = false;
           }
         })
         .catch((error) => {
           // eslint-disable-next-line no-console
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
 
     hanldeEdit(item) {
-      this.$emit('update', item)
+      this.$emit("update", item);
     },
 
     handlePlay(dataItem) {
-      this.play = !dataItem.play
-      this.link = dataItem.link
+      this.play = !dataItem.play;
+      this.link = dataItem.link;
 
       this.music.forEach((item) => {
         if (item.id === dataItem.id) {
-          item.play = !dataItem.play
+          item.play = !dataItem.play;
         } else {
-          item.play = false
+          item.play = false;
         }
-      })
+      });
     },
 
     stopPlay(e) {
-      this.play = e
+      this.play = e;
 
       this.music.forEach((item) => {
-        item.play = false
-      })
+        item.play = false;
+      });
     },
   },
-}
+};
 </script>
