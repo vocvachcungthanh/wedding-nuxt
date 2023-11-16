@@ -30,6 +30,31 @@
   &__prev {
     left: -10rem;
   }
+
+  &__clone {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: linear-gradient(to right, #ee0979, #ff6a00);
+  }
+
+  &__logout {
+    cursor: pointer;
+    font-size: 2rem;
+    background-color: transparent;
+    color: #2196f3 !important;
+
+    &:hover {
+      color: rgb(0, 161, 248);
+    }
+  }
 }
 
 .ant-form-item-children button.ant-btn-danger {
@@ -41,6 +66,14 @@
   max-width: 50px;
   height: 2.5rem;
   margin-left: 1rem;
+}
+
+@media (min-width: 678px) {
+  .btn {
+    &__clone {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 668px) {

@@ -1,7 +1,7 @@
 <template>
   <div class="page-event">
     <a-card title="Sự kiện cưới">
-      <a-row :gutter="30">
+      <a-row :gutter="[30, 30]">
         <a-col
           :sm="{ sapn: 24 }"
           :md="{ span: 24 }"

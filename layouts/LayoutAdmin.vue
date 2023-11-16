@@ -1,7 +1,11 @@
 <!-- eslint-disable vue/no-parsing-error -->
 <template>
   <a-layout id="components-layout-demo-side" :style="{ minHeight: '100vh' }">
-    <a-layout-sider v-model="collapsed" class="isMobile">
+    <a-layout-sider v-model="collapsed" :class="getClassIsMobile">
+      <AdminClone
+        v-if="isMobile"
+        @click.native="() => handleCollapsed(false)"
+      />
       <AdminLogo />
       <AdminMenu />
     </a-layout-sider>
@@ -19,6 +23,7 @@ import AdminHeader from "~/layouts/admin/components/AdminHeader.vue";
 import AdminMenu from "~/layouts/admin/components/AdminMenu.vue";
 import AdminLogo from "~/layouts/admin/components/AdminLogo.vue";
 import AdminFooter from "~/layouts/admin/components/AdminFooter.vue";
+import AdminClone from "~/layouts/admin/components/AdminClone.vue";
 
 import "~/assets/scss/layouts/LA_Admin.scss";
 
@@ -30,6 +35,7 @@ export default {
     AdminMenu,
     AdminLogo,
     AdminFooter,
+    AdminClone,
   },
 
   middleware: "admin",
@@ -37,11 +43,19 @@ export default {
   data() {
     return {
       collapsed: false,
+      isMobile: false,
     };
+  },
+
+  computed: {
+    getClassIsMobile() {
+      return this.collapsed ? "isMobile" : "";
+    },
   },
 
   created() {
     this.collapsed = this.$store.state.isMobile;
+    this.isMobile = this.$store.state.isMobile;
   },
 
   methods: {

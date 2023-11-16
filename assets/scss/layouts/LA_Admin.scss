@@ -1,5 +1,11 @@
 @import "../ant-design/index";
 
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border-right: unset;
+}
+
 #components-layout-demo-side {
   .header-admin {
     background-color: #fff;
@@ -8,6 +14,7 @@
     line-height: unset;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   .logo {
@@ -111,11 +118,75 @@
 
 @media (max-width: 677px) {
   .ant-layout-sider {
+    transition: 0.3s all;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    box-shadow: 7px 0px 3px 4px #00000012;
+
     &.isMobile {
-      transform: translateX(-100%);
+      transition: 0.3s all;
+      transform: translateX(-200%);
       max-width: 0px !important;
       width: 0 !important;
       flex: 0 !important;
+      min-width: 0 !important;
+      height: auto;
+      box-shadow: unset;
     }
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  #components-layout-demo-side {
+    .header-admin {
+      padding: 0 2rem;
+    }
+
+    .logo {
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 678px) {
+  #components-layout-demo-side {
+    .header-admin {
+      .logo {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .ant-card-head-wrapper {
+    .ant-card-extra {
+      button {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+
+  #components-layout-demo-side {
+    .admin-content {
+      margin: 1.5rem;
+    }
+  }
+
+  .ant-drawer-content-wrapper {
+    max-width: 310px;
+  }
+  .ant-card-body {
+    padding: 1.5rem;
   }
 }
