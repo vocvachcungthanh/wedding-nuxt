@@ -24,7 +24,7 @@
             'date',
 
             {
-              initialValue: items.date,
+              initialValue: initDate,
               rules: [
                 {
                   required: true,
@@ -73,16 +73,16 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from "moment";
 
 const intiState = {
-  title: '',
+  title: "",
   date: null,
-  desc: '',
-}
+  desc: "",
+};
 
 export default {
-  name: 'FormEvent',
+  name: "FormEvent",
 
   props: {
     items: {
@@ -93,30 +93,37 @@ export default {
 
   data() {
     return {
-      formLayout: 'horizontal',
+      formLayout: "horizontal",
       form: this.$form.createForm(this, intiState),
       loading: false,
-      size: 'default',
+      size: "default",
       initialDate: null,
-    }
+    };
+  },
+
+  computed: {
+    initDate() {
+      return this.items.date
+        ? moment(this.items.date).format("YYYY-MM-DD")
+        : null;
+    },
   },
 
   methods: {
     handleSubmit(e) {
-      e.preventDefault()
+      e.preventDefault();
 
       this.form.validateFields((err, values) => {
         if (!err) {
-          const formattedDate = moment(values.date).format('YYYY-MM-DD')
-          // eslint-disable-next-line no-console
-          console.log(formattedDate)
-          this.$emit('submit', {
+          const formattedDate = moment(values.date).format("YYYY-MM-DD");
+
+          this.$emit("submit", {
             ...values,
             date: formattedDate,
-          })
+          });
         }
-      })
+      });
     },
   },
-}
+};
 </script>

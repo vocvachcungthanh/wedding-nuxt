@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
-import { MwHandle } from '~/libraries/helpers'
-import FromUpload from '~/components/common/FromUpload.vue'
+import { MwHandle } from "~/libraries/helpers";
+import FromUpload from "~/components/common/FromUpload.vue";
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       result: false,
-    }
+    };
   },
 
   computed: {
@@ -35,52 +35,52 @@ export default {
   methods: {
     handleSubmit(params) {
       if (params.id) {
-        this.update(params)
+        this.update(params);
       } else {
-        this.create(params)
+        this.create(params);
       }
     },
 
     handleResult(e) {
-      this.result = e
+      this.result = e;
     },
 
     async create(params) {
       await this.$store
-        .dispatch('ACT_CREATE_ALBUM', params)
+        .dispatch("ACT_CREATE_ALBUM", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
 
-          this.result = true
+          this.result = true;
         })
         .catch((error) => {
           MwHandle.handleError({
             context: error,
-          })
+          });
 
-          this.result = false
-        })
+          this.result = false;
+        });
     },
 
     async update(params) {
       await this.$store
-        .dispatch('ACT_UPDATE_ALBUMS', params)
+        .dispatch("ACT_UPDATE_ALBUMS", params)
         .then((res) => {
           MwHandle.handleSuccess({
             context: res,
-          })
+          });
 
-          this.result = true
+          this.result = true;
         })
         .catch((error) => {
-          this.result = false
+          this.result = false;
           MwHandle.handleError({
             context: error,
-          })
-        })
+          });
+        });
     },
   },
-}
+};
 </script>

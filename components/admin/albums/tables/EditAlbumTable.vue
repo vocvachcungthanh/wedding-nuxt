@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   props: {
     dataItem: {
@@ -17,16 +15,13 @@ export default {
 
   methods: {
     handleEdit() {
-      this.setDataItem(this.dataItem)
-
       this.$router.push({
-        name: 'admin-albums-update',
-      })
+        name: "admin-albums-update-id",
+        params: {
+          id: this.dataItem.id,
+        },
+      });
     },
-
-    ...mapActions({
-      setDataItem: 'ACT_DATA_ITEMS_ALBUM',
-    }),
   },
-}
+};
 </script>

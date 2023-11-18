@@ -84,8 +84,16 @@ export default {
     }
   },
 
-  ACT_DATA_ITEMS_ALBUM(_context, params) {
-    _context.commit("SET_DATA_ITEMS_ALBUM", params);
+  async ACT_DATA_ITEMS_ALBUM(_context, params) {
+    try {
+      const response = await axios.get(`/admin/album-on/${params}`);
+
+      if (response.status === 200) {
+        _context.commit("SET_DATA_ITEMS_ALBUM", response.data);
+      }
+    } catch (error) {
+      return Promise.reject(error.errors.message);
+    }
   },
 
   async ACT_UPDATE_ALBUMS(_context, params) {

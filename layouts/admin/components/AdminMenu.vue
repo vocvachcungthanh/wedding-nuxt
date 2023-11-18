@@ -39,13 +39,15 @@ export default {
         this.key = 1;
         break;
       case "admin-couples":
-      case "admin-albums-update":
         this.key = 2;
         break;
+
       case "admin-love-story":
         this.key = 3;
         break;
       case "admin-albums":
+      case "admin-albums-update-id":
+      case "admin-albums-update":
         this.key = 4;
         break;
       case "admin-events":
@@ -54,7 +56,6 @@ export default {
       case "admin-countdown":
         this.key = 6;
         break;
-
       case "admin-music":
         this.key = 7;
         break;
@@ -67,6 +68,7 @@ export default {
       case "admin-menu":
         this.key = 10;
         break;
+
       default:
         break;
     }
